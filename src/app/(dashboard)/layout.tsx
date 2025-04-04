@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import SideBar from "@/components/SideBar";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,6 +15,9 @@ export default function  DashBoardlayout({children}:{children:ReactNode}){
                 </Link>
                 <SideBar/>
             </div>
-            <div className="w-[86%] md:w-[92%] lg:w-[84%] xl:w-[86%] h-full bg-[#F7F8FA] overflow-scroll">r</div>
+            <div className="w-[86%] md:w-[92%] lg:w-[84%] xl:w-[86%] h-full bg-[#F7F8FA] overflow-scroll">
+                <Navbar/>
+                {children}
+            </div>
         </div>
 }
