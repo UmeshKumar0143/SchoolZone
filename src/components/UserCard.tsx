@@ -7,6 +7,6 @@ export default function UserCard({type}:{type:string}){
             <IoIosMore width={20} height={20} />
         </div>
         <h1 className="text-2xl my-2 font-semibold ">1,234</h1>
-        <h2 className="text-sm capitalize font-medium text-gray-500">{type}</h2>
+        <h2 className="text-sm capitalize font-medium text-gray-500">{type}s</h2>
     </div>
 }
