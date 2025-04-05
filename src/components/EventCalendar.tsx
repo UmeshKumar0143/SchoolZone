@@ -32,7 +32,7 @@ const events = [
 export default function EventCalander(){
     const [value, onChange]= useState<Value>(new Date()); 
     return <div className="bg-white p-4 rounded-md">
-        <Calendar onChange={onChange} value={value} /> 
+        <Calendar onChange={onChange} value={value} locale="en-IN" /> 
         <div className="flex items-center justify-between my-2">
             <h1 className="text-xl font-semibold my-2">Events</h1>
             <CgMore width={20} height={20}/>
