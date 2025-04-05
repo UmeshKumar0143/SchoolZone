@@ -8,7 +8,7 @@ export default function  DashBoardlayout({children}:{children:ReactNode}){
     return <div className="h-screen flex ">
             <div className="w-[14%] md:w-[8%] lg:w-[16%] xl:w-[14%] h-full ">
                 <Link href={"/"} 
-                className="flex justify-start items-center  gap-2 py-2"
+                className="flex justify-center lg:justify-start items-center  gap-2 py-2"
                 >
                 <Image src="/logo.png" width={32} height={32} alt="logo" />
                 <span className="hidden lg:block font-bold ">SchoolZone</span>
