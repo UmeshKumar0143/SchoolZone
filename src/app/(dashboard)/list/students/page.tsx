@@ -71,7 +71,7 @@ const renderRow = (item:Student)=>{
         <td className="hidden md:table-cell">{item.address}</td>
         <td>
             <div className="flex items-center gap-2">
-                    <Link href={`/list/student/${item.id}`}>
+                    <Link href={`/list/students/${item.id}`}>
                     <button className="w-7 h-7 rounded-full bg-school-blue flex text-white items-center justify-center"><FaExternalLinkAlt width={16} height={16}/></button>
                     </Link>
                    {role=="admin" && <button className="w-7 h-7 rounded-full flex text-red-400 bg-school-blue items-center justify-center"><MdDeleteOutline width={16} height={16}/></button>
