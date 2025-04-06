@@ -68,7 +68,7 @@ const renderRow = (item:Parent)=>{
     </tr>
 }
 
-export default function StudentList(){
+export default function ClasesList(){
     return <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
 
             <div className="w-full flex items-center justify-between ">

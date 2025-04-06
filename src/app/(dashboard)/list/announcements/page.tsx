@@ -1,20 +1,18 @@
 import ListSearchBar from "@/components/ListSearchBar";
 import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
-import {  eventsData, resultsData,  role,  } from "@/lib/data";
+import {  announcementsData,  role,  } from "@/lib/data";
 import Link from "next/link";
 import { CgMathPlus } from "react-icons/cg";
 import {  FaExternalLinkAlt, FaSortAmountDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
 import { MdDeleteOutline } from "react-icons/md";
 
-type Event = {
+type Result = {
     id: number; 
     title: string; 
     class: string;
-    date: string; 
-    startTime: string; 
-    endTime: string; 
+    date: string;  
 }
 
 const cols = [
@@ -34,16 +32,6 @@ const cols = [
      classname: "hidden md:table-cell text-left"
     }, 
     {
-     header: "Start Time" , 
-     accessor: "startTime", 
-     classname: "hidden md:table-cell text-left"
-    }, 
-    {
-     header: "End Time" , 
-     accessor: "endtime", 
-     classname: "hidden md:table-cell text-left"
-    }, 
-    {
      header: "Actions" , 
      accessor: "actions", 
      classname: "text-left"
@@ -52,7 +40,7 @@ const cols = [
 
 ]
 
-const renderRow = (item:Event)=>{
+const renderRow = (item:Result)=>{
     return <tr key={item.id} className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-school-purple-Light">
         <td className="flex items-center p-4 gap-2" >
         <div className="flex flex-col ">
@@ -61,8 +49,6 @@ const renderRow = (item:Event)=>{
         </td>
         <td className="hidden md:table-cell">{item.class}</td>
         <td className="hidden md:table-cell">{item.date}</td>
-        <td className="hidden md:table-cell">{item.startTime}</td>
-        <td className="hidden md:table-cell">{item.endTime}</td>
         <td>
             <div className="flex items-center gap-2">
                     <Link href={`/list/teacher/${item.id}`}>
@@ -75,11 +61,11 @@ const renderRow = (item:Event)=>{
     </tr>
 }
 
-export default function EventsList(){
+export default function AnnouncementsList(){
     return <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
 
             <div className="w-full flex items-center justify-between ">
-                        <h1 className="hidden md:block font-semibold text-lg">All Events</h1>
+                        <h1 className="hidden md:block font-semibold text-lg">All Announcements</h1>
                         <div className="flex flex-col md:flex-row items-center  w-full md:w-auto gap-4">  
                                 <ListSearchBar />
                                 <div className="flex gap-2 self-end">
@@ -95,7 +81,7 @@ export default function EventsList(){
                                 </div>
                         </div>
             </div>
-            <Table  columns  = {cols} renderRow = {renderRow} data={eventsData}/>
+            <Table  columns  = {cols} renderRow = {renderRow} data={announcementsData}/>
             <Pagination/>
     </div>
 }

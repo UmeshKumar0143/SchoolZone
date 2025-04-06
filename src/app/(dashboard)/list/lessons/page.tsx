@@ -1,8 +1,7 @@
 import ListSearchBar from "@/components/ListSearchBar";
 import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
-import { classesData,  lessonsData,  role,  } from "@/lib/data";
-import Image from "next/image";
+import {  lessonsData,  role,  } from "@/lib/data";
 import Link from "next/link";
 import { CgMathPlus } from "react-icons/cg";
 import {  FaExternalLinkAlt, FaSortAmountDown } from "react-icons/fa";
