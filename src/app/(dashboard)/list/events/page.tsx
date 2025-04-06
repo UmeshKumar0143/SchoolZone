@@ -1,19 +1,20 @@
 import ListSearchBar from "@/components/ListSearchBar";
 import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
-import { assignmentsData,  role,  } from "@/lib/data";
+import {  eventsData, resultsData,  role,  } from "@/lib/data";
 import Link from "next/link";
 import { CgMathPlus } from "react-icons/cg";
 import {  FaExternalLinkAlt, FaSortAmountDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
 import { MdDeleteOutline } from "react-icons/md";
 
-type Assingment = {
+type Result = {
     id: number; 
-    subject: string; 
+    title: string; 
     class: string;
-    teacher: string; 
-    dueDate: string; 
+    date: string; 
+    startTime: string; 
+    endTime: string; 
 }
 
 const cols = [
@@ -28,13 +29,18 @@ const cols = [
      classname: "hidden md:table-cell text-left"
     }, 
     {
-     header: "Teacher" , 
-     accessor: "teacher", 
+     header: "Date" , 
+     accessor: "date", 
      classname: "hidden md:table-cell text-left"
     }, 
     {
-     header: "Due Date" , 
-     accessor: "duedate", 
+     header: "Start Time" , 
+     accessor: "startTime", 
+     classname: "hidden md:table-cell text-left"
+    }, 
+    {
+     header: "End Time" , 
+     accessor: "endtime", 
      classname: "hidden md:table-cell text-left"
     }, 
     {
@@ -46,16 +52,17 @@ const cols = [
 
 ]
 
-const renderRow = (item:Assingment)=>{
+const renderRow = (item:Result)=>{
     return <tr key={item.id} className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-school-purple-Light">
         <td className="flex items-center p-4 gap-2" >
         <div className="flex flex-col ">
-            <h3 className="font-semibold ">{item.subject}</h3>
+            <h3 className="font-semibold ">{item.title}</h3>
         </div>
         </td>
         <td className="hidden md:table-cell">{item.class}</td>
-        <td className="hidden md:table-cell">{item.teacher}</td>
-        <td className="hidden md:table-cell">{item.dueDate}</td>
+        <td className="hidden md:table-cell">{item.date}</td>
+        <td className="hidden md:table-cell">{item.startTime}</td>
+        <td className="hidden md:table-cell">{item.endTime}</td>
         <td>
             <div className="flex items-center gap-2">
                     <Link href={`/list/teacher/${item.id}`}>
@@ -68,11 +75,11 @@ const renderRow = (item:Assingment)=>{
     </tr>
 }
 
-export default function AssignmentsList(){
+export default function EventsList(){
     return <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
 
             <div className="w-full flex items-center justify-between ">
-                        <h1 className="hidden md:block font-semibold text-lg">All Assingments</h1>
+                        <h1 className="hidden md:block font-semibold text-lg">All Events</h1>
                         <div className="flex flex-col md:flex-row items-center  w-full md:w-auto gap-4">  
                                 <ListSearchBar />
                                 <div className="flex gap-2 self-end">
@@ -88,7 +95,7 @@ export default function AssignmentsList(){
                                 </div>
                         </div>
             </div>
-            <Table  columns  = {cols} renderRow = {renderRow} data={assignmentsData}/>
+            <Table  columns  = {cols} renderRow = {renderRow} data={eventsData}/>
             <Pagination/>
     </div>
 }
