@@ -1,7 +1,7 @@
 import ListSearchBar from "@/components/ListSearchBar";
 import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
-import { parentsData, role,  } from "@/lib/data";
+import { classesData,  role,  } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import { CgMathPlus } from "react-icons/cg";
@@ -12,10 +12,9 @@ import { MdDeleteOutline } from "react-icons/md";
 type Parent = {
     id: number; 
     name: string; 
-    email?: string;
-    students: string[]; 
-    phone?: string; 
-    address: string; 
+    capacity: number;
+    grade: number; 
+    supervisor: string; 
 }
 
 const cols = [
@@ -25,18 +24,18 @@ const cols = [
      classname: "text-left "
     },  
     {
-     header: "Students" , 
-     accessor: "students", 
+     header: "Capacity" , 
+     accessor: "capacityu", 
      classname: "hidden md:table-cell text-left"
     }, 
     {
-     header: "Phone" , 
-     accessor: "phone", 
+     header: "Grade" , 
+     accessor: "grade", 
      classname: "hidden md:table-cell text-left"
     }, 
     {
-     header: "Address" , 
-     accessor: "address", 
+     header: "Supervisor" , 
+     accessor: "supervisor", 
      classname: "hidden md:table-cell text-left"
     }, 
     {
@@ -53,12 +52,11 @@ const renderRow = (item:Parent)=>{
         <td className="flex items-center p-4 gap-2" >
         <div className="flex flex-col ">
             <h3 className="font-semibold ">{item.name}</h3>
-            <p className="text-xs text-gray-500">{item.email}</p>
         </div>
         </td>
-        <td className="hidden md:table-cell">{item.students.join(",")}</td>
-        <td className="hidden md:table-cell">{item.phone}</td>
-        <td className="hidden md:table-cell">{item.address}</td>
+        <td className="hidden md:table-cell">{item.capacity}</td>
+        <td className="hidden md:table-cell">{item.grade}</td>
+        <td className="hidden md:table-cell">{item.supervisor}</td>
         <td>
             <div className="flex items-center gap-2">
                     <Link href={`/list/teacher/${item.id}`}>
@@ -75,7 +73,7 @@ export default function StudentList(){
     return <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
 
             <div className="w-full flex items-center justify-between ">
-                        <h1 className="hidden md:block font-semibold text-lg">All Parents</h1>
+                        <h1 className="hidden md:block font-semibold text-lg">All Classes</h1>
                         <div className="flex flex-col md:flex-row items-center  w-full md:w-auto gap-4">  
                                 <ListSearchBar />
                                 <div className="flex gap-2 self-end">
@@ -91,7 +89,7 @@ export default function StudentList(){
                                 </div>
                         </div>
             </div>
-            <Table  columns  = {cols} renderRow = {renderRow} data={parentsData}/>
+            <Table  columns  = {cols} renderRow = {renderRow} data={classesData}/>
             <Pagination/>
     </div>
 }
