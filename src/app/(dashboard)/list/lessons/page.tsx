@@ -1,3 +1,4 @@
+import FormModal from "@/components/FormModal";
 import ListSearchBar from "@/components/ListSearchBar";
 import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
@@ -52,9 +53,9 @@ const renderRow = (item:Lesson)=>{
         <td>
             <div className="flex items-center gap-2">
                     <Link href={`/list/teacher/${item.id}`}>
-                    <button className="w-7 h-7 rounded-full bg-school-blue flex text-white items-center justify-center"><FaExternalLinkAlt width={16} height={16}/></button>
+                    <FormModal type="update" table="lesson" data={item} id={item.id} />
                     </Link>
-                   {role=="admin" && <button className="w-7 h-7 rounded-full flex text-red-400 bg-school-blue items-center justify-center"><MdDeleteOutline width={16} height={16}/></button>
+                   {role=="admin" && <FormModal type="delete" table="lesson" data={item} id={item.id} />
 }
             </div>
         </td>
@@ -75,9 +76,7 @@ export default function StudentList(){
                                 <button className="bg-school-yellow w-8 h-8 rounded-full p-2">
                                 <FaSortAmountDown width={14} height={14} />
                                 </button>
-                                <button className="bg-school-yellow w-8 h-8 rounded-full p-2">
-                                <CgMathPlus width={14} height={14}/>
-                                </button>
+                                <FormModal type="create" table="lesson"  />
                                 </div>
                         </div>
             </div>

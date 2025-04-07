@@ -1,3 +1,4 @@
+import FormModal from "@/components/FormModal";
 import ListSearchBar from "@/components/ListSearchBar";
 import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
@@ -66,9 +67,9 @@ const renderRow = (item:Event)=>{
         <td>
             <div className="flex items-center gap-2">
                     <Link href={`/list/teacher/${item.id}`}>
-                    <button className="w-7 h-7 rounded-full bg-school-blue flex text-white items-center justify-center"><FaExternalLinkAlt width={16} height={16}/></button>
+                    <FormModal data={item} id={item.id} type="update" table="event" />
                     </Link>
-                   {role=="admin" && <button className="w-7 h-7 rounded-full flex text-red-400 bg-school-blue items-center justify-center"><MdDeleteOutline width={16} height={16}/></button>
+                   {role=="admin" && <FormModal data={item} id={item.id} type="delete" table="event" />
 }
             </div>
         </td>
