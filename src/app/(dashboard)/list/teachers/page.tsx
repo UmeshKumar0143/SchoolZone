@@ -77,9 +77,11 @@ const renderRow = (item:Teacher)=>{
         <td className="hidden md:table-cell">{item.address}</td>
         <td>
             <div className="flex items-center gap-2">
-                    <Link href={`/list/teachers/${item.id}`}>
-                    <FormModal id={item.id} table="teacher" type="update" data={item} />
-                    </Link>
+            <Link href={`/list/teachers/${item.id}`}>
+            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaSky">
+              <Image src="/view.png" alt="" width={16} height={16} />
+            </button>
+          </Link>
                    {role=="admin" && <FormModal table="teacher" id={item.id} type="delete" data={item} /> }
             </div>
         </td>
