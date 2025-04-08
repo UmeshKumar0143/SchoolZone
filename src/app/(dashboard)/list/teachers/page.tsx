@@ -5,8 +5,7 @@ import Table from "@/components/Table";
 import { role, teachersData } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
-import { CgMathPlus } from "react-icons/cg";
-import {  FaExternalLinkAlt, FaSortAmountDown } from "react-icons/fa";
+import {  FaSortAmountDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
 import { MdDeleteOutline } from "react-icons/md";
 
@@ -76,7 +75,6 @@ const renderRow = (item:Teacher)=>{
         <td className="hidden md:table-cell">{item.classes.join(",")}</td>
         <td className="hidden md:table-cell">{item.phone}</td>
         <td className="hidden md:table-cell">{item.address}</td>
-
         <td>
             <div className="flex items-center gap-2">
                     <Link href={`/list/teachers/${item.id}`}>

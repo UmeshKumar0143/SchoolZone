@@ -1,6 +1,7 @@
 "use client"
 import Image from "next/image";
 import { useState } from "react";
+import TeacherForm from "./TeacherForm";
 
 export default function FormModal({table , type, data, id}:{table: 
      "teacher"
@@ -31,7 +32,7 @@ export default function FormModal({table , type, data, id}:{table:
                 <span className="text-center font-medium"> All data will be lost. Are you sure you want to delete this {table}</span>
                 <button  className="bg-red-700 hover:cursor-pointer hover:bg-red-600 font-semibold   text-white py-2 px-4 rounded-md border-none  w-max self-center">Delete</button>
             </form>
-        ):  "Create of Update Form "
+        ):  <TeacherForm type="create"  />
 }   
 
         const [isopen, setisOpen] = useState(false); 
