@@ -100,7 +100,7 @@ export type Day = (typeof Day)[keyof typeof Day]
 
 export const UserSex: {
   MALE: 'MALE',
-  FEMALe: 'FEMALe'
+  FEMALE: 'FEMALE'
 };
 
 export type UserSex = (typeof UserSex)[keyof typeof UserSex]

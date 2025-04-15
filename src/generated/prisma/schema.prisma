@@ -202,5 +202,5 @@ enum Day {
 
 enum UserSex {
   MALE
-  FEMALe
+  FEMALE
 }

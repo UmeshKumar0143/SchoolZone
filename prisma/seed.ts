@@ -1,5 +1,7 @@
-import { Day, PrismaClient, UserSex } from "@prisma/client";
-const prisma = new PrismaClient();
+
+import { UserSex } from "@/generated/prisma";
+import {prisma} from "@/lib/prisma"
+import Day from "react-calendar/src/MonthView/Day.jsx";
 
 async function main() {
   // ADMIN

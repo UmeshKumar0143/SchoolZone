@@ -259,7 +259,7 @@ exports.Prisma.NullsOrder = {
 };
 exports.UserSex = exports.$Enums.UserSex = {
   MALE: 'MALE',
-  FEMALe: 'FEMALe'
+  FEMALE: 'FEMALE'
 };
 
 exports.Day = exports.$Enums.Day = {
