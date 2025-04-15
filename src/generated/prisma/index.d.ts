@@ -59,10 +59,10 @@ export type Class = $Result.DefaultSelection<Prisma.$ClassPayload>
  */
 export type Exam = $Result.DefaultSelection<Prisma.$ExamPayload>
 /**
- * Model Assigment
+ * Model Assignment
  * 
  */
-export type Assigment = $Result.DefaultSelection<Prisma.$AssigmentPayload>
+export type Assignment = $Result.DefaultSelection<Prisma.$AssignmentPayload>
 /**
  * Model Result
  * 
@@ -331,14 +331,14 @@ export class PrismaClient<
   get exam(): Prisma.ExamDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.assigment`: Exposes CRUD operations for the **Assigment** model.
+   * `prisma.assignment`: Exposes CRUD operations for the **Assignment** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Assigments
-    * const assigments = await prisma.assigment.findMany()
+    * // Fetch zero or more Assignments
+    * const assignments = await prisma.assignment.findMany()
     * ```
     */
-  get assigment(): Prisma.AssigmentDelegate<ExtArgs, ClientOptions>;
+  get assignment(): Prisma.AssignmentDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.result`: Exposes CRUD operations for the **Result** model.
@@ -828,7 +828,7 @@ export namespace Prisma {
     Lesson: 'Lesson',
     Class: 'Class',
     Exam: 'Exam',
-    Assigment: 'Assigment',
+    Assignment: 'Assignment',
     Result: 'Result',
     Attendance: 'Attendance',
     Event: 'Event',
@@ -851,7 +851,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "admin" | "student" | "teacher" | "parent" | "grade" | "subject" | "lesson" | "class" | "exam" | "assigment" | "result" | "attendance" | "event" | "announcement"
+      modelProps: "admin" | "student" | "teacher" | "parent" | "grade" | "subject" | "lesson" | "class" | "exam" | "assignment" | "result" | "attendance" | "event" | "announcement"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1521,77 +1521,77 @@ export namespace Prisma {
           }
         }
       }
-      Assigment: {
-        payload: Prisma.$AssigmentPayload<ExtArgs>
-        fields: Prisma.AssigmentFieldRefs
+      Assignment: {
+        payload: Prisma.$AssignmentPayload<ExtArgs>
+        fields: Prisma.AssignmentFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.AssigmentFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AssigmentPayload> | null
+            args: Prisma.AssignmentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssignmentPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.AssigmentFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AssigmentPayload>
+            args: Prisma.AssignmentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssignmentPayload>
           }
           findFirst: {
-            args: Prisma.AssigmentFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AssigmentPayload> | null
+            args: Prisma.AssignmentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssignmentPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.AssigmentFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AssigmentPayload>
+            args: Prisma.AssignmentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssignmentPayload>
           }
           findMany: {
-            args: Prisma.AssigmentFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AssigmentPayload>[]
+            args: Prisma.AssignmentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssignmentPayload>[]
           }
           create: {
-            args: Prisma.AssigmentCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AssigmentPayload>
+            args: Prisma.AssignmentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssignmentPayload>
           }
           createMany: {
-            args: Prisma.AssigmentCreateManyArgs<ExtArgs>
+            args: Prisma.AssignmentCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.AssigmentCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AssigmentPayload>[]
+            args: Prisma.AssignmentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssignmentPayload>[]
           }
           delete: {
-            args: Prisma.AssigmentDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AssigmentPayload>
+            args: Prisma.AssignmentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssignmentPayload>
           }
           update: {
-            args: Prisma.AssigmentUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AssigmentPayload>
+            args: Prisma.AssignmentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssignmentPayload>
           }
           deleteMany: {
-            args: Prisma.AssigmentDeleteManyArgs<ExtArgs>
+            args: Prisma.AssignmentDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.AssigmentUpdateManyArgs<ExtArgs>
+            args: Prisma.AssignmentUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.AssigmentUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AssigmentPayload>[]
+            args: Prisma.AssignmentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssignmentPayload>[]
           }
           upsert: {
-            args: Prisma.AssigmentUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AssigmentPayload>
+            args: Prisma.AssignmentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssignmentPayload>
           }
           aggregate: {
-            args: Prisma.AssigmentAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateAssigment>
+            args: Prisma.AssignmentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAssignment>
           }
           groupBy: {
-            args: Prisma.AssigmentGroupByArgs<ExtArgs>
-            result: $Utils.Optional<AssigmentGroupByOutputType>[]
+            args: Prisma.AssignmentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AssignmentGroupByOutputType>[]
           }
           count: {
-            args: Prisma.AssigmentCountArgs<ExtArgs>
-            result: $Utils.Optional<AssigmentCountAggregateOutputType> | number
+            args: Prisma.AssignmentCountArgs<ExtArgs>
+            result: $Utils.Optional<AssignmentCountAggregateOutputType> | number
           }
         }
       }
@@ -1984,7 +1984,7 @@ export namespace Prisma {
     lesson?: LessonOmit
     class?: ClassOmit
     exam?: ExamOmit
-    assigment?: AssigmentOmit
+    assignment?: AssignmentOmit
     result?: ResultOmit
     attendance?: AttendanceOmit
     event?: EventOmit
@@ -2316,7 +2316,7 @@ export namespace Prisma {
    * LessonCountOutputType without action
    */
   export type LessonCountOutputTypeCountAssignmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AssigmentWhereInput
+    where?: AssignmentWhereInput
   }
 
   /**
@@ -2417,32 +2417,32 @@ export namespace Prisma {
 
 
   /**
-   * Count Type AssigmentCountOutputType
+   * Count Type AssignmentCountOutputType
    */
 
-  export type AssigmentCountOutputType = {
+  export type AssignmentCountOutputType = {
     results: number
   }
 
-  export type AssigmentCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    results?: boolean | AssigmentCountOutputTypeCountResultsArgs
+  export type AssignmentCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    results?: boolean | AssignmentCountOutputTypeCountResultsArgs
   }
 
   // Custom InputTypes
   /**
-   * AssigmentCountOutputType without action
+   * AssignmentCountOutputType without action
    */
-  export type AssigmentCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssignmentCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AssigmentCountOutputType
+     * Select specific fields to fetch from the AssignmentCountOutputType
      */
-    select?: AssigmentCountOutputTypeSelect<ExtArgs> | null
+    select?: AssignmentCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * AssigmentCountOutputType without action
+   * AssignmentCountOutputType without action
    */
-  export type AssigmentCountOutputTypeCountResultsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssignmentCountOutputTypeCountResultsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ResultWhereInput
   }
 
@@ -3433,7 +3433,7 @@ export namespace Prisma {
     id: string | null
     username: string | null
     name: string | null
-    lastname: string | null
+    surname: string | null
     email: string | null
     phone: string | null
     address: string | null
@@ -3444,14 +3444,14 @@ export namespace Prisma {
     parentId: string | null
     classId: number | null
     gradeId: number | null
-    dateofBirth: Date | null
+    birthday: Date | null
   }
 
   export type StudentMaxAggregateOutputType = {
     id: string | null
     username: string | null
     name: string | null
-    lastname: string | null
+    surname: string | null
     email: string | null
     phone: string | null
     address: string | null
@@ -3462,14 +3462,14 @@ export namespace Prisma {
     parentId: string | null
     classId: number | null
     gradeId: number | null
-    dateofBirth: Date | null
+    birthday: Date | null
   }
 
   export type StudentCountAggregateOutputType = {
     id: number
     username: number
     name: number
-    lastname: number
+    surname: number
     email: number
     phone: number
     address: number
@@ -3480,7 +3480,7 @@ export namespace Prisma {
     parentId: number
     classId: number
     gradeId: number
-    dateofBirth: number
+    birthday: number
     _all: number
   }
 
@@ -3499,7 +3499,7 @@ export namespace Prisma {
     id?: true
     username?: true
     name?: true
-    lastname?: true
+    surname?: true
     email?: true
     phone?: true
     address?: true
@@ -3510,14 +3510,14 @@ export namespace Prisma {
     parentId?: true
     classId?: true
     gradeId?: true
-    dateofBirth?: true
+    birthday?: true
   }
 
   export type StudentMaxAggregateInputType = {
     id?: true
     username?: true
     name?: true
-    lastname?: true
+    surname?: true
     email?: true
     phone?: true
     address?: true
@@ -3528,14 +3528,14 @@ export namespace Prisma {
     parentId?: true
     classId?: true
     gradeId?: true
-    dateofBirth?: true
+    birthday?: true
   }
 
   export type StudentCountAggregateInputType = {
     id?: true
     username?: true
     name?: true
-    lastname?: true
+    surname?: true
     email?: true
     phone?: true
     address?: true
@@ -3546,7 +3546,7 @@ export namespace Prisma {
     parentId?: true
     classId?: true
     gradeId?: true
-    dateofBirth?: true
+    birthday?: true
     _all?: true
   }
 
@@ -3640,7 +3640,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email: string | null
     phone: string
     address: string
@@ -3651,7 +3651,7 @@ export namespace Prisma {
     parentId: string
     classId: number
     gradeId: number
-    dateofBirth: Date
+    birthday: Date
     _count: StudentCountAggregateOutputType | null
     _avg: StudentAvgAggregateOutputType | null
     _sum: StudentSumAggregateOutputType | null
@@ -3677,7 +3677,7 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     name?: boolean
-    lastname?: boolean
+    surname?: boolean
     email?: boolean
     phone?: boolean
     address?: boolean
@@ -3688,7 +3688,7 @@ export namespace Prisma {
     parentId?: boolean
     classId?: boolean
     gradeId?: boolean
-    dateofBirth?: boolean
+    birthday?: boolean
     parent?: boolean | ParentDefaultArgs<ExtArgs>
     class?: boolean | ClassDefaultArgs<ExtArgs>
     grade?: boolean | GradeDefaultArgs<ExtArgs>
@@ -3701,7 +3701,7 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     name?: boolean
-    lastname?: boolean
+    surname?: boolean
     email?: boolean
     phone?: boolean
     address?: boolean
@@ -3712,7 +3712,7 @@ export namespace Prisma {
     parentId?: boolean
     classId?: boolean
     gradeId?: boolean
-    dateofBirth?: boolean
+    birthday?: boolean
     parent?: boolean | ParentDefaultArgs<ExtArgs>
     class?: boolean | ClassDefaultArgs<ExtArgs>
     grade?: boolean | GradeDefaultArgs<ExtArgs>
@@ -3722,7 +3722,7 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     name?: boolean
-    lastname?: boolean
+    surname?: boolean
     email?: boolean
     phone?: boolean
     address?: boolean
@@ -3733,7 +3733,7 @@ export namespace Prisma {
     parentId?: boolean
     classId?: boolean
     gradeId?: boolean
-    dateofBirth?: boolean
+    birthday?: boolean
     parent?: boolean | ParentDefaultArgs<ExtArgs>
     class?: boolean | ClassDefaultArgs<ExtArgs>
     grade?: boolean | GradeDefaultArgs<ExtArgs>
@@ -3743,7 +3743,7 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     name?: boolean
-    lastname?: boolean
+    surname?: boolean
     email?: boolean
     phone?: boolean
     address?: boolean
@@ -3754,10 +3754,10 @@ export namespace Prisma {
     parentId?: boolean
     classId?: boolean
     gradeId?: boolean
-    dateofBirth?: boolean
+    birthday?: boolean
   }
 
-  export type StudentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "name" | "lastname" | "email" | "phone" | "address" | "img" | "bloodType" | "sex" | "createdAt" | "parentId" | "classId" | "gradeId" | "dateofBirth", ExtArgs["result"]["student"]>
+  export type StudentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "name" | "surname" | "email" | "phone" | "address" | "img" | "bloodType" | "sex" | "createdAt" | "parentId" | "classId" | "gradeId" | "birthday", ExtArgs["result"]["student"]>
   export type StudentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     parent?: boolean | ParentDefaultArgs<ExtArgs>
     class?: boolean | ClassDefaultArgs<ExtArgs>
@@ -3790,7 +3790,7 @@ export namespace Prisma {
       id: string
       username: string
       name: string
-      lastname: string
+      surname: string
       email: string | null
       phone: string
       address: string
@@ -3801,7 +3801,7 @@ export namespace Prisma {
       parentId: string
       classId: number
       gradeId: number
-      dateofBirth: Date
+      birthday: Date
     }, ExtArgs["result"]["student"]>
     composites: {}
   }
@@ -4233,7 +4233,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Student", 'String'>
     readonly username: FieldRef<"Student", 'String'>
     readonly name: FieldRef<"Student", 'String'>
-    readonly lastname: FieldRef<"Student", 'String'>
+    readonly surname: FieldRef<"Student", 'String'>
     readonly email: FieldRef<"Student", 'String'>
     readonly phone: FieldRef<"Student", 'String'>
     readonly address: FieldRef<"Student", 'String'>
@@ -4244,7 +4244,7 @@ export namespace Prisma {
     readonly parentId: FieldRef<"Student", 'String'>
     readonly classId: FieldRef<"Student", 'Int'>
     readonly gradeId: FieldRef<"Student", 'Int'>
-    readonly dateofBirth: FieldRef<"Student", 'DateTime'>
+    readonly birthday: FieldRef<"Student", 'DateTime'>
   }
     
 
@@ -4721,7 +4721,7 @@ export namespace Prisma {
     id: string | null
     username: string | null
     name: string | null
-    lasname: string | null
+    surname: string | null
     email: string | null
     phone: string | null
     address: string | null
@@ -4729,13 +4729,14 @@ export namespace Prisma {
     bloodType: string | null
     sex: $Enums.UserSex | null
     createdAt: Date | null
+    birthday: Date | null
   }
 
   export type TeacherMaxAggregateOutputType = {
     id: string | null
     username: string | null
     name: string | null
-    lasname: string | null
+    surname: string | null
     email: string | null
     phone: string | null
     address: string | null
@@ -4743,13 +4744,14 @@ export namespace Prisma {
     bloodType: string | null
     sex: $Enums.UserSex | null
     createdAt: Date | null
+    birthday: Date | null
   }
 
   export type TeacherCountAggregateOutputType = {
     id: number
     username: number
     name: number
-    lasname: number
+    surname: number
     email: number
     phone: number
     address: number
@@ -4757,6 +4759,7 @@ export namespace Prisma {
     bloodType: number
     sex: number
     createdAt: number
+    birthday: number
     _all: number
   }
 
@@ -4765,7 +4768,7 @@ export namespace Prisma {
     id?: true
     username?: true
     name?: true
-    lasname?: true
+    surname?: true
     email?: true
     phone?: true
     address?: true
@@ -4773,13 +4776,14 @@ export namespace Prisma {
     bloodType?: true
     sex?: true
     createdAt?: true
+    birthday?: true
   }
 
   export type TeacherMaxAggregateInputType = {
     id?: true
     username?: true
     name?: true
-    lasname?: true
+    surname?: true
     email?: true
     phone?: true
     address?: true
@@ -4787,13 +4791,14 @@ export namespace Prisma {
     bloodType?: true
     sex?: true
     createdAt?: true
+    birthday?: true
   }
 
   export type TeacherCountAggregateInputType = {
     id?: true
     username?: true
     name?: true
-    lasname?: true
+    surname?: true
     email?: true
     phone?: true
     address?: true
@@ -4801,6 +4806,7 @@ export namespace Prisma {
     bloodType?: true
     sex?: true
     createdAt?: true
+    birthday?: true
     _all?: true
   }
 
@@ -4880,7 +4886,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lasname: string
+    surname: string
     email: string | null
     phone: string
     address: string
@@ -4888,6 +4894,7 @@ export namespace Prisma {
     bloodType: string
     sex: $Enums.UserSex
     createdAt: Date
+    birthday: Date
     _count: TeacherCountAggregateOutputType | null
     _min: TeacherMinAggregateOutputType | null
     _max: TeacherMaxAggregateOutputType | null
@@ -4911,7 +4918,7 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     name?: boolean
-    lasname?: boolean
+    surname?: boolean
     email?: boolean
     phone?: boolean
     address?: boolean
@@ -4919,6 +4926,7 @@ export namespace Prisma {
     bloodType?: boolean
     sex?: boolean
     createdAt?: boolean
+    birthday?: boolean
     subjects?: boolean | Teacher$subjectsArgs<ExtArgs>
     lessons?: boolean | Teacher$lessonsArgs<ExtArgs>
     classes?: boolean | Teacher$classesArgs<ExtArgs>
@@ -4929,7 +4937,7 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     name?: boolean
-    lasname?: boolean
+    surname?: boolean
     email?: boolean
     phone?: boolean
     address?: boolean
@@ -4937,13 +4945,14 @@ export namespace Prisma {
     bloodType?: boolean
     sex?: boolean
     createdAt?: boolean
+    birthday?: boolean
   }, ExtArgs["result"]["teacher"]>
 
   export type TeacherSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     username?: boolean
     name?: boolean
-    lasname?: boolean
+    surname?: boolean
     email?: boolean
     phone?: boolean
     address?: boolean
@@ -4951,13 +4960,14 @@ export namespace Prisma {
     bloodType?: boolean
     sex?: boolean
     createdAt?: boolean
+    birthday?: boolean
   }, ExtArgs["result"]["teacher"]>
 
   export type TeacherSelectScalar = {
     id?: boolean
     username?: boolean
     name?: boolean
-    lasname?: boolean
+    surname?: boolean
     email?: boolean
     phone?: boolean
     address?: boolean
@@ -4965,9 +4975,10 @@ export namespace Prisma {
     bloodType?: boolean
     sex?: boolean
     createdAt?: boolean
+    birthday?: boolean
   }
 
-  export type TeacherOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "name" | "lasname" | "email" | "phone" | "address" | "img" | "bloodType" | "sex" | "createdAt", ExtArgs["result"]["teacher"]>
+  export type TeacherOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "name" | "surname" | "email" | "phone" | "address" | "img" | "bloodType" | "sex" | "createdAt" | "birthday", ExtArgs["result"]["teacher"]>
   export type TeacherInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     subjects?: boolean | Teacher$subjectsArgs<ExtArgs>
     lessons?: boolean | Teacher$lessonsArgs<ExtArgs>
@@ -4988,7 +4999,7 @@ export namespace Prisma {
       id: string
       username: string
       name: string
-      lasname: string
+      surname: string
       email: string | null
       phone: string
       address: string
@@ -4996,6 +5007,7 @@ export namespace Prisma {
       bloodType: string
       sex: $Enums.UserSex
       createdAt: Date
+      birthday: Date
     }, ExtArgs["result"]["teacher"]>
     composites: {}
   }
@@ -5425,7 +5437,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Teacher", 'String'>
     readonly username: FieldRef<"Teacher", 'String'>
     readonly name: FieldRef<"Teacher", 'String'>
-    readonly lasname: FieldRef<"Teacher", 'String'>
+    readonly surname: FieldRef<"Teacher", 'String'>
     readonly email: FieldRef<"Teacher", 'String'>
     readonly phone: FieldRef<"Teacher", 'String'>
     readonly address: FieldRef<"Teacher", 'String'>
@@ -5433,6 +5445,7 @@ export namespace Prisma {
     readonly bloodType: FieldRef<"Teacher", 'String'>
     readonly sex: FieldRef<"Teacher", 'UserSex'>
     readonly createdAt: FieldRef<"Teacher", 'DateTime'>
+    readonly birthday: FieldRef<"Teacher", 'DateTime'>
   }
     
 
@@ -5925,7 +5938,7 @@ export namespace Prisma {
     id: string | null
     username: string | null
     name: string | null
-    lastname: string | null
+    surname: string | null
     email: string | null
     phone: string | null
     address: string | null
@@ -5936,7 +5949,7 @@ export namespace Prisma {
     id: string | null
     username: string | null
     name: string | null
-    lastname: string | null
+    surname: string | null
     email: string | null
     phone: string | null
     address: string | null
@@ -5947,7 +5960,7 @@ export namespace Prisma {
     id: number
     username: number
     name: number
-    lastname: number
+    surname: number
     email: number
     phone: number
     address: number
@@ -5960,7 +5973,7 @@ export namespace Prisma {
     id?: true
     username?: true
     name?: true
-    lastname?: true
+    surname?: true
     email?: true
     phone?: true
     address?: true
@@ -5971,7 +5984,7 @@ export namespace Prisma {
     id?: true
     username?: true
     name?: true
-    lastname?: true
+    surname?: true
     email?: true
     phone?: true
     address?: true
@@ -5982,7 +5995,7 @@ export namespace Prisma {
     id?: true
     username?: true
     name?: true
-    lastname?: true
+    surname?: true
     email?: true
     phone?: true
     address?: true
@@ -6066,7 +6079,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email: string | null
     phone: string
     address: string
@@ -6094,7 +6107,7 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     name?: boolean
-    lastname?: boolean
+    surname?: boolean
     email?: boolean
     phone?: boolean
     address?: boolean
@@ -6107,7 +6120,7 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     name?: boolean
-    lastname?: boolean
+    surname?: boolean
     email?: boolean
     phone?: boolean
     address?: boolean
@@ -6118,7 +6131,7 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     name?: boolean
-    lastname?: boolean
+    surname?: boolean
     email?: boolean
     phone?: boolean
     address?: boolean
@@ -6129,14 +6142,14 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     name?: boolean
-    lastname?: boolean
+    surname?: boolean
     email?: boolean
     phone?: boolean
     address?: boolean
     createdAt?: boolean
   }
 
-  export type ParentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "name" | "lastname" | "email" | "phone" | "address" | "createdAt", ExtArgs["result"]["parent"]>
+  export type ParentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "name" | "surname" | "email" | "phone" | "address" | "createdAt", ExtArgs["result"]["parent"]>
   export type ParentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     students?: boolean | Parent$studentsArgs<ExtArgs>
     _count?: boolean | ParentCountOutputTypeDefaultArgs<ExtArgs>
@@ -6153,7 +6166,7 @@ export namespace Prisma {
       id: string
       username: string
       name: string
-      lastname: string
+      surname: string
       email: string | null
       phone: string
       address: string
@@ -6585,7 +6598,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Parent", 'String'>
     readonly username: FieldRef<"Parent", 'String'>
     readonly name: FieldRef<"Parent", 'String'>
-    readonly lastname: FieldRef<"Parent", 'String'>
+    readonly surname: FieldRef<"Parent", 'String'>
     readonly email: FieldRef<"Parent", 'String'>
     readonly phone: FieldRef<"Parent", 'String'>
     readonly address: FieldRef<"Parent", 'String'>
@@ -9516,7 +9529,7 @@ export namespace Prisma {
       class: Prisma.$ClassPayload<ExtArgs>
       teacher: Prisma.$TeacherPayload<ExtArgs>
       exams: Prisma.$ExamPayload<ExtArgs>[]
-      assignments: Prisma.$AssigmentPayload<ExtArgs>[]
+      assignments: Prisma.$AssignmentPayload<ExtArgs>[]
       attendances: Prisma.$AttendancePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -9926,7 +9939,7 @@ export namespace Prisma {
     class<T extends ClassDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClassDefaultArgs<ExtArgs>>): Prisma__ClassClient<$Result.GetResult<Prisma.$ClassPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     teacher<T extends TeacherDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TeacherDefaultArgs<ExtArgs>>): Prisma__TeacherClient<$Result.GetResult<Prisma.$TeacherPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     exams<T extends Lesson$examsArgs<ExtArgs> = {}>(args?: Subset<T, Lesson$examsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExamPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    assignments<T extends Lesson$assignmentsArgs<ExtArgs> = {}>(args?: Subset<T, Lesson$assignmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssigmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    assignments<T extends Lesson$assignmentsArgs<ExtArgs> = {}>(args?: Subset<T, Lesson$assignmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     attendances<T extends Lesson$attendancesArgs<ExtArgs> = {}>(args?: Subset<T, Lesson$attendancesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -10389,23 +10402,23 @@ export namespace Prisma {
    */
   export type Lesson$assignmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Assigment
+     * Select specific fields to fetch from the Assignment
      */
-    select?: AssigmentSelect<ExtArgs> | null
+    select?: AssignmentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Assigment
+     * Omit specific fields from the Assignment
      */
-    omit?: AssigmentOmit<ExtArgs> | null
+    omit?: AssignmentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AssigmentInclude<ExtArgs> | null
-    where?: AssigmentWhereInput
-    orderBy?: AssigmentOrderByWithRelationInput | AssigmentOrderByWithRelationInput[]
-    cursor?: AssigmentWhereUniqueInput
+    include?: AssignmentInclude<ExtArgs> | null
+    where?: AssignmentWhereInput
+    orderBy?: AssignmentOrderByWithRelationInput | AssignmentOrderByWithRelationInput[]
+    cursor?: AssignmentWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: AssigmentScalarFieldEnum | AssigmentScalarFieldEnum[]
+    distinct?: AssignmentScalarFieldEnum | AssignmentScalarFieldEnum[]
   }
 
   /**
@@ -10628,7 +10641,7 @@ export namespace Prisma {
     id: number
     name: string
     capacity: number
-    supervisorId: string
+    supervisorId: string | null
     gradeId: number | null
     _count: ClassCountAggregateOutputType | null
     _avg: ClassAvgAggregateOutputType | null
@@ -10657,7 +10670,7 @@ export namespace Prisma {
     capacity?: boolean
     supervisorId?: boolean
     gradeId?: boolean
-    supervisor?: boolean | TeacherDefaultArgs<ExtArgs>
+    supervisor?: boolean | Class$supervisorArgs<ExtArgs>
     Student?: boolean | Class$StudentArgs<ExtArgs>
     Grade?: boolean | Class$GradeArgs<ExtArgs>
     lessons?: boolean | Class$lessonsArgs<ExtArgs>
@@ -10672,7 +10685,7 @@ export namespace Prisma {
     capacity?: boolean
     supervisorId?: boolean
     gradeId?: boolean
-    supervisor?: boolean | TeacherDefaultArgs<ExtArgs>
+    supervisor?: boolean | Class$supervisorArgs<ExtArgs>
     Grade?: boolean | Class$GradeArgs<ExtArgs>
   }, ExtArgs["result"]["class"]>
 
@@ -10682,7 +10695,7 @@ export namespace Prisma {
     capacity?: boolean
     supervisorId?: boolean
     gradeId?: boolean
-    supervisor?: boolean | TeacherDefaultArgs<ExtArgs>
+    supervisor?: boolean | Class$supervisorArgs<ExtArgs>
     Grade?: boolean | Class$GradeArgs<ExtArgs>
   }, ExtArgs["result"]["class"]>
 
@@ -10696,7 +10709,7 @@ export namespace Prisma {
 
   export type ClassOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "capacity" | "supervisorId" | "gradeId", ExtArgs["result"]["class"]>
   export type ClassInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    supervisor?: boolean | TeacherDefaultArgs<ExtArgs>
+    supervisor?: boolean | Class$supervisorArgs<ExtArgs>
     Student?: boolean | Class$StudentArgs<ExtArgs>
     Grade?: boolean | Class$GradeArgs<ExtArgs>
     lessons?: boolean | Class$lessonsArgs<ExtArgs>
@@ -10705,18 +10718,18 @@ export namespace Prisma {
     _count?: boolean | ClassCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ClassIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    supervisor?: boolean | TeacherDefaultArgs<ExtArgs>
+    supervisor?: boolean | Class$supervisorArgs<ExtArgs>
     Grade?: boolean | Class$GradeArgs<ExtArgs>
   }
   export type ClassIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    supervisor?: boolean | TeacherDefaultArgs<ExtArgs>
+    supervisor?: boolean | Class$supervisorArgs<ExtArgs>
     Grade?: boolean | Class$GradeArgs<ExtArgs>
   }
 
   export type $ClassPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Class"
     objects: {
-      supervisor: Prisma.$TeacherPayload<ExtArgs>
+      supervisor: Prisma.$TeacherPayload<ExtArgs> | null
       Student: Prisma.$StudentPayload<ExtArgs>[]
       Grade: Prisma.$GradePayload<ExtArgs> | null
       lessons: Prisma.$LessonPayload<ExtArgs>[]
@@ -10727,7 +10740,7 @@ export namespace Prisma {
       id: number
       name: string
       capacity: number
-      supervisorId: string
+      supervisorId: string | null
       gradeId: number | null
     }, ExtArgs["result"]["class"]>
     composites: {}
@@ -11123,7 +11136,7 @@ export namespace Prisma {
    */
   export interface Prisma__ClassClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    supervisor<T extends TeacherDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TeacherDefaultArgs<ExtArgs>>): Prisma__TeacherClient<$Result.GetResult<Prisma.$TeacherPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    supervisor<T extends Class$supervisorArgs<ExtArgs> = {}>(args?: Subset<T, Class$supervisorArgs<ExtArgs>>): Prisma__TeacherClient<$Result.GetResult<Prisma.$TeacherPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     Student<T extends Class$StudentArgs<ExtArgs> = {}>(args?: Subset<T, Class$StudentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     Grade<T extends Class$GradeArgs<ExtArgs> = {}>(args?: Subset<T, Class$GradeArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     lessons<T extends Class$lessonsArgs<ExtArgs> = {}>(args?: Subset<T, Class$lessonsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LessonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -11556,6 +11569,25 @@ export namespace Prisma {
      * Limit how many Classes to delete.
      */
     limit?: number
+  }
+
+  /**
+   * Class.supervisor
+   */
+  export type Class$supervisorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Teacher
+     */
+    select?: TeacherSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Teacher
+     */
+    omit?: TeacherOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeacherInclude<ExtArgs> | null
+    where?: TeacherWhereInput
   }
 
   /**
@@ -12819,36 +12851,28 @@ export namespace Prisma {
 
 
   /**
-   * Model Assigment
+   * Model Assignment
    */
 
-  export type AggregateAssigment = {
-    _count: AssigmentCountAggregateOutputType | null
-    _avg: AssigmentAvgAggregateOutputType | null
-    _sum: AssigmentSumAggregateOutputType | null
-    _min: AssigmentMinAggregateOutputType | null
-    _max: AssigmentMaxAggregateOutputType | null
+  export type AggregateAssignment = {
+    _count: AssignmentCountAggregateOutputType | null
+    _avg: AssignmentAvgAggregateOutputType | null
+    _sum: AssignmentSumAggregateOutputType | null
+    _min: AssignmentMinAggregateOutputType | null
+    _max: AssignmentMaxAggregateOutputType | null
   }
 
-  export type AssigmentAvgAggregateOutputType = {
+  export type AssignmentAvgAggregateOutputType = {
     id: number | null
     lessonId: number | null
   }
 
-  export type AssigmentSumAggregateOutputType = {
+  export type AssignmentSumAggregateOutputType = {
     id: number | null
     lessonId: number | null
   }
 
-  export type AssigmentMinAggregateOutputType = {
-    id: number | null
-    title: string | null
-    startDate: Date | null
-    dueDate: Date | null
-    lessonId: number | null
-  }
-
-  export type AssigmentMaxAggregateOutputType = {
+  export type AssignmentMinAggregateOutputType = {
     id: number | null
     title: string | null
     startDate: Date | null
@@ -12856,7 +12880,15 @@ export namespace Prisma {
     lessonId: number | null
   }
 
-  export type AssigmentCountAggregateOutputType = {
+  export type AssignmentMaxAggregateOutputType = {
+    id: number | null
+    title: string | null
+    startDate: Date | null
+    dueDate: Date | null
+    lessonId: number | null
+  }
+
+  export type AssignmentCountAggregateOutputType = {
     id: number
     title: number
     startDate: number
@@ -12866,25 +12898,17 @@ export namespace Prisma {
   }
 
 
-  export type AssigmentAvgAggregateInputType = {
+  export type AssignmentAvgAggregateInputType = {
     id?: true
     lessonId?: true
   }
 
-  export type AssigmentSumAggregateInputType = {
+  export type AssignmentSumAggregateInputType = {
     id?: true
     lessonId?: true
   }
 
-  export type AssigmentMinAggregateInputType = {
-    id?: true
-    title?: true
-    startDate?: true
-    dueDate?: true
-    lessonId?: true
-  }
-
-  export type AssigmentMaxAggregateInputType = {
+  export type AssignmentMinAggregateInputType = {
     id?: true
     title?: true
     startDate?: true
@@ -12892,7 +12916,15 @@ export namespace Prisma {
     lessonId?: true
   }
 
-  export type AssigmentCountAggregateInputType = {
+  export type AssignmentMaxAggregateInputType = {
+    id?: true
+    title?: true
+    startDate?: true
+    dueDate?: true
+    lessonId?: true
+  }
+
+  export type AssignmentCountAggregateInputType = {
     id?: true
     title?: true
     startDate?: true
@@ -12901,149 +12933,149 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type AssigmentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssignmentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Assigment to aggregate.
+     * Filter which Assignment to aggregate.
      */
-    where?: AssigmentWhereInput
+    where?: AssignmentWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Assigments to fetch.
+     * Determine the order of Assignments to fetch.
      */
-    orderBy?: AssigmentOrderByWithRelationInput | AssigmentOrderByWithRelationInput[]
+    orderBy?: AssignmentOrderByWithRelationInput | AssignmentOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: AssigmentWhereUniqueInput
+    cursor?: AssignmentWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Assigments from the position of the cursor.
+     * Take `±n` Assignments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Assigments.
+     * Skip the first `n` Assignments.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Assigments
+     * Count returned Assignments
     **/
-    _count?: true | AssigmentCountAggregateInputType
+    _count?: true | AssignmentCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: AssigmentAvgAggregateInputType
+    _avg?: AssignmentAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: AssigmentSumAggregateInputType
+    _sum?: AssignmentSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: AssigmentMinAggregateInputType
+    _min?: AssignmentMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: AssigmentMaxAggregateInputType
+    _max?: AssignmentMaxAggregateInputType
   }
 
-  export type GetAssigmentAggregateType<T extends AssigmentAggregateArgs> = {
-        [P in keyof T & keyof AggregateAssigment]: P extends '_count' | 'count'
+  export type GetAssignmentAggregateType<T extends AssignmentAggregateArgs> = {
+        [P in keyof T & keyof AggregateAssignment]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateAssigment[P]>
-      : GetScalarType<T[P], AggregateAssigment[P]>
+        : GetScalarType<T[P], AggregateAssignment[P]>
+      : GetScalarType<T[P], AggregateAssignment[P]>
   }
 
 
 
 
-  export type AssigmentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AssigmentWhereInput
-    orderBy?: AssigmentOrderByWithAggregationInput | AssigmentOrderByWithAggregationInput[]
-    by: AssigmentScalarFieldEnum[] | AssigmentScalarFieldEnum
-    having?: AssigmentScalarWhereWithAggregatesInput
+  export type AssignmentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AssignmentWhereInput
+    orderBy?: AssignmentOrderByWithAggregationInput | AssignmentOrderByWithAggregationInput[]
+    by: AssignmentScalarFieldEnum[] | AssignmentScalarFieldEnum
+    having?: AssignmentScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: AssigmentCountAggregateInputType | true
-    _avg?: AssigmentAvgAggregateInputType
-    _sum?: AssigmentSumAggregateInputType
-    _min?: AssigmentMinAggregateInputType
-    _max?: AssigmentMaxAggregateInputType
+    _count?: AssignmentCountAggregateInputType | true
+    _avg?: AssignmentAvgAggregateInputType
+    _sum?: AssignmentSumAggregateInputType
+    _min?: AssignmentMinAggregateInputType
+    _max?: AssignmentMaxAggregateInputType
   }
 
-  export type AssigmentGroupByOutputType = {
+  export type AssignmentGroupByOutputType = {
     id: number
     title: string
     startDate: Date
     dueDate: Date
     lessonId: number
-    _count: AssigmentCountAggregateOutputType | null
-    _avg: AssigmentAvgAggregateOutputType | null
-    _sum: AssigmentSumAggregateOutputType | null
-    _min: AssigmentMinAggregateOutputType | null
-    _max: AssigmentMaxAggregateOutputType | null
+    _count: AssignmentCountAggregateOutputType | null
+    _avg: AssignmentAvgAggregateOutputType | null
+    _sum: AssignmentSumAggregateOutputType | null
+    _min: AssignmentMinAggregateOutputType | null
+    _max: AssignmentMaxAggregateOutputType | null
   }
 
-  type GetAssigmentGroupByPayload<T extends AssigmentGroupByArgs> = Prisma.PrismaPromise<
+  type GetAssignmentGroupByPayload<T extends AssignmentGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<AssigmentGroupByOutputType, T['by']> &
+      PickEnumerable<AssignmentGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof AssigmentGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof AssignmentGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], AssigmentGroupByOutputType[P]>
-            : GetScalarType<T[P], AssigmentGroupByOutputType[P]>
+              : GetScalarType<T[P], AssignmentGroupByOutputType[P]>
+            : GetScalarType<T[P], AssignmentGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type AssigmentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AssignmentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
     startDate?: boolean
     dueDate?: boolean
     lessonId?: boolean
     lesson?: boolean | LessonDefaultArgs<ExtArgs>
-    results?: boolean | Assigment$resultsArgs<ExtArgs>
-    _count?: boolean | AssigmentCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["assigment"]>
+    results?: boolean | Assignment$resultsArgs<ExtArgs>
+    _count?: boolean | AssignmentCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["assignment"]>
 
-  export type AssigmentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AssignmentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
     startDate?: boolean
     dueDate?: boolean
     lessonId?: boolean
     lesson?: boolean | LessonDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["assigment"]>
+  }, ExtArgs["result"]["assignment"]>
 
-  export type AssigmentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AssignmentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
     startDate?: boolean
     dueDate?: boolean
     lessonId?: boolean
     lesson?: boolean | LessonDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["assigment"]>
+  }, ExtArgs["result"]["assignment"]>
 
-  export type AssigmentSelectScalar = {
+  export type AssignmentSelectScalar = {
     id?: boolean
     title?: boolean
     startDate?: boolean
@@ -13051,21 +13083,21 @@ export namespace Prisma {
     lessonId?: boolean
   }
 
-  export type AssigmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "startDate" | "dueDate" | "lessonId", ExtArgs["result"]["assigment"]>
-  export type AssigmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssignmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "startDate" | "dueDate" | "lessonId", ExtArgs["result"]["assignment"]>
+  export type AssignmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     lesson?: boolean | LessonDefaultArgs<ExtArgs>
-    results?: boolean | Assigment$resultsArgs<ExtArgs>
-    _count?: boolean | AssigmentCountOutputTypeDefaultArgs<ExtArgs>
+    results?: boolean | Assignment$resultsArgs<ExtArgs>
+    _count?: boolean | AssignmentCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type AssigmentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssignmentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     lesson?: boolean | LessonDefaultArgs<ExtArgs>
   }
-  export type AssigmentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssignmentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     lesson?: boolean | LessonDefaultArgs<ExtArgs>
   }
 
-  export type $AssigmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Assigment"
+  export type $AssignmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Assignment"
     objects: {
       lesson: Prisma.$LessonPayload<ExtArgs>
       results: Prisma.$ResultPayload<ExtArgs>[]
@@ -13076,136 +13108,136 @@ export namespace Prisma {
       startDate: Date
       dueDate: Date
       lessonId: number
-    }, ExtArgs["result"]["assigment"]>
+    }, ExtArgs["result"]["assignment"]>
     composites: {}
   }
 
-  type AssigmentGetPayload<S extends boolean | null | undefined | AssigmentDefaultArgs> = $Result.GetResult<Prisma.$AssigmentPayload, S>
+  type AssignmentGetPayload<S extends boolean | null | undefined | AssignmentDefaultArgs> = $Result.GetResult<Prisma.$AssignmentPayload, S>
 
-  type AssigmentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<AssigmentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: AssigmentCountAggregateInputType | true
+  type AssignmentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AssignmentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AssignmentCountAggregateInputType | true
     }
 
-  export interface AssigmentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Assigment'], meta: { name: 'Assigment' } }
+  export interface AssignmentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Assignment'], meta: { name: 'Assignment' } }
     /**
-     * Find zero or one Assigment that matches the filter.
-     * @param {AssigmentFindUniqueArgs} args - Arguments to find a Assigment
+     * Find zero or one Assignment that matches the filter.
+     * @param {AssignmentFindUniqueArgs} args - Arguments to find a Assignment
      * @example
-     * // Get one Assigment
-     * const assigment = await prisma.assigment.findUnique({
+     * // Get one Assignment
+     * const assignment = await prisma.assignment.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends AssigmentFindUniqueArgs>(args: SelectSubset<T, AssigmentFindUniqueArgs<ExtArgs>>): Prisma__AssigmentClient<$Result.GetResult<Prisma.$AssigmentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends AssignmentFindUniqueArgs>(args: SelectSubset<T, AssignmentFindUniqueArgs<ExtArgs>>): Prisma__AssignmentClient<$Result.GetResult<Prisma.$AssignmentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Assigment that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Assignment that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {AssigmentFindUniqueOrThrowArgs} args - Arguments to find a Assigment
+     * @param {AssignmentFindUniqueOrThrowArgs} args - Arguments to find a Assignment
      * @example
-     * // Get one Assigment
-     * const assigment = await prisma.assigment.findUniqueOrThrow({
+     * // Get one Assignment
+     * const assignment = await prisma.assignment.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends AssigmentFindUniqueOrThrowArgs>(args: SelectSubset<T, AssigmentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AssigmentClient<$Result.GetResult<Prisma.$AssigmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends AssignmentFindUniqueOrThrowArgs>(args: SelectSubset<T, AssignmentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AssignmentClient<$Result.GetResult<Prisma.$AssignmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Assigment that matches the filter.
+     * Find the first Assignment that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AssigmentFindFirstArgs} args - Arguments to find a Assigment
+     * @param {AssignmentFindFirstArgs} args - Arguments to find a Assignment
      * @example
-     * // Get one Assigment
-     * const assigment = await prisma.assigment.findFirst({
+     * // Get one Assignment
+     * const assignment = await prisma.assignment.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends AssigmentFindFirstArgs>(args?: SelectSubset<T, AssigmentFindFirstArgs<ExtArgs>>): Prisma__AssigmentClient<$Result.GetResult<Prisma.$AssigmentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends AssignmentFindFirstArgs>(args?: SelectSubset<T, AssignmentFindFirstArgs<ExtArgs>>): Prisma__AssignmentClient<$Result.GetResult<Prisma.$AssignmentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Assigment that matches the filter or
+     * Find the first Assignment that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AssigmentFindFirstOrThrowArgs} args - Arguments to find a Assigment
+     * @param {AssignmentFindFirstOrThrowArgs} args - Arguments to find a Assignment
      * @example
-     * // Get one Assigment
-     * const assigment = await prisma.assigment.findFirstOrThrow({
+     * // Get one Assignment
+     * const assignment = await prisma.assignment.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends AssigmentFindFirstOrThrowArgs>(args?: SelectSubset<T, AssigmentFindFirstOrThrowArgs<ExtArgs>>): Prisma__AssigmentClient<$Result.GetResult<Prisma.$AssigmentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends AssignmentFindFirstOrThrowArgs>(args?: SelectSubset<T, AssignmentFindFirstOrThrowArgs<ExtArgs>>): Prisma__AssignmentClient<$Result.GetResult<Prisma.$AssignmentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Assigments that matches the filter.
+     * Find zero or more Assignments that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AssigmentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {AssignmentFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Assigments
-     * const assigments = await prisma.assigment.findMany()
+     * // Get all Assignments
+     * const assignments = await prisma.assignment.findMany()
      * 
-     * // Get first 10 Assigments
-     * const assigments = await prisma.assigment.findMany({ take: 10 })
+     * // Get first 10 Assignments
+     * const assignments = await prisma.assignment.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const assigmentWithIdOnly = await prisma.assigment.findMany({ select: { id: true } })
+     * const assignmentWithIdOnly = await prisma.assignment.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends AssigmentFindManyArgs>(args?: SelectSubset<T, AssigmentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssigmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends AssignmentFindManyArgs>(args?: SelectSubset<T, AssignmentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Assigment.
-     * @param {AssigmentCreateArgs} args - Arguments to create a Assigment.
+     * Create a Assignment.
+     * @param {AssignmentCreateArgs} args - Arguments to create a Assignment.
      * @example
-     * // Create one Assigment
-     * const Assigment = await prisma.assigment.create({
+     * // Create one Assignment
+     * const Assignment = await prisma.assignment.create({
      *   data: {
-     *     // ... data to create a Assigment
+     *     // ... data to create a Assignment
      *   }
      * })
      * 
      */
-    create<T extends AssigmentCreateArgs>(args: SelectSubset<T, AssigmentCreateArgs<ExtArgs>>): Prisma__AssigmentClient<$Result.GetResult<Prisma.$AssigmentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends AssignmentCreateArgs>(args: SelectSubset<T, AssignmentCreateArgs<ExtArgs>>): Prisma__AssignmentClient<$Result.GetResult<Prisma.$AssignmentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Assigments.
-     * @param {AssigmentCreateManyArgs} args - Arguments to create many Assigments.
+     * Create many Assignments.
+     * @param {AssignmentCreateManyArgs} args - Arguments to create many Assignments.
      * @example
-     * // Create many Assigments
-     * const assigment = await prisma.assigment.createMany({
+     * // Create many Assignments
+     * const assignment = await prisma.assignment.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends AssigmentCreateManyArgs>(args?: SelectSubset<T, AssigmentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends AssignmentCreateManyArgs>(args?: SelectSubset<T, AssignmentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Assigments and returns the data saved in the database.
-     * @param {AssigmentCreateManyAndReturnArgs} args - Arguments to create many Assigments.
+     * Create many Assignments and returns the data saved in the database.
+     * @param {AssignmentCreateManyAndReturnArgs} args - Arguments to create many Assignments.
      * @example
-     * // Create many Assigments
-     * const assigment = await prisma.assigment.createManyAndReturn({
+     * // Create many Assignments
+     * const assignment = await prisma.assignment.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Assigments and only return the `id`
-     * const assigmentWithIdOnly = await prisma.assigment.createManyAndReturn({
+     * // Create many Assignments and only return the `id`
+     * const assignmentWithIdOnly = await prisma.assignment.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -13215,28 +13247,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends AssigmentCreateManyAndReturnArgs>(args?: SelectSubset<T, AssigmentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssigmentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends AssignmentCreateManyAndReturnArgs>(args?: SelectSubset<T, AssignmentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssignmentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Assigment.
-     * @param {AssigmentDeleteArgs} args - Arguments to delete one Assigment.
+     * Delete a Assignment.
+     * @param {AssignmentDeleteArgs} args - Arguments to delete one Assignment.
      * @example
-     * // Delete one Assigment
-     * const Assigment = await prisma.assigment.delete({
+     * // Delete one Assignment
+     * const Assignment = await prisma.assignment.delete({
      *   where: {
-     *     // ... filter to delete one Assigment
+     *     // ... filter to delete one Assignment
      *   }
      * })
      * 
      */
-    delete<T extends AssigmentDeleteArgs>(args: SelectSubset<T, AssigmentDeleteArgs<ExtArgs>>): Prisma__AssigmentClient<$Result.GetResult<Prisma.$AssigmentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends AssignmentDeleteArgs>(args: SelectSubset<T, AssignmentDeleteArgs<ExtArgs>>): Prisma__AssignmentClient<$Result.GetResult<Prisma.$AssignmentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Assigment.
-     * @param {AssigmentUpdateArgs} args - Arguments to update one Assigment.
+     * Update one Assignment.
+     * @param {AssignmentUpdateArgs} args - Arguments to update one Assignment.
      * @example
-     * // Update one Assigment
-     * const assigment = await prisma.assigment.update({
+     * // Update one Assignment
+     * const assignment = await prisma.assignment.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -13246,30 +13278,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends AssigmentUpdateArgs>(args: SelectSubset<T, AssigmentUpdateArgs<ExtArgs>>): Prisma__AssigmentClient<$Result.GetResult<Prisma.$AssigmentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends AssignmentUpdateArgs>(args: SelectSubset<T, AssignmentUpdateArgs<ExtArgs>>): Prisma__AssignmentClient<$Result.GetResult<Prisma.$AssignmentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Assigments.
-     * @param {AssigmentDeleteManyArgs} args - Arguments to filter Assigments to delete.
+     * Delete zero or more Assignments.
+     * @param {AssignmentDeleteManyArgs} args - Arguments to filter Assignments to delete.
      * @example
-     * // Delete a few Assigments
-     * const { count } = await prisma.assigment.deleteMany({
+     * // Delete a few Assignments
+     * const { count } = await prisma.assignment.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends AssigmentDeleteManyArgs>(args?: SelectSubset<T, AssigmentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends AssignmentDeleteManyArgs>(args?: SelectSubset<T, AssignmentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Assigments.
+     * Update zero or more Assignments.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AssigmentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {AssignmentUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Assigments
-     * const assigment = await prisma.assigment.updateMany({
+     * // Update many Assignments
+     * const assignment = await prisma.assignment.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -13279,14 +13311,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends AssigmentUpdateManyArgs>(args: SelectSubset<T, AssigmentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends AssignmentUpdateManyArgs>(args: SelectSubset<T, AssignmentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Assigments and returns the data updated in the database.
-     * @param {AssigmentUpdateManyAndReturnArgs} args - Arguments to update many Assigments.
+     * Update zero or more Assignments and returns the data updated in the database.
+     * @param {AssignmentUpdateManyAndReturnArgs} args - Arguments to update many Assignments.
      * @example
-     * // Update many Assigments
-     * const assigment = await prisma.assigment.updateManyAndReturn({
+     * // Update many Assignments
+     * const assignment = await prisma.assignment.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -13295,8 +13327,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Assigments and only return the `id`
-     * const assigmentWithIdOnly = await prisma.assigment.updateManyAndReturn({
+     * // Update zero or more Assignments and only return the `id`
+     * const assignmentWithIdOnly = await prisma.assignment.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -13309,56 +13341,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends AssigmentUpdateManyAndReturnArgs>(args: SelectSubset<T, AssigmentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssigmentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends AssignmentUpdateManyAndReturnArgs>(args: SelectSubset<T, AssignmentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssignmentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Assigment.
-     * @param {AssigmentUpsertArgs} args - Arguments to update or create a Assigment.
+     * Create or update one Assignment.
+     * @param {AssignmentUpsertArgs} args - Arguments to update or create a Assignment.
      * @example
-     * // Update or create a Assigment
-     * const assigment = await prisma.assigment.upsert({
+     * // Update or create a Assignment
+     * const assignment = await prisma.assignment.upsert({
      *   create: {
-     *     // ... data to create a Assigment
+     *     // ... data to create a Assignment
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Assigment we want to update
+     *     // ... the filter for the Assignment we want to update
      *   }
      * })
      */
-    upsert<T extends AssigmentUpsertArgs>(args: SelectSubset<T, AssigmentUpsertArgs<ExtArgs>>): Prisma__AssigmentClient<$Result.GetResult<Prisma.$AssigmentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends AssignmentUpsertArgs>(args: SelectSubset<T, AssignmentUpsertArgs<ExtArgs>>): Prisma__AssignmentClient<$Result.GetResult<Prisma.$AssignmentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Assigments.
+     * Count the number of Assignments.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AssigmentCountArgs} args - Arguments to filter Assigments to count.
+     * @param {AssignmentCountArgs} args - Arguments to filter Assignments to count.
      * @example
-     * // Count the number of Assigments
-     * const count = await prisma.assigment.count({
+     * // Count the number of Assignments
+     * const count = await prisma.assignment.count({
      *   where: {
-     *     // ... the filter for the Assigments we want to count
+     *     // ... the filter for the Assignments we want to count
      *   }
      * })
     **/
-    count<T extends AssigmentCountArgs>(
-      args?: Subset<T, AssigmentCountArgs>,
+    count<T extends AssignmentCountArgs>(
+      args?: Subset<T, AssignmentCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], AssigmentCountAggregateOutputType>
+          : GetScalarType<T['select'], AssignmentCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Assigment.
+     * Allows you to perform aggregations operations on a Assignment.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AssigmentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {AssignmentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -13378,13 +13410,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends AssigmentAggregateArgs>(args: Subset<T, AssigmentAggregateArgs>): Prisma.PrismaPromise<GetAssigmentAggregateType<T>>
+    aggregate<T extends AssignmentAggregateArgs>(args: Subset<T, AssignmentAggregateArgs>): Prisma.PrismaPromise<GetAssignmentAggregateType<T>>
 
     /**
-     * Group by Assigment.
+     * Group by Assignment.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AssigmentGroupByArgs} args - Group by arguments.
+     * @param {AssignmentGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -13399,14 +13431,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends AssigmentGroupByArgs,
+      T extends AssignmentGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: AssigmentGroupByArgs['orderBy'] }
-        : { orderBy?: AssigmentGroupByArgs['orderBy'] },
+        ? { orderBy: AssignmentGroupByArgs['orderBy'] }
+        : { orderBy?: AssignmentGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -13455,23 +13487,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, AssigmentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAssigmentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, AssignmentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAssignmentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Assigment model
+   * Fields of the Assignment model
    */
-  readonly fields: AssigmentFieldRefs;
+  readonly fields: AssignmentFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Assigment.
+   * The delegate class that acts as a "Promise-like" for Assignment.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__AssigmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__AssignmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     lesson<T extends LessonDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LessonDefaultArgs<ExtArgs>>): Prisma__LessonClient<$Result.GetResult<Prisma.$LessonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    results<T extends Assigment$resultsArgs<ExtArgs> = {}>(args?: Subset<T, Assigment$resultsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    results<T extends Assignment$resultsArgs<ExtArgs> = {}>(args?: Subset<T, Assignment$resultsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13498,413 +13530,413 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Assigment model
+   * Fields of the Assignment model
    */
-  interface AssigmentFieldRefs {
-    readonly id: FieldRef<"Assigment", 'Int'>
-    readonly title: FieldRef<"Assigment", 'String'>
-    readonly startDate: FieldRef<"Assigment", 'DateTime'>
-    readonly dueDate: FieldRef<"Assigment", 'DateTime'>
-    readonly lessonId: FieldRef<"Assigment", 'Int'>
+  interface AssignmentFieldRefs {
+    readonly id: FieldRef<"Assignment", 'Int'>
+    readonly title: FieldRef<"Assignment", 'String'>
+    readonly startDate: FieldRef<"Assignment", 'DateTime'>
+    readonly dueDate: FieldRef<"Assignment", 'DateTime'>
+    readonly lessonId: FieldRef<"Assignment", 'Int'>
   }
     
 
   // Custom InputTypes
   /**
-   * Assigment findUnique
+   * Assignment findUnique
    */
-  export type AssigmentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssignmentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Assigment
+     * Select specific fields to fetch from the Assignment
      */
-    select?: AssigmentSelect<ExtArgs> | null
+    select?: AssignmentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Assigment
+     * Omit specific fields from the Assignment
      */
-    omit?: AssigmentOmit<ExtArgs> | null
+    omit?: AssignmentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AssigmentInclude<ExtArgs> | null
+    include?: AssignmentInclude<ExtArgs> | null
     /**
-     * Filter, which Assigment to fetch.
+     * Filter, which Assignment to fetch.
      */
-    where: AssigmentWhereUniqueInput
+    where: AssignmentWhereUniqueInput
   }
 
   /**
-   * Assigment findUniqueOrThrow
+   * Assignment findUniqueOrThrow
    */
-  export type AssigmentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssignmentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Assigment
+     * Select specific fields to fetch from the Assignment
      */
-    select?: AssigmentSelect<ExtArgs> | null
+    select?: AssignmentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Assigment
+     * Omit specific fields from the Assignment
      */
-    omit?: AssigmentOmit<ExtArgs> | null
+    omit?: AssignmentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AssigmentInclude<ExtArgs> | null
+    include?: AssignmentInclude<ExtArgs> | null
     /**
-     * Filter, which Assigment to fetch.
+     * Filter, which Assignment to fetch.
      */
-    where: AssigmentWhereUniqueInput
+    where: AssignmentWhereUniqueInput
   }
 
   /**
-   * Assigment findFirst
+   * Assignment findFirst
    */
-  export type AssigmentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssignmentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Assigment
+     * Select specific fields to fetch from the Assignment
      */
-    select?: AssigmentSelect<ExtArgs> | null
+    select?: AssignmentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Assigment
+     * Omit specific fields from the Assignment
      */
-    omit?: AssigmentOmit<ExtArgs> | null
+    omit?: AssignmentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AssigmentInclude<ExtArgs> | null
+    include?: AssignmentInclude<ExtArgs> | null
     /**
-     * Filter, which Assigment to fetch.
+     * Filter, which Assignment to fetch.
      */
-    where?: AssigmentWhereInput
+    where?: AssignmentWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Assigments to fetch.
+     * Determine the order of Assignments to fetch.
      */
-    orderBy?: AssigmentOrderByWithRelationInput | AssigmentOrderByWithRelationInput[]
+    orderBy?: AssignmentOrderByWithRelationInput | AssignmentOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Assigments.
+     * Sets the position for searching for Assignments.
      */
-    cursor?: AssigmentWhereUniqueInput
+    cursor?: AssignmentWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Assigments from the position of the cursor.
+     * Take `±n` Assignments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Assigments.
+     * Skip the first `n` Assignments.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Assigments.
+     * Filter by unique combinations of Assignments.
      */
-    distinct?: AssigmentScalarFieldEnum | AssigmentScalarFieldEnum[]
+    distinct?: AssignmentScalarFieldEnum | AssignmentScalarFieldEnum[]
   }
 
   /**
-   * Assigment findFirstOrThrow
+   * Assignment findFirstOrThrow
    */
-  export type AssigmentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssignmentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Assigment
+     * Select specific fields to fetch from the Assignment
      */
-    select?: AssigmentSelect<ExtArgs> | null
+    select?: AssignmentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Assigment
+     * Omit specific fields from the Assignment
      */
-    omit?: AssigmentOmit<ExtArgs> | null
+    omit?: AssignmentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AssigmentInclude<ExtArgs> | null
+    include?: AssignmentInclude<ExtArgs> | null
     /**
-     * Filter, which Assigment to fetch.
+     * Filter, which Assignment to fetch.
      */
-    where?: AssigmentWhereInput
+    where?: AssignmentWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Assigments to fetch.
+     * Determine the order of Assignments to fetch.
      */
-    orderBy?: AssigmentOrderByWithRelationInput | AssigmentOrderByWithRelationInput[]
+    orderBy?: AssignmentOrderByWithRelationInput | AssignmentOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Assigments.
+     * Sets the position for searching for Assignments.
      */
-    cursor?: AssigmentWhereUniqueInput
+    cursor?: AssignmentWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Assigments from the position of the cursor.
+     * Take `±n` Assignments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Assigments.
+     * Skip the first `n` Assignments.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Assigments.
+     * Filter by unique combinations of Assignments.
      */
-    distinct?: AssigmentScalarFieldEnum | AssigmentScalarFieldEnum[]
+    distinct?: AssignmentScalarFieldEnum | AssignmentScalarFieldEnum[]
   }
 
   /**
-   * Assigment findMany
+   * Assignment findMany
    */
-  export type AssigmentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssignmentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Assigment
+     * Select specific fields to fetch from the Assignment
      */
-    select?: AssigmentSelect<ExtArgs> | null
+    select?: AssignmentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Assigment
+     * Omit specific fields from the Assignment
      */
-    omit?: AssigmentOmit<ExtArgs> | null
+    omit?: AssignmentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AssigmentInclude<ExtArgs> | null
+    include?: AssignmentInclude<ExtArgs> | null
     /**
-     * Filter, which Assigments to fetch.
+     * Filter, which Assignments to fetch.
      */
-    where?: AssigmentWhereInput
+    where?: AssignmentWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Assigments to fetch.
+     * Determine the order of Assignments to fetch.
      */
-    orderBy?: AssigmentOrderByWithRelationInput | AssigmentOrderByWithRelationInput[]
+    orderBy?: AssignmentOrderByWithRelationInput | AssignmentOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Assigments.
+     * Sets the position for listing Assignments.
      */
-    cursor?: AssigmentWhereUniqueInput
+    cursor?: AssignmentWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Assigments from the position of the cursor.
+     * Take `±n` Assignments from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Assigments.
+     * Skip the first `n` Assignments.
      */
     skip?: number
-    distinct?: AssigmentScalarFieldEnum | AssigmentScalarFieldEnum[]
+    distinct?: AssignmentScalarFieldEnum | AssignmentScalarFieldEnum[]
   }
 
   /**
-   * Assigment create
+   * Assignment create
    */
-  export type AssigmentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssignmentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Assigment
+     * Select specific fields to fetch from the Assignment
      */
-    select?: AssigmentSelect<ExtArgs> | null
+    select?: AssignmentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Assigment
+     * Omit specific fields from the Assignment
      */
-    omit?: AssigmentOmit<ExtArgs> | null
+    omit?: AssignmentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AssigmentInclude<ExtArgs> | null
+    include?: AssignmentInclude<ExtArgs> | null
     /**
-     * The data needed to create a Assigment.
+     * The data needed to create a Assignment.
      */
-    data: XOR<AssigmentCreateInput, AssigmentUncheckedCreateInput>
+    data: XOR<AssignmentCreateInput, AssignmentUncheckedCreateInput>
   }
 
   /**
-   * Assigment createMany
+   * Assignment createMany
    */
-  export type AssigmentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssignmentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Assigments.
+     * The data used to create many Assignments.
      */
-    data: AssigmentCreateManyInput | AssigmentCreateManyInput[]
+    data: AssignmentCreateManyInput | AssignmentCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Assigment createManyAndReturn
+   * Assignment createManyAndReturn
    */
-  export type AssigmentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssignmentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Assigment
+     * Select specific fields to fetch from the Assignment
      */
-    select?: AssigmentSelectCreateManyAndReturn<ExtArgs> | null
+    select?: AssignmentSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Assigment
+     * Omit specific fields from the Assignment
      */
-    omit?: AssigmentOmit<ExtArgs> | null
+    omit?: AssignmentOmit<ExtArgs> | null
     /**
-     * The data used to create many Assigments.
+     * The data used to create many Assignments.
      */
-    data: AssigmentCreateManyInput | AssigmentCreateManyInput[]
+    data: AssignmentCreateManyInput | AssignmentCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AssigmentIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: AssignmentIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Assigment update
+   * Assignment update
    */
-  export type AssigmentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssignmentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Assigment
+     * Select specific fields to fetch from the Assignment
      */
-    select?: AssigmentSelect<ExtArgs> | null
+    select?: AssignmentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Assigment
+     * Omit specific fields from the Assignment
      */
-    omit?: AssigmentOmit<ExtArgs> | null
+    omit?: AssignmentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AssigmentInclude<ExtArgs> | null
+    include?: AssignmentInclude<ExtArgs> | null
     /**
-     * The data needed to update a Assigment.
+     * The data needed to update a Assignment.
      */
-    data: XOR<AssigmentUpdateInput, AssigmentUncheckedUpdateInput>
+    data: XOR<AssignmentUpdateInput, AssignmentUncheckedUpdateInput>
     /**
-     * Choose, which Assigment to update.
+     * Choose, which Assignment to update.
      */
-    where: AssigmentWhereUniqueInput
+    where: AssignmentWhereUniqueInput
   }
 
   /**
-   * Assigment updateMany
+   * Assignment updateMany
    */
-  export type AssigmentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssignmentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Assigments.
+     * The data used to update Assignments.
      */
-    data: XOR<AssigmentUpdateManyMutationInput, AssigmentUncheckedUpdateManyInput>
+    data: XOR<AssignmentUpdateManyMutationInput, AssignmentUncheckedUpdateManyInput>
     /**
-     * Filter which Assigments to update
+     * Filter which Assignments to update
      */
-    where?: AssigmentWhereInput
+    where?: AssignmentWhereInput
     /**
-     * Limit how many Assigments to update.
+     * Limit how many Assignments to update.
      */
     limit?: number
   }
 
   /**
-   * Assigment updateManyAndReturn
+   * Assignment updateManyAndReturn
    */
-  export type AssigmentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssignmentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Assigment
+     * Select specific fields to fetch from the Assignment
      */
-    select?: AssigmentSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: AssignmentSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Assigment
+     * Omit specific fields from the Assignment
      */
-    omit?: AssigmentOmit<ExtArgs> | null
+    omit?: AssignmentOmit<ExtArgs> | null
     /**
-     * The data used to update Assigments.
+     * The data used to update Assignments.
      */
-    data: XOR<AssigmentUpdateManyMutationInput, AssigmentUncheckedUpdateManyInput>
+    data: XOR<AssignmentUpdateManyMutationInput, AssignmentUncheckedUpdateManyInput>
     /**
-     * Filter which Assigments to update
+     * Filter which Assignments to update
      */
-    where?: AssigmentWhereInput
+    where?: AssignmentWhereInput
     /**
-     * Limit how many Assigments to update.
+     * Limit how many Assignments to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AssigmentIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: AssignmentIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Assigment upsert
+   * Assignment upsert
    */
-  export type AssigmentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssignmentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Assigment
+     * Select specific fields to fetch from the Assignment
      */
-    select?: AssigmentSelect<ExtArgs> | null
+    select?: AssignmentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Assigment
+     * Omit specific fields from the Assignment
      */
-    omit?: AssigmentOmit<ExtArgs> | null
+    omit?: AssignmentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AssigmentInclude<ExtArgs> | null
+    include?: AssignmentInclude<ExtArgs> | null
     /**
-     * The filter to search for the Assigment to update in case it exists.
+     * The filter to search for the Assignment to update in case it exists.
      */
-    where: AssigmentWhereUniqueInput
+    where: AssignmentWhereUniqueInput
     /**
-     * In case the Assigment found by the `where` argument doesn't exist, create a new Assigment with this data.
+     * In case the Assignment found by the `where` argument doesn't exist, create a new Assignment with this data.
      */
-    create: XOR<AssigmentCreateInput, AssigmentUncheckedCreateInput>
+    create: XOR<AssignmentCreateInput, AssignmentUncheckedCreateInput>
     /**
-     * In case the Assigment was found with the provided `where` argument, update it with this data.
+     * In case the Assignment was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<AssigmentUpdateInput, AssigmentUncheckedUpdateInput>
+    update: XOR<AssignmentUpdateInput, AssignmentUncheckedUpdateInput>
   }
 
   /**
-   * Assigment delete
+   * Assignment delete
    */
-  export type AssigmentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssignmentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Assigment
+     * Select specific fields to fetch from the Assignment
      */
-    select?: AssigmentSelect<ExtArgs> | null
+    select?: AssignmentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Assigment
+     * Omit specific fields from the Assignment
      */
-    omit?: AssigmentOmit<ExtArgs> | null
+    omit?: AssignmentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AssigmentInclude<ExtArgs> | null
+    include?: AssignmentInclude<ExtArgs> | null
     /**
-     * Filter which Assigment to delete.
+     * Filter which Assignment to delete.
      */
-    where: AssigmentWhereUniqueInput
+    where: AssignmentWhereUniqueInput
   }
 
   /**
-   * Assigment deleteMany
+   * Assignment deleteMany
    */
-  export type AssigmentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssignmentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Assigments to delete
+     * Filter which Assignments to delete
      */
-    where?: AssigmentWhereInput
+    where?: AssignmentWhereInput
     /**
-     * Limit how many Assigments to delete.
+     * Limit how many Assignments to delete.
      */
     limit?: number
   }
 
   /**
-   * Assigment.results
+   * Assignment.results
    */
-  export type Assigment$resultsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Assignment$resultsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Result
      */
@@ -13926,21 +13958,21 @@ export namespace Prisma {
   }
 
   /**
-   * Assigment without action
+   * Assignment without action
    */
-  export type AssigmentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AssignmentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Assigment
+     * Select specific fields to fetch from the Assignment
      */
-    select?: AssigmentSelect<ExtArgs> | null
+    select?: AssignmentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Assigment
+     * Omit specific fields from the Assignment
      */
-    omit?: AssigmentOmit<ExtArgs> | null
+    omit?: AssignmentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AssigmentInclude<ExtArgs> | null
+    include?: AssignmentInclude<ExtArgs> | null
   }
 
 
@@ -14210,7 +14242,7 @@ export namespace Prisma {
     name: "Result"
     objects: {
       exam: Prisma.$ExamPayload<ExtArgs> | null
-      assignment: Prisma.$AssigmentPayload<ExtArgs> | null
+      assignment: Prisma.$AssignmentPayload<ExtArgs> | null
       Student: Prisma.$StudentPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -14614,7 +14646,7 @@ export namespace Prisma {
   export interface Prisma__ResultClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     exam<T extends Result$examArgs<ExtArgs> = {}>(args?: Subset<T, Result$examArgs<ExtArgs>>): Prisma__ExamClient<$Result.GetResult<Prisma.$ExamPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    assignment<T extends Result$assignmentArgs<ExtArgs> = {}>(args?: Subset<T, Result$assignmentArgs<ExtArgs>>): Prisma__AssigmentClient<$Result.GetResult<Prisma.$AssigmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    assignment<T extends Result$assignmentArgs<ExtArgs> = {}>(args?: Subset<T, Result$assignmentArgs<ExtArgs>>): Prisma__AssignmentClient<$Result.GetResult<Prisma.$AssignmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     Student<T extends Result$StudentArgs<ExtArgs> = {}>(args?: Subset<T, Result$StudentArgs<ExtArgs>>): Prisma__StudentClient<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -15069,18 +15101,18 @@ export namespace Prisma {
    */
   export type Result$assignmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Assigment
+     * Select specific fields to fetch from the Assignment
      */
-    select?: AssigmentSelect<ExtArgs> | null
+    select?: AssignmentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Assigment
+     * Omit specific fields from the Assignment
      */
-    omit?: AssigmentOmit<ExtArgs> | null
+    omit?: AssignmentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AssigmentInclude<ExtArgs> | null
-    where?: AssigmentWhereInput
+    include?: AssignmentInclude<ExtArgs> | null
+    where?: AssignmentWhereInput
   }
 
   /**
@@ -18494,7 +18526,7 @@ export namespace Prisma {
     id: 'id',
     username: 'username',
     name: 'name',
-    lastname: 'lastname',
+    surname: 'surname',
     email: 'email',
     phone: 'phone',
     address: 'address',
@@ -18505,7 +18537,7 @@ export namespace Prisma {
     parentId: 'parentId',
     classId: 'classId',
     gradeId: 'gradeId',
-    dateofBirth: 'dateofBirth'
+    birthday: 'birthday'
   };
 
   export type StudentScalarFieldEnum = (typeof StudentScalarFieldEnum)[keyof typeof StudentScalarFieldEnum]
@@ -18515,14 +18547,15 @@ export namespace Prisma {
     id: 'id',
     username: 'username',
     name: 'name',
-    lasname: 'lasname',
+    surname: 'surname',
     email: 'email',
     phone: 'phone',
     address: 'address',
     img: 'img',
     bloodType: 'bloodType',
     sex: 'sex',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    birthday: 'birthday'
   };
 
   export type TeacherScalarFieldEnum = (typeof TeacherScalarFieldEnum)[keyof typeof TeacherScalarFieldEnum]
@@ -18532,7 +18565,7 @@ export namespace Prisma {
     id: 'id',
     username: 'username',
     name: 'name',
-    lastname: 'lastname',
+    surname: 'surname',
     email: 'email',
     phone: 'phone',
     address: 'address',
@@ -18594,7 +18627,7 @@ export namespace Prisma {
   export type ExamScalarFieldEnum = (typeof ExamScalarFieldEnum)[keyof typeof ExamScalarFieldEnum]
 
 
-  export const AssigmentScalarFieldEnum: {
+  export const AssignmentScalarFieldEnum: {
     id: 'id',
     title: 'title',
     startDate: 'startDate',
@@ -18602,7 +18635,7 @@ export namespace Prisma {
     lessonId: 'lessonId'
   };
 
-  export type AssigmentScalarFieldEnum = (typeof AssigmentScalarFieldEnum)[keyof typeof AssigmentScalarFieldEnum]
+  export type AssignmentScalarFieldEnum = (typeof AssignmentScalarFieldEnum)[keyof typeof AssignmentScalarFieldEnum]
 
 
   export const ResultScalarFieldEnum: {
@@ -18817,7 +18850,7 @@ export namespace Prisma {
     id?: StringFilter<"Student"> | string
     username?: StringFilter<"Student"> | string
     name?: StringFilter<"Student"> | string
-    lastname?: StringFilter<"Student"> | string
+    surname?: StringFilter<"Student"> | string
     email?: StringNullableFilter<"Student"> | string | null
     phone?: StringFilter<"Student"> | string
     address?: StringFilter<"Student"> | string
@@ -18828,7 +18861,7 @@ export namespace Prisma {
     parentId?: StringFilter<"Student"> | string
     classId?: IntFilter<"Student"> | number
     gradeId?: IntFilter<"Student"> | number
-    dateofBirth?: DateTimeFilter<"Student"> | Date | string
+    birthday?: DateTimeFilter<"Student"> | Date | string
     parent?: XOR<ParentScalarRelationFilter, ParentWhereInput>
     class?: XOR<ClassScalarRelationFilter, ClassWhereInput>
     grade?: XOR<GradeScalarRelationFilter, GradeWhereInput>
@@ -18840,7 +18873,7 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
-    lastname?: SortOrder
+    surname?: SortOrder
     email?: SortOrderInput | SortOrder
     phone?: SortOrder
     address?: SortOrder
@@ -18851,7 +18884,7 @@ export namespace Prisma {
     parentId?: SortOrder
     classId?: SortOrder
     gradeId?: SortOrder
-    dateofBirth?: SortOrder
+    birthday?: SortOrder
     parent?: ParentOrderByWithRelationInput
     class?: ClassOrderByWithRelationInput
     grade?: GradeOrderByWithRelationInput
@@ -18868,7 +18901,7 @@ export namespace Prisma {
     OR?: StudentWhereInput[]
     NOT?: StudentWhereInput | StudentWhereInput[]
     name?: StringFilter<"Student"> | string
-    lastname?: StringFilter<"Student"> | string
+    surname?: StringFilter<"Student"> | string
     address?: StringFilter<"Student"> | string
     img?: StringNullableFilter<"Student"> | string | null
     bloodType?: StringFilter<"Student"> | string
@@ -18877,7 +18910,7 @@ export namespace Prisma {
     parentId?: StringFilter<"Student"> | string
     classId?: IntFilter<"Student"> | number
     gradeId?: IntFilter<"Student"> | number
-    dateofBirth?: DateTimeFilter<"Student"> | Date | string
+    birthday?: DateTimeFilter<"Student"> | Date | string
     parent?: XOR<ParentScalarRelationFilter, ParentWhereInput>
     class?: XOR<ClassScalarRelationFilter, ClassWhereInput>
     grade?: XOR<GradeScalarRelationFilter, GradeWhereInput>
@@ -18889,7 +18922,7 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
-    lastname?: SortOrder
+    surname?: SortOrder
     email?: SortOrderInput | SortOrder
     phone?: SortOrder
     address?: SortOrder
@@ -18900,7 +18933,7 @@ export namespace Prisma {
     parentId?: SortOrder
     classId?: SortOrder
     gradeId?: SortOrder
-    dateofBirth?: SortOrder
+    birthday?: SortOrder
     _count?: StudentCountOrderByAggregateInput
     _avg?: StudentAvgOrderByAggregateInput
     _max?: StudentMaxOrderByAggregateInput
@@ -18915,7 +18948,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Student"> | string
     username?: StringWithAggregatesFilter<"Student"> | string
     name?: StringWithAggregatesFilter<"Student"> | string
-    lastname?: StringWithAggregatesFilter<"Student"> | string
+    surname?: StringWithAggregatesFilter<"Student"> | string
     email?: StringNullableWithAggregatesFilter<"Student"> | string | null
     phone?: StringWithAggregatesFilter<"Student"> | string
     address?: StringWithAggregatesFilter<"Student"> | string
@@ -18926,7 +18959,7 @@ export namespace Prisma {
     parentId?: StringWithAggregatesFilter<"Student"> | string
     classId?: IntWithAggregatesFilter<"Student"> | number
     gradeId?: IntWithAggregatesFilter<"Student"> | number
-    dateofBirth?: DateTimeWithAggregatesFilter<"Student"> | Date | string
+    birthday?: DateTimeWithAggregatesFilter<"Student"> | Date | string
   }
 
   export type TeacherWhereInput = {
@@ -18936,7 +18969,7 @@ export namespace Prisma {
     id?: StringFilter<"Teacher"> | string
     username?: StringFilter<"Teacher"> | string
     name?: StringFilter<"Teacher"> | string
-    lasname?: StringFilter<"Teacher"> | string
+    surname?: StringFilter<"Teacher"> | string
     email?: StringNullableFilter<"Teacher"> | string | null
     phone?: StringFilter<"Teacher"> | string
     address?: StringFilter<"Teacher"> | string
@@ -18944,6 +18977,7 @@ export namespace Prisma {
     bloodType?: StringFilter<"Teacher"> | string
     sex?: EnumUserSexFilter<"Teacher"> | $Enums.UserSex
     createdAt?: DateTimeFilter<"Teacher"> | Date | string
+    birthday?: DateTimeFilter<"Teacher"> | Date | string
     subjects?: SubjectListRelationFilter
     lessons?: LessonListRelationFilter
     classes?: ClassListRelationFilter
@@ -18953,7 +18987,7 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
-    lasname?: SortOrder
+    surname?: SortOrder
     email?: SortOrderInput | SortOrder
     phone?: SortOrder
     address?: SortOrder
@@ -18961,6 +18995,7 @@ export namespace Prisma {
     bloodType?: SortOrder
     sex?: SortOrder
     createdAt?: SortOrder
+    birthday?: SortOrder
     subjects?: SubjectOrderByRelationAggregateInput
     lessons?: LessonOrderByRelationAggregateInput
     classes?: ClassOrderByRelationAggregateInput
@@ -18975,12 +19010,13 @@ export namespace Prisma {
     OR?: TeacherWhereInput[]
     NOT?: TeacherWhereInput | TeacherWhereInput[]
     name?: StringFilter<"Teacher"> | string
-    lasname?: StringFilter<"Teacher"> | string
+    surname?: StringFilter<"Teacher"> | string
     address?: StringFilter<"Teacher"> | string
     img?: StringNullableFilter<"Teacher"> | string | null
     bloodType?: StringFilter<"Teacher"> | string
     sex?: EnumUserSexFilter<"Teacher"> | $Enums.UserSex
     createdAt?: DateTimeFilter<"Teacher"> | Date | string
+    birthday?: DateTimeFilter<"Teacher"> | Date | string
     subjects?: SubjectListRelationFilter
     lessons?: LessonListRelationFilter
     classes?: ClassListRelationFilter
@@ -18990,7 +19026,7 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
-    lasname?: SortOrder
+    surname?: SortOrder
     email?: SortOrderInput | SortOrder
     phone?: SortOrder
     address?: SortOrder
@@ -18998,6 +19034,7 @@ export namespace Prisma {
     bloodType?: SortOrder
     sex?: SortOrder
     createdAt?: SortOrder
+    birthday?: SortOrder
     _count?: TeacherCountOrderByAggregateInput
     _max?: TeacherMaxOrderByAggregateInput
     _min?: TeacherMinOrderByAggregateInput
@@ -19010,7 +19047,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Teacher"> | string
     username?: StringWithAggregatesFilter<"Teacher"> | string
     name?: StringWithAggregatesFilter<"Teacher"> | string
-    lasname?: StringWithAggregatesFilter<"Teacher"> | string
+    surname?: StringWithAggregatesFilter<"Teacher"> | string
     email?: StringNullableWithAggregatesFilter<"Teacher"> | string | null
     phone?: StringWithAggregatesFilter<"Teacher"> | string
     address?: StringWithAggregatesFilter<"Teacher"> | string
@@ -19018,6 +19055,7 @@ export namespace Prisma {
     bloodType?: StringWithAggregatesFilter<"Teacher"> | string
     sex?: EnumUserSexWithAggregatesFilter<"Teacher"> | $Enums.UserSex
     createdAt?: DateTimeWithAggregatesFilter<"Teacher"> | Date | string
+    birthday?: DateTimeWithAggregatesFilter<"Teacher"> | Date | string
   }
 
   export type ParentWhereInput = {
@@ -19027,7 +19065,7 @@ export namespace Prisma {
     id?: StringFilter<"Parent"> | string
     username?: StringFilter<"Parent"> | string
     name?: StringFilter<"Parent"> | string
-    lastname?: StringFilter<"Parent"> | string
+    surname?: StringFilter<"Parent"> | string
     email?: StringNullableFilter<"Parent"> | string | null
     phone?: StringFilter<"Parent"> | string
     address?: StringFilter<"Parent"> | string
@@ -19039,7 +19077,7 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
-    lastname?: SortOrder
+    surname?: SortOrder
     email?: SortOrderInput | SortOrder
     phone?: SortOrder
     address?: SortOrder
@@ -19056,7 +19094,7 @@ export namespace Prisma {
     OR?: ParentWhereInput[]
     NOT?: ParentWhereInput | ParentWhereInput[]
     name?: StringFilter<"Parent"> | string
-    lastname?: StringFilter<"Parent"> | string
+    surname?: StringFilter<"Parent"> | string
     address?: StringFilter<"Parent"> | string
     createdAt?: DateTimeFilter<"Parent"> | Date | string
     students?: StudentListRelationFilter
@@ -19066,7 +19104,7 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
-    lastname?: SortOrder
+    surname?: SortOrder
     email?: SortOrderInput | SortOrder
     phone?: SortOrder
     address?: SortOrder
@@ -19083,7 +19121,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Parent"> | string
     username?: StringWithAggregatesFilter<"Parent"> | string
     name?: StringWithAggregatesFilter<"Parent"> | string
-    lastname?: StringWithAggregatesFilter<"Parent"> | string
+    surname?: StringWithAggregatesFilter<"Parent"> | string
     email?: StringNullableWithAggregatesFilter<"Parent"> | string | null
     phone?: StringWithAggregatesFilter<"Parent"> | string
     address?: StringWithAggregatesFilter<"Parent"> | string
@@ -19196,7 +19234,7 @@ export namespace Prisma {
     class?: XOR<ClassScalarRelationFilter, ClassWhereInput>
     teacher?: XOR<TeacherScalarRelationFilter, TeacherWhereInput>
     exams?: ExamListRelationFilter
-    assignments?: AssigmentListRelationFilter
+    assignments?: AssignmentListRelationFilter
     attendances?: AttendanceListRelationFilter
   }
 
@@ -19213,7 +19251,7 @@ export namespace Prisma {
     class?: ClassOrderByWithRelationInput
     teacher?: TeacherOrderByWithRelationInput
     exams?: ExamOrderByRelationAggregateInput
-    assignments?: AssigmentOrderByRelationAggregateInput
+    assignments?: AssignmentOrderByRelationAggregateInput
     attendances?: AttendanceOrderByRelationAggregateInput
   }
 
@@ -19233,7 +19271,7 @@ export namespace Prisma {
     class?: XOR<ClassScalarRelationFilter, ClassWhereInput>
     teacher?: XOR<TeacherScalarRelationFilter, TeacherWhereInput>
     exams?: ExamListRelationFilter
-    assignments?: AssigmentListRelationFilter
+    assignments?: AssignmentListRelationFilter
     attendances?: AttendanceListRelationFilter
   }, "id" | "name">
 
@@ -19274,9 +19312,9 @@ export namespace Prisma {
     id?: IntFilter<"Class"> | number
     name?: StringFilter<"Class"> | string
     capacity?: IntFilter<"Class"> | number
-    supervisorId?: StringFilter<"Class"> | string
+    supervisorId?: StringNullableFilter<"Class"> | string | null
     gradeId?: IntNullableFilter<"Class"> | number | null
-    supervisor?: XOR<TeacherScalarRelationFilter, TeacherWhereInput>
+    supervisor?: XOR<TeacherNullableScalarRelationFilter, TeacherWhereInput> | null
     Student?: StudentListRelationFilter
     Grade?: XOR<GradeNullableScalarRelationFilter, GradeWhereInput> | null
     lessons?: LessonListRelationFilter
@@ -19288,7 +19326,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     capacity?: SortOrder
-    supervisorId?: SortOrder
+    supervisorId?: SortOrderInput | SortOrder
     gradeId?: SortOrderInput | SortOrder
     supervisor?: TeacherOrderByWithRelationInput
     Student?: StudentOrderByRelationAggregateInput
@@ -19305,9 +19343,9 @@ export namespace Prisma {
     OR?: ClassWhereInput[]
     NOT?: ClassWhereInput | ClassWhereInput[]
     capacity?: IntFilter<"Class"> | number
-    supervisorId?: StringFilter<"Class"> | string
+    supervisorId?: StringNullableFilter<"Class"> | string | null
     gradeId?: IntNullableFilter<"Class"> | number | null
-    supervisor?: XOR<TeacherScalarRelationFilter, TeacherWhereInput>
+    supervisor?: XOR<TeacherNullableScalarRelationFilter, TeacherWhereInput> | null
     Student?: StudentListRelationFilter
     Grade?: XOR<GradeNullableScalarRelationFilter, GradeWhereInput> | null
     lessons?: LessonListRelationFilter
@@ -19319,7 +19357,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     capacity?: SortOrder
-    supervisorId?: SortOrder
+    supervisorId?: SortOrderInput | SortOrder
     gradeId?: SortOrderInput | SortOrder
     _count?: ClassCountOrderByAggregateInput
     _avg?: ClassAvgOrderByAggregateInput
@@ -19335,7 +19373,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Class"> | number
     name?: StringWithAggregatesFilter<"Class"> | string
     capacity?: IntWithAggregatesFilter<"Class"> | number
-    supervisorId?: StringWithAggregatesFilter<"Class"> | string
+    supervisorId?: StringNullableWithAggregatesFilter<"Class"> | string | null
     gradeId?: IntNullableWithAggregatesFilter<"Class"> | number | null
   }
 
@@ -19399,20 +19437,20 @@ export namespace Prisma {
     lessonId?: IntWithAggregatesFilter<"Exam"> | number
   }
 
-  export type AssigmentWhereInput = {
-    AND?: AssigmentWhereInput | AssigmentWhereInput[]
-    OR?: AssigmentWhereInput[]
-    NOT?: AssigmentWhereInput | AssigmentWhereInput[]
-    id?: IntFilter<"Assigment"> | number
-    title?: StringFilter<"Assigment"> | string
-    startDate?: DateTimeFilter<"Assigment"> | Date | string
-    dueDate?: DateTimeFilter<"Assigment"> | Date | string
-    lessonId?: IntFilter<"Assigment"> | number
+  export type AssignmentWhereInput = {
+    AND?: AssignmentWhereInput | AssignmentWhereInput[]
+    OR?: AssignmentWhereInput[]
+    NOT?: AssignmentWhereInput | AssignmentWhereInput[]
+    id?: IntFilter<"Assignment"> | number
+    title?: StringFilter<"Assignment"> | string
+    startDate?: DateTimeFilter<"Assignment"> | Date | string
+    dueDate?: DateTimeFilter<"Assignment"> | Date | string
+    lessonId?: IntFilter<"Assignment"> | number
     lesson?: XOR<LessonScalarRelationFilter, LessonWhereInput>
     results?: ResultListRelationFilter
   }
 
-  export type AssigmentOrderByWithRelationInput = {
+  export type AssignmentOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
     startDate?: SortOrder
@@ -19422,41 +19460,41 @@ export namespace Prisma {
     results?: ResultOrderByRelationAggregateInput
   }
 
-  export type AssigmentWhereUniqueInput = Prisma.AtLeast<{
+  export type AssignmentWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: AssigmentWhereInput | AssigmentWhereInput[]
-    OR?: AssigmentWhereInput[]
-    NOT?: AssigmentWhereInput | AssigmentWhereInput[]
-    title?: StringFilter<"Assigment"> | string
-    startDate?: DateTimeFilter<"Assigment"> | Date | string
-    dueDate?: DateTimeFilter<"Assigment"> | Date | string
-    lessonId?: IntFilter<"Assigment"> | number
+    AND?: AssignmentWhereInput | AssignmentWhereInput[]
+    OR?: AssignmentWhereInput[]
+    NOT?: AssignmentWhereInput | AssignmentWhereInput[]
+    title?: StringFilter<"Assignment"> | string
+    startDate?: DateTimeFilter<"Assignment"> | Date | string
+    dueDate?: DateTimeFilter<"Assignment"> | Date | string
+    lessonId?: IntFilter<"Assignment"> | number
     lesson?: XOR<LessonScalarRelationFilter, LessonWhereInput>
     results?: ResultListRelationFilter
   }, "id">
 
-  export type AssigmentOrderByWithAggregationInput = {
+  export type AssignmentOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
     startDate?: SortOrder
     dueDate?: SortOrder
     lessonId?: SortOrder
-    _count?: AssigmentCountOrderByAggregateInput
-    _avg?: AssigmentAvgOrderByAggregateInput
-    _max?: AssigmentMaxOrderByAggregateInput
-    _min?: AssigmentMinOrderByAggregateInput
-    _sum?: AssigmentSumOrderByAggregateInput
+    _count?: AssignmentCountOrderByAggregateInput
+    _avg?: AssignmentAvgOrderByAggregateInput
+    _max?: AssignmentMaxOrderByAggregateInput
+    _min?: AssignmentMinOrderByAggregateInput
+    _sum?: AssignmentSumOrderByAggregateInput
   }
 
-  export type AssigmentScalarWhereWithAggregatesInput = {
-    AND?: AssigmentScalarWhereWithAggregatesInput | AssigmentScalarWhereWithAggregatesInput[]
-    OR?: AssigmentScalarWhereWithAggregatesInput[]
-    NOT?: AssigmentScalarWhereWithAggregatesInput | AssigmentScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Assigment"> | number
-    title?: StringWithAggregatesFilter<"Assigment"> | string
-    startDate?: DateTimeWithAggregatesFilter<"Assigment"> | Date | string
-    dueDate?: DateTimeWithAggregatesFilter<"Assigment"> | Date | string
-    lessonId?: IntWithAggregatesFilter<"Assigment"> | number
+  export type AssignmentScalarWhereWithAggregatesInput = {
+    AND?: AssignmentScalarWhereWithAggregatesInput | AssignmentScalarWhereWithAggregatesInput[]
+    OR?: AssignmentScalarWhereWithAggregatesInput[]
+    NOT?: AssignmentScalarWhereWithAggregatesInput | AssignmentScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Assignment"> | number
+    title?: StringWithAggregatesFilter<"Assignment"> | string
+    startDate?: DateTimeWithAggregatesFilter<"Assignment"> | Date | string
+    dueDate?: DateTimeWithAggregatesFilter<"Assignment"> | Date | string
+    lessonId?: IntWithAggregatesFilter<"Assignment"> | number
   }
 
   export type ResultWhereInput = {
@@ -19469,7 +19507,7 @@ export namespace Prisma {
     assignementId?: IntNullableFilter<"Result"> | number | null
     studentId?: StringNullableFilter<"Result"> | string | null
     exam?: XOR<ExamNullableScalarRelationFilter, ExamWhereInput> | null
-    assignment?: XOR<AssigmentNullableScalarRelationFilter, AssigmentWhereInput> | null
+    assignment?: XOR<AssignmentNullableScalarRelationFilter, AssignmentWhereInput> | null
     Student?: XOR<StudentNullableScalarRelationFilter, StudentWhereInput> | null
   }
 
@@ -19480,7 +19518,7 @@ export namespace Prisma {
     assignementId?: SortOrderInput | SortOrder
     studentId?: SortOrderInput | SortOrder
     exam?: ExamOrderByWithRelationInput
-    assignment?: AssigmentOrderByWithRelationInput
+    assignment?: AssignmentOrderByWithRelationInput
     Student?: StudentOrderByWithRelationInput
   }
 
@@ -19494,7 +19532,7 @@ export namespace Prisma {
     assignementId?: IntNullableFilter<"Result"> | number | null
     studentId?: StringNullableFilter<"Result"> | string | null
     exam?: XOR<ExamNullableScalarRelationFilter, ExamWhereInput> | null
-    assignment?: XOR<AssigmentNullableScalarRelationFilter, AssigmentWhereInput> | null
+    assignment?: XOR<AssignmentNullableScalarRelationFilter, AssignmentWhereInput> | null
     Student?: XOR<StudentNullableScalarRelationFilter, StudentWhereInput> | null
   }, "id">
 
@@ -19740,7 +19778,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -19748,7 +19786,7 @@ export namespace Prisma {
     bloodType: string
     sex: $Enums.UserSex
     createdAt?: Date | string
-    dateofBirth: Date | string
+    birthday: Date | string
     parent: ParentCreateNestedOneWithoutStudentsInput
     class: ClassCreateNestedOneWithoutStudentInput
     grade: GradeCreateNestedOneWithoutStudentsInput
@@ -19760,7 +19798,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -19771,7 +19809,7 @@ export namespace Prisma {
     parentId: string
     classId: number
     gradeId: number
-    dateofBirth: Date | string
+    birthday: Date | string
     attendance?: AttendanceUncheckedCreateNestedManyWithoutStudentInput
     result?: ResultUncheckedCreateNestedManyWithoutStudentInput
   }
@@ -19780,7 +19818,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -19788,7 +19826,7 @@ export namespace Prisma {
     bloodType?: StringFieldUpdateOperationsInput | string
     sex?: EnumUserSexFieldUpdateOperationsInput | $Enums.UserSex
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    dateofBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     parent?: ParentUpdateOneRequiredWithoutStudentsNestedInput
     class?: ClassUpdateOneRequiredWithoutStudentNestedInput
     grade?: GradeUpdateOneRequiredWithoutStudentsNestedInput
@@ -19800,7 +19838,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -19811,7 +19849,7 @@ export namespace Prisma {
     parentId?: StringFieldUpdateOperationsInput | string
     classId?: IntFieldUpdateOperationsInput | number
     gradeId?: IntFieldUpdateOperationsInput | number
-    dateofBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     attendance?: AttendanceUncheckedUpdateManyWithoutStudentNestedInput
     result?: ResultUncheckedUpdateManyWithoutStudentNestedInput
   }
@@ -19820,7 +19858,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -19831,14 +19869,14 @@ export namespace Prisma {
     parentId: string
     classId: number
     gradeId: number
-    dateofBirth: Date | string
+    birthday: Date | string
   }
 
   export type StudentUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -19846,14 +19884,14 @@ export namespace Prisma {
     bloodType?: StringFieldUpdateOperationsInput | string
     sex?: EnumUserSexFieldUpdateOperationsInput | $Enums.UserSex
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    dateofBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StudentUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -19864,14 +19902,14 @@ export namespace Prisma {
     parentId?: StringFieldUpdateOperationsInput | string
     classId?: IntFieldUpdateOperationsInput | number
     gradeId?: IntFieldUpdateOperationsInput | number
-    dateofBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TeacherCreateInput = {
     id: string
     username: string
     name: string
-    lasname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -19879,6 +19917,7 @@ export namespace Prisma {
     bloodType: string
     sex: $Enums.UserSex
     createdAt?: Date | string
+    birthday: Date | string
     subjects?: SubjectCreateNestedManyWithoutTeachersInput
     lessons?: LessonCreateNestedManyWithoutTeacherInput
     classes?: ClassCreateNestedManyWithoutSupervisorInput
@@ -19888,7 +19927,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lasname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -19896,6 +19935,7 @@ export namespace Prisma {
     bloodType: string
     sex: $Enums.UserSex
     createdAt?: Date | string
+    birthday: Date | string
     subjects?: SubjectUncheckedCreateNestedManyWithoutTeachersInput
     lessons?: LessonUncheckedCreateNestedManyWithoutTeacherInput
     classes?: ClassUncheckedCreateNestedManyWithoutSupervisorInput
@@ -19905,7 +19945,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lasname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -19913,6 +19953,7 @@ export namespace Prisma {
     bloodType?: StringFieldUpdateOperationsInput | string
     sex?: EnumUserSexFieldUpdateOperationsInput | $Enums.UserSex
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     subjects?: SubjectUpdateManyWithoutTeachersNestedInput
     lessons?: LessonUpdateManyWithoutTeacherNestedInput
     classes?: ClassUpdateManyWithoutSupervisorNestedInput
@@ -19922,7 +19963,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lasname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -19930,6 +19971,7 @@ export namespace Prisma {
     bloodType?: StringFieldUpdateOperationsInput | string
     sex?: EnumUserSexFieldUpdateOperationsInput | $Enums.UserSex
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     subjects?: SubjectUncheckedUpdateManyWithoutTeachersNestedInput
     lessons?: LessonUncheckedUpdateManyWithoutTeacherNestedInput
     classes?: ClassUncheckedUpdateManyWithoutSupervisorNestedInput
@@ -19939,7 +19981,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lasname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -19947,13 +19989,14 @@ export namespace Prisma {
     bloodType: string
     sex: $Enums.UserSex
     createdAt?: Date | string
+    birthday: Date | string
   }
 
   export type TeacherUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lasname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -19961,13 +20004,14 @@ export namespace Prisma {
     bloodType?: StringFieldUpdateOperationsInput | string
     sex?: EnumUserSexFieldUpdateOperationsInput | $Enums.UserSex
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TeacherUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lasname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -19975,13 +20019,14 @@ export namespace Prisma {
     bloodType?: StringFieldUpdateOperationsInput | string
     sex?: EnumUserSexFieldUpdateOperationsInput | $Enums.UserSex
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ParentCreateInput = {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -19993,7 +20038,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -20005,7 +20050,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -20017,7 +20062,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -20029,7 +20074,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -20040,7 +20085,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -20051,7 +20096,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -20147,7 +20192,7 @@ export namespace Prisma {
     class: ClassCreateNestedOneWithoutLessonsInput
     teacher: TeacherCreateNestedOneWithoutLessonsInput
     exams?: ExamCreateNestedManyWithoutLessonInput
-    assignments?: AssigmentCreateNestedManyWithoutLessonInput
+    assignments?: AssignmentCreateNestedManyWithoutLessonInput
     attendances?: AttendanceCreateNestedManyWithoutLessonInput
   }
 
@@ -20161,7 +20206,7 @@ export namespace Prisma {
     classId: number
     teacherId: string
     exams?: ExamUncheckedCreateNestedManyWithoutLessonInput
-    assignments?: AssigmentUncheckedCreateNestedManyWithoutLessonInput
+    assignments?: AssignmentUncheckedCreateNestedManyWithoutLessonInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutLessonInput
   }
 
@@ -20174,7 +20219,7 @@ export namespace Prisma {
     class?: ClassUpdateOneRequiredWithoutLessonsNestedInput
     teacher?: TeacherUpdateOneRequiredWithoutLessonsNestedInput
     exams?: ExamUpdateManyWithoutLessonNestedInput
-    assignments?: AssigmentUpdateManyWithoutLessonNestedInput
+    assignments?: AssignmentUpdateManyWithoutLessonNestedInput
     attendances?: AttendanceUpdateManyWithoutLessonNestedInput
   }
 
@@ -20188,7 +20233,7 @@ export namespace Prisma {
     classId?: IntFieldUpdateOperationsInput | number
     teacherId?: StringFieldUpdateOperationsInput | string
     exams?: ExamUncheckedUpdateManyWithoutLessonNestedInput
-    assignments?: AssigmentUncheckedUpdateManyWithoutLessonNestedInput
+    assignments?: AssignmentUncheckedUpdateManyWithoutLessonNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutLessonNestedInput
   }
 
@@ -20224,7 +20269,7 @@ export namespace Prisma {
   export type ClassCreateInput = {
     name: string
     capacity: number
-    supervisor: TeacherCreateNestedOneWithoutClassesInput
+    supervisor?: TeacherCreateNestedOneWithoutClassesInput
     Student?: StudentCreateNestedManyWithoutClassInput
     Grade?: GradeCreateNestedOneWithoutClassesInput
     lessons?: LessonCreateNestedManyWithoutClassInput
@@ -20236,7 +20281,7 @@ export namespace Prisma {
     id?: number
     name: string
     capacity: number
-    supervisorId: string
+    supervisorId?: string | null
     gradeId?: number | null
     Student?: StudentUncheckedCreateNestedManyWithoutClassInput
     lessons?: LessonUncheckedCreateNestedManyWithoutClassInput
@@ -20247,7 +20292,7 @@ export namespace Prisma {
   export type ClassUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
-    supervisor?: TeacherUpdateOneRequiredWithoutClassesNestedInput
+    supervisor?: TeacherUpdateOneWithoutClassesNestedInput
     Student?: StudentUpdateManyWithoutClassNestedInput
     Grade?: GradeUpdateOneWithoutClassesNestedInput
     lessons?: LessonUpdateManyWithoutClassNestedInput
@@ -20259,7 +20304,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
-    supervisorId?: StringFieldUpdateOperationsInput | string
+    supervisorId?: NullableStringFieldUpdateOperationsInput | string | null
     gradeId?: NullableIntFieldUpdateOperationsInput | number | null
     Student?: StudentUncheckedUpdateManyWithoutClassNestedInput
     lessons?: LessonUncheckedUpdateManyWithoutClassNestedInput
@@ -20271,7 +20316,7 @@ export namespace Prisma {
     id?: number
     name: string
     capacity: number
-    supervisorId: string
+    supervisorId?: string | null
     gradeId?: number | null
   }
 
@@ -20284,7 +20329,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
-    supervisorId?: StringFieldUpdateOperationsInput | string
+    supervisorId?: NullableStringFieldUpdateOperationsInput | string | null
     gradeId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
@@ -20344,7 +20389,7 @@ export namespace Prisma {
     lessonId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type AssigmentCreateInput = {
+  export type AssignmentCreateInput = {
     title: string
     startDate: Date | string
     dueDate: Date | string
@@ -20352,7 +20397,7 @@ export namespace Prisma {
     results?: ResultCreateNestedManyWithoutAssignmentInput
   }
 
-  export type AssigmentUncheckedCreateInput = {
+  export type AssignmentUncheckedCreateInput = {
     id?: number
     title: string
     startDate: Date | string
@@ -20361,7 +20406,7 @@ export namespace Prisma {
     results?: ResultUncheckedCreateNestedManyWithoutAssignmentInput
   }
 
-  export type AssigmentUpdateInput = {
+  export type AssignmentUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     dueDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20369,7 +20414,7 @@ export namespace Prisma {
     results?: ResultUpdateManyWithoutAssignmentNestedInput
   }
 
-  export type AssigmentUncheckedUpdateInput = {
+  export type AssignmentUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20378,7 +20423,7 @@ export namespace Prisma {
     results?: ResultUncheckedUpdateManyWithoutAssignmentNestedInput
   }
 
-  export type AssigmentCreateManyInput = {
+  export type AssignmentCreateManyInput = {
     id?: number
     title: string
     startDate: Date | string
@@ -20386,13 +20431,13 @@ export namespace Prisma {
     lessonId: number
   }
 
-  export type AssigmentUpdateManyMutationInput = {
+  export type AssignmentUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     dueDate?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AssigmentUncheckedUpdateManyInput = {
+  export type AssignmentUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20403,7 +20448,7 @@ export namespace Prisma {
   export type ResultCreateInput = {
     score: number
     exam?: ExamCreateNestedOneWithoutResultsInput
-    assignment?: AssigmentCreateNestedOneWithoutResultsInput
+    assignment?: AssignmentCreateNestedOneWithoutResultsInput
     Student?: StudentCreateNestedOneWithoutResultInput
   }
 
@@ -20418,7 +20463,7 @@ export namespace Prisma {
   export type ResultUpdateInput = {
     score?: IntFieldUpdateOperationsInput | number
     exam?: ExamUpdateOneWithoutResultsNestedInput
-    assignment?: AssigmentUpdateOneWithoutResultsNestedInput
+    assignment?: AssignmentUpdateOneWithoutResultsNestedInput
     Student?: StudentUpdateOneWithoutResultNestedInput
   }
 
@@ -20748,7 +20793,7 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
-    lastname?: SortOrder
+    surname?: SortOrder
     email?: SortOrder
     phone?: SortOrder
     address?: SortOrder
@@ -20759,7 +20804,7 @@ export namespace Prisma {
     parentId?: SortOrder
     classId?: SortOrder
     gradeId?: SortOrder
-    dateofBirth?: SortOrder
+    birthday?: SortOrder
   }
 
   export type StudentAvgOrderByAggregateInput = {
@@ -20771,7 +20816,7 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
-    lastname?: SortOrder
+    surname?: SortOrder
     email?: SortOrder
     phone?: SortOrder
     address?: SortOrder
@@ -20782,14 +20827,14 @@ export namespace Prisma {
     parentId?: SortOrder
     classId?: SortOrder
     gradeId?: SortOrder
-    dateofBirth?: SortOrder
+    birthday?: SortOrder
   }
 
   export type StudentMinOrderByAggregateInput = {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
-    lastname?: SortOrder
+    surname?: SortOrder
     email?: SortOrder
     phone?: SortOrder
     address?: SortOrder
@@ -20800,7 +20845,7 @@ export namespace Prisma {
     parentId?: SortOrder
     classId?: SortOrder
     gradeId?: SortOrder
-    dateofBirth?: SortOrder
+    birthday?: SortOrder
   }
 
   export type StudentSumOrderByAggregateInput = {
@@ -20900,7 +20945,7 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
-    lasname?: SortOrder
+    surname?: SortOrder
     email?: SortOrder
     phone?: SortOrder
     address?: SortOrder
@@ -20908,13 +20953,14 @@ export namespace Prisma {
     bloodType?: SortOrder
     sex?: SortOrder
     createdAt?: SortOrder
+    birthday?: SortOrder
   }
 
   export type TeacherMaxOrderByAggregateInput = {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
-    lasname?: SortOrder
+    surname?: SortOrder
     email?: SortOrder
     phone?: SortOrder
     address?: SortOrder
@@ -20922,13 +20968,14 @@ export namespace Prisma {
     bloodType?: SortOrder
     sex?: SortOrder
     createdAt?: SortOrder
+    birthday?: SortOrder
   }
 
   export type TeacherMinOrderByAggregateInput = {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
-    lasname?: SortOrder
+    surname?: SortOrder
     email?: SortOrder
     phone?: SortOrder
     address?: SortOrder
@@ -20936,6 +20983,7 @@ export namespace Prisma {
     bloodType?: SortOrder
     sex?: SortOrder
     createdAt?: SortOrder
+    birthday?: SortOrder
   }
 
   export type StudentListRelationFilter = {
@@ -20952,7 +21000,7 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
-    lastname?: SortOrder
+    surname?: SortOrder
     email?: SortOrder
     phone?: SortOrder
     address?: SortOrder
@@ -20963,7 +21011,7 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
-    lastname?: SortOrder
+    surname?: SortOrder
     email?: SortOrder
     phone?: SortOrder
     address?: SortOrder
@@ -20974,7 +21022,7 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
-    lastname?: SortOrder
+    surname?: SortOrder
     email?: SortOrder
     phone?: SortOrder
     address?: SortOrder
@@ -21062,17 +21110,17 @@ export namespace Prisma {
     none?: ExamWhereInput
   }
 
-  export type AssigmentListRelationFilter = {
-    every?: AssigmentWhereInput
-    some?: AssigmentWhereInput
-    none?: AssigmentWhereInput
+  export type AssignmentListRelationFilter = {
+    every?: AssignmentWhereInput
+    some?: AssignmentWhereInput
+    none?: AssignmentWhereInput
   }
 
   export type ExamOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type AssigmentOrderByRelationAggregateInput = {
+  export type AssignmentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -21140,6 +21188,11 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type TeacherNullableScalarRelationFilter = {
+    is?: TeacherWhereInput | null
+    isNot?: TeacherWhereInput | null
   }
 
   export type GradeNullableScalarRelationFilter = {
@@ -21258,7 +21311,7 @@ export namespace Prisma {
     lessonId?: SortOrder
   }
 
-  export type AssigmentCountOrderByAggregateInput = {
+  export type AssignmentCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     startDate?: SortOrder
@@ -21266,20 +21319,12 @@ export namespace Prisma {
     lessonId?: SortOrder
   }
 
-  export type AssigmentAvgOrderByAggregateInput = {
+  export type AssignmentAvgOrderByAggregateInput = {
     id?: SortOrder
     lessonId?: SortOrder
   }
 
-  export type AssigmentMaxOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    startDate?: SortOrder
-    dueDate?: SortOrder
-    lessonId?: SortOrder
-  }
-
-  export type AssigmentMinOrderByAggregateInput = {
+  export type AssignmentMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     startDate?: SortOrder
@@ -21287,7 +21332,15 @@ export namespace Prisma {
     lessonId?: SortOrder
   }
 
-  export type AssigmentSumOrderByAggregateInput = {
+  export type AssignmentMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    startDate?: SortOrder
+    dueDate?: SortOrder
+    lessonId?: SortOrder
+  }
+
+  export type AssignmentSumOrderByAggregateInput = {
     id?: SortOrder
     lessonId?: SortOrder
   }
@@ -21297,9 +21350,9 @@ export namespace Prisma {
     isNot?: ExamWhereInput | null
   }
 
-  export type AssigmentNullableScalarRelationFilter = {
-    is?: AssigmentWhereInput | null
-    isNot?: AssigmentWhereInput | null
+  export type AssignmentNullableScalarRelationFilter = {
+    is?: AssignmentWhereInput | null
+    isNot?: AssignmentWhereInput | null
   }
 
   export type StudentNullableScalarRelationFilter = {
@@ -21976,11 +22029,11 @@ export namespace Prisma {
     connect?: ExamWhereUniqueInput | ExamWhereUniqueInput[]
   }
 
-  export type AssigmentCreateNestedManyWithoutLessonInput = {
-    create?: XOR<AssigmentCreateWithoutLessonInput, AssigmentUncheckedCreateWithoutLessonInput> | AssigmentCreateWithoutLessonInput[] | AssigmentUncheckedCreateWithoutLessonInput[]
-    connectOrCreate?: AssigmentCreateOrConnectWithoutLessonInput | AssigmentCreateOrConnectWithoutLessonInput[]
-    createMany?: AssigmentCreateManyLessonInputEnvelope
-    connect?: AssigmentWhereUniqueInput | AssigmentWhereUniqueInput[]
+  export type AssignmentCreateNestedManyWithoutLessonInput = {
+    create?: XOR<AssignmentCreateWithoutLessonInput, AssignmentUncheckedCreateWithoutLessonInput> | AssignmentCreateWithoutLessonInput[] | AssignmentUncheckedCreateWithoutLessonInput[]
+    connectOrCreate?: AssignmentCreateOrConnectWithoutLessonInput | AssignmentCreateOrConnectWithoutLessonInput[]
+    createMany?: AssignmentCreateManyLessonInputEnvelope
+    connect?: AssignmentWhereUniqueInput | AssignmentWhereUniqueInput[]
   }
 
   export type AttendanceCreateNestedManyWithoutLessonInput = {
@@ -21997,11 +22050,11 @@ export namespace Prisma {
     connect?: ExamWhereUniqueInput | ExamWhereUniqueInput[]
   }
 
-  export type AssigmentUncheckedCreateNestedManyWithoutLessonInput = {
-    create?: XOR<AssigmentCreateWithoutLessonInput, AssigmentUncheckedCreateWithoutLessonInput> | AssigmentCreateWithoutLessonInput[] | AssigmentUncheckedCreateWithoutLessonInput[]
-    connectOrCreate?: AssigmentCreateOrConnectWithoutLessonInput | AssigmentCreateOrConnectWithoutLessonInput[]
-    createMany?: AssigmentCreateManyLessonInputEnvelope
-    connect?: AssigmentWhereUniqueInput | AssigmentWhereUniqueInput[]
+  export type AssignmentUncheckedCreateNestedManyWithoutLessonInput = {
+    create?: XOR<AssignmentCreateWithoutLessonInput, AssignmentUncheckedCreateWithoutLessonInput> | AssignmentCreateWithoutLessonInput[] | AssignmentUncheckedCreateWithoutLessonInput[]
+    connectOrCreate?: AssignmentCreateOrConnectWithoutLessonInput | AssignmentCreateOrConnectWithoutLessonInput[]
+    createMany?: AssignmentCreateManyLessonInputEnvelope
+    connect?: AssignmentWhereUniqueInput | AssignmentWhereUniqueInput[]
   }
 
   export type AttendanceUncheckedCreateNestedManyWithoutLessonInput = {
@@ -22053,18 +22106,18 @@ export namespace Prisma {
     deleteMany?: ExamScalarWhereInput | ExamScalarWhereInput[]
   }
 
-  export type AssigmentUpdateManyWithoutLessonNestedInput = {
-    create?: XOR<AssigmentCreateWithoutLessonInput, AssigmentUncheckedCreateWithoutLessonInput> | AssigmentCreateWithoutLessonInput[] | AssigmentUncheckedCreateWithoutLessonInput[]
-    connectOrCreate?: AssigmentCreateOrConnectWithoutLessonInput | AssigmentCreateOrConnectWithoutLessonInput[]
-    upsert?: AssigmentUpsertWithWhereUniqueWithoutLessonInput | AssigmentUpsertWithWhereUniqueWithoutLessonInput[]
-    createMany?: AssigmentCreateManyLessonInputEnvelope
-    set?: AssigmentWhereUniqueInput | AssigmentWhereUniqueInput[]
-    disconnect?: AssigmentWhereUniqueInput | AssigmentWhereUniqueInput[]
-    delete?: AssigmentWhereUniqueInput | AssigmentWhereUniqueInput[]
-    connect?: AssigmentWhereUniqueInput | AssigmentWhereUniqueInput[]
-    update?: AssigmentUpdateWithWhereUniqueWithoutLessonInput | AssigmentUpdateWithWhereUniqueWithoutLessonInput[]
-    updateMany?: AssigmentUpdateManyWithWhereWithoutLessonInput | AssigmentUpdateManyWithWhereWithoutLessonInput[]
-    deleteMany?: AssigmentScalarWhereInput | AssigmentScalarWhereInput[]
+  export type AssignmentUpdateManyWithoutLessonNestedInput = {
+    create?: XOR<AssignmentCreateWithoutLessonInput, AssignmentUncheckedCreateWithoutLessonInput> | AssignmentCreateWithoutLessonInput[] | AssignmentUncheckedCreateWithoutLessonInput[]
+    connectOrCreate?: AssignmentCreateOrConnectWithoutLessonInput | AssignmentCreateOrConnectWithoutLessonInput[]
+    upsert?: AssignmentUpsertWithWhereUniqueWithoutLessonInput | AssignmentUpsertWithWhereUniqueWithoutLessonInput[]
+    createMany?: AssignmentCreateManyLessonInputEnvelope
+    set?: AssignmentWhereUniqueInput | AssignmentWhereUniqueInput[]
+    disconnect?: AssignmentWhereUniqueInput | AssignmentWhereUniqueInput[]
+    delete?: AssignmentWhereUniqueInput | AssignmentWhereUniqueInput[]
+    connect?: AssignmentWhereUniqueInput | AssignmentWhereUniqueInput[]
+    update?: AssignmentUpdateWithWhereUniqueWithoutLessonInput | AssignmentUpdateWithWhereUniqueWithoutLessonInput[]
+    updateMany?: AssignmentUpdateManyWithWhereWithoutLessonInput | AssignmentUpdateManyWithWhereWithoutLessonInput[]
+    deleteMany?: AssignmentScalarWhereInput | AssignmentScalarWhereInput[]
   }
 
   export type AttendanceUpdateManyWithoutLessonNestedInput = {
@@ -22095,18 +22148,18 @@ export namespace Prisma {
     deleteMany?: ExamScalarWhereInput | ExamScalarWhereInput[]
   }
 
-  export type AssigmentUncheckedUpdateManyWithoutLessonNestedInput = {
-    create?: XOR<AssigmentCreateWithoutLessonInput, AssigmentUncheckedCreateWithoutLessonInput> | AssigmentCreateWithoutLessonInput[] | AssigmentUncheckedCreateWithoutLessonInput[]
-    connectOrCreate?: AssigmentCreateOrConnectWithoutLessonInput | AssigmentCreateOrConnectWithoutLessonInput[]
-    upsert?: AssigmentUpsertWithWhereUniqueWithoutLessonInput | AssigmentUpsertWithWhereUniqueWithoutLessonInput[]
-    createMany?: AssigmentCreateManyLessonInputEnvelope
-    set?: AssigmentWhereUniqueInput | AssigmentWhereUniqueInput[]
-    disconnect?: AssigmentWhereUniqueInput | AssigmentWhereUniqueInput[]
-    delete?: AssigmentWhereUniqueInput | AssigmentWhereUniqueInput[]
-    connect?: AssigmentWhereUniqueInput | AssigmentWhereUniqueInput[]
-    update?: AssigmentUpdateWithWhereUniqueWithoutLessonInput | AssigmentUpdateWithWhereUniqueWithoutLessonInput[]
-    updateMany?: AssigmentUpdateManyWithWhereWithoutLessonInput | AssigmentUpdateManyWithWhereWithoutLessonInput[]
-    deleteMany?: AssigmentScalarWhereInput | AssigmentScalarWhereInput[]
+  export type AssignmentUncheckedUpdateManyWithoutLessonNestedInput = {
+    create?: XOR<AssignmentCreateWithoutLessonInput, AssignmentUncheckedCreateWithoutLessonInput> | AssignmentCreateWithoutLessonInput[] | AssignmentUncheckedCreateWithoutLessonInput[]
+    connectOrCreate?: AssignmentCreateOrConnectWithoutLessonInput | AssignmentCreateOrConnectWithoutLessonInput[]
+    upsert?: AssignmentUpsertWithWhereUniqueWithoutLessonInput | AssignmentUpsertWithWhereUniqueWithoutLessonInput[]
+    createMany?: AssignmentCreateManyLessonInputEnvelope
+    set?: AssignmentWhereUniqueInput | AssignmentWhereUniqueInput[]
+    disconnect?: AssignmentWhereUniqueInput | AssignmentWhereUniqueInput[]
+    delete?: AssignmentWhereUniqueInput | AssignmentWhereUniqueInput[]
+    connect?: AssignmentWhereUniqueInput | AssignmentWhereUniqueInput[]
+    update?: AssignmentUpdateWithWhereUniqueWithoutLessonInput | AssignmentUpdateWithWhereUniqueWithoutLessonInput[]
+    updateMany?: AssignmentUpdateManyWithWhereWithoutLessonInput | AssignmentUpdateManyWithWhereWithoutLessonInput[]
+    deleteMany?: AssignmentScalarWhereInput | AssignmentScalarWhereInput[]
   }
 
   export type AttendanceUncheckedUpdateManyWithoutLessonNestedInput = {
@@ -22191,10 +22244,12 @@ export namespace Prisma {
     connect?: AnnouncementWhereUniqueInput | AnnouncementWhereUniqueInput[]
   }
 
-  export type TeacherUpdateOneRequiredWithoutClassesNestedInput = {
+  export type TeacherUpdateOneWithoutClassesNestedInput = {
     create?: XOR<TeacherCreateWithoutClassesInput, TeacherUncheckedCreateWithoutClassesInput>
     connectOrCreate?: TeacherCreateOrConnectWithoutClassesInput
     upsert?: TeacherUpsertWithoutClassesInput
+    disconnect?: TeacherWhereInput | boolean
+    delete?: TeacherWhereInput | boolean
     connect?: TeacherWhereUniqueInput
     update?: XOR<XOR<TeacherUpdateToOneWithWhereWithoutClassesInput, TeacherUpdateWithoutClassesInput>, TeacherUncheckedUpdateWithoutClassesInput>
   }
@@ -22447,10 +22502,10 @@ export namespace Prisma {
     connect?: ExamWhereUniqueInput
   }
 
-  export type AssigmentCreateNestedOneWithoutResultsInput = {
-    create?: XOR<AssigmentCreateWithoutResultsInput, AssigmentUncheckedCreateWithoutResultsInput>
-    connectOrCreate?: AssigmentCreateOrConnectWithoutResultsInput
-    connect?: AssigmentWhereUniqueInput
+  export type AssignmentCreateNestedOneWithoutResultsInput = {
+    create?: XOR<AssignmentCreateWithoutResultsInput, AssignmentUncheckedCreateWithoutResultsInput>
+    connectOrCreate?: AssignmentCreateOrConnectWithoutResultsInput
+    connect?: AssignmentWhereUniqueInput
   }
 
   export type StudentCreateNestedOneWithoutResultInput = {
@@ -22469,14 +22524,14 @@ export namespace Prisma {
     update?: XOR<XOR<ExamUpdateToOneWithWhereWithoutResultsInput, ExamUpdateWithoutResultsInput>, ExamUncheckedUpdateWithoutResultsInput>
   }
 
-  export type AssigmentUpdateOneWithoutResultsNestedInput = {
-    create?: XOR<AssigmentCreateWithoutResultsInput, AssigmentUncheckedCreateWithoutResultsInput>
-    connectOrCreate?: AssigmentCreateOrConnectWithoutResultsInput
-    upsert?: AssigmentUpsertWithoutResultsInput
-    disconnect?: AssigmentWhereInput | boolean
-    delete?: AssigmentWhereInput | boolean
-    connect?: AssigmentWhereUniqueInput
-    update?: XOR<XOR<AssigmentUpdateToOneWithWhereWithoutResultsInput, AssigmentUpdateWithoutResultsInput>, AssigmentUncheckedUpdateWithoutResultsInput>
+  export type AssignmentUpdateOneWithoutResultsNestedInput = {
+    create?: XOR<AssignmentCreateWithoutResultsInput, AssignmentUncheckedCreateWithoutResultsInput>
+    connectOrCreate?: AssignmentCreateOrConnectWithoutResultsInput
+    upsert?: AssignmentUpsertWithoutResultsInput
+    disconnect?: AssignmentWhereInput | boolean
+    delete?: AssignmentWhereInput | boolean
+    connect?: AssignmentWhereUniqueInput
+    update?: XOR<XOR<AssignmentUpdateToOneWithWhereWithoutResultsInput, AssignmentUpdateWithoutResultsInput>, AssignmentUncheckedUpdateWithoutResultsInput>
   }
 
   export type StudentUpdateOneWithoutResultNestedInput = {
@@ -22767,7 +22822,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -22778,7 +22833,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -22793,7 +22848,7 @@ export namespace Prisma {
   export type ClassCreateWithoutStudentInput = {
     name: string
     capacity: number
-    supervisor: TeacherCreateNestedOneWithoutClassesInput
+    supervisor?: TeacherCreateNestedOneWithoutClassesInput
     Grade?: GradeCreateNestedOneWithoutClassesInput
     lessons?: LessonCreateNestedManyWithoutClassInput
     events?: EventCreateNestedManyWithoutClassInput
@@ -22804,7 +22859,7 @@ export namespace Prisma {
     id?: number
     name: string
     capacity: number
-    supervisorId: string
+    supervisorId?: string | null
     gradeId?: number | null
     lessons?: LessonUncheckedCreateNestedManyWithoutClassInput
     events?: EventUncheckedCreateNestedManyWithoutClassInput
@@ -22858,7 +22913,7 @@ export namespace Prisma {
   export type ResultCreateWithoutStudentInput = {
     score: number
     exam?: ExamCreateNestedOneWithoutResultsInput
-    assignment?: AssigmentCreateNestedOneWithoutResultsInput
+    assignment?: AssignmentCreateNestedOneWithoutResultsInput
   }
 
   export type ResultUncheckedCreateWithoutStudentInput = {
@@ -22893,7 +22948,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -22904,7 +22959,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -22925,7 +22980,7 @@ export namespace Prisma {
   export type ClassUpdateWithoutStudentInput = {
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
-    supervisor?: TeacherUpdateOneRequiredWithoutClassesNestedInput
+    supervisor?: TeacherUpdateOneWithoutClassesNestedInput
     Grade?: GradeUpdateOneWithoutClassesNestedInput
     lessons?: LessonUpdateManyWithoutClassNestedInput
     events?: EventUpdateManyWithoutClassNestedInput
@@ -22936,7 +22991,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
-    supervisorId?: StringFieldUpdateOperationsInput | string
+    supervisorId?: NullableStringFieldUpdateOperationsInput | string | null
     gradeId?: NullableIntFieldUpdateOperationsInput | number | null
     lessons?: LessonUncheckedUpdateManyWithoutClassNestedInput
     events?: EventUncheckedUpdateManyWithoutClassNestedInput
@@ -23043,7 +23098,7 @@ export namespace Prisma {
     subject: SubjectCreateNestedOneWithoutLessonsInput
     class: ClassCreateNestedOneWithoutLessonsInput
     exams?: ExamCreateNestedManyWithoutLessonInput
-    assignments?: AssigmentCreateNestedManyWithoutLessonInput
+    assignments?: AssignmentCreateNestedManyWithoutLessonInput
     attendances?: AttendanceCreateNestedManyWithoutLessonInput
   }
 
@@ -23056,7 +23111,7 @@ export namespace Prisma {
     subjectId: number
     classId: number
     exams?: ExamUncheckedCreateNestedManyWithoutLessonInput
-    assignments?: AssigmentUncheckedCreateNestedManyWithoutLessonInput
+    assignments?: AssignmentUncheckedCreateNestedManyWithoutLessonInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutLessonInput
   }
 
@@ -23178,7 +23233,7 @@ export namespace Prisma {
     id?: IntFilter<"Class"> | number
     name?: StringFilter<"Class"> | string
     capacity?: IntFilter<"Class"> | number
-    supervisorId?: StringFilter<"Class"> | string
+    supervisorId?: StringNullableFilter<"Class"> | string | null
     gradeId?: IntNullableFilter<"Class"> | number | null
   }
 
@@ -23186,7 +23241,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -23194,7 +23249,7 @@ export namespace Prisma {
     bloodType: string
     sex: $Enums.UserSex
     createdAt?: Date | string
-    dateofBirth: Date | string
+    birthday: Date | string
     class: ClassCreateNestedOneWithoutStudentInput
     grade: GradeCreateNestedOneWithoutStudentsInput
     attendance?: AttendanceCreateNestedManyWithoutStudentInput
@@ -23205,7 +23260,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -23215,7 +23270,7 @@ export namespace Prisma {
     createdAt?: Date | string
     classId: number
     gradeId: number
-    dateofBirth: Date | string
+    birthday: Date | string
     attendance?: AttendanceUncheckedCreateNestedManyWithoutStudentInput
     result?: ResultUncheckedCreateNestedManyWithoutStudentInput
   }
@@ -23253,7 +23308,7 @@ export namespace Prisma {
     id?: StringFilter<"Student"> | string
     username?: StringFilter<"Student"> | string
     name?: StringFilter<"Student"> | string
-    lastname?: StringFilter<"Student"> | string
+    surname?: StringFilter<"Student"> | string
     email?: StringNullableFilter<"Student"> | string | null
     phone?: StringFilter<"Student"> | string
     address?: StringFilter<"Student"> | string
@@ -23264,14 +23319,14 @@ export namespace Prisma {
     parentId?: StringFilter<"Student"> | string
     classId?: IntFilter<"Student"> | number
     gradeId?: IntFilter<"Student"> | number
-    dateofBirth?: DateTimeFilter<"Student"> | Date | string
+    birthday?: DateTimeFilter<"Student"> | Date | string
   }
 
   export type StudentCreateWithoutGradeInput = {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -23279,7 +23334,7 @@ export namespace Prisma {
     bloodType: string
     sex: $Enums.UserSex
     createdAt?: Date | string
-    dateofBirth: Date | string
+    birthday: Date | string
     parent: ParentCreateNestedOneWithoutStudentsInput
     class: ClassCreateNestedOneWithoutStudentInput
     attendance?: AttendanceCreateNestedManyWithoutStudentInput
@@ -23290,7 +23345,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -23300,7 +23355,7 @@ export namespace Prisma {
     createdAt?: Date | string
     parentId: string
     classId: number
-    dateofBirth: Date | string
+    birthday: Date | string
     attendance?: AttendanceUncheckedCreateNestedManyWithoutStudentInput
     result?: ResultUncheckedCreateNestedManyWithoutStudentInput
   }
@@ -23318,7 +23373,7 @@ export namespace Prisma {
   export type ClassCreateWithoutGradeInput = {
     name: string
     capacity: number
-    supervisor: TeacherCreateNestedOneWithoutClassesInput
+    supervisor?: TeacherCreateNestedOneWithoutClassesInput
     Student?: StudentCreateNestedManyWithoutClassInput
     lessons?: LessonCreateNestedManyWithoutClassInput
     events?: EventCreateNestedManyWithoutClassInput
@@ -23329,7 +23384,7 @@ export namespace Prisma {
     id?: number
     name: string
     capacity: number
-    supervisorId: string
+    supervisorId?: string | null
     Student?: StudentUncheckedCreateNestedManyWithoutClassInput
     lessons?: LessonUncheckedCreateNestedManyWithoutClassInput
     events?: EventUncheckedCreateNestedManyWithoutClassInput
@@ -23382,7 +23437,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lasname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -23390,6 +23445,7 @@ export namespace Prisma {
     bloodType: string
     sex: $Enums.UserSex
     createdAt?: Date | string
+    birthday: Date | string
     lessons?: LessonCreateNestedManyWithoutTeacherInput
     classes?: ClassCreateNestedManyWithoutSupervisorInput
   }
@@ -23398,7 +23454,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lasname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -23406,6 +23462,7 @@ export namespace Prisma {
     bloodType: string
     sex: $Enums.UserSex
     createdAt?: Date | string
+    birthday: Date | string
     lessons?: LessonUncheckedCreateNestedManyWithoutTeacherInput
     classes?: ClassUncheckedCreateNestedManyWithoutSupervisorInput
   }
@@ -23423,7 +23480,7 @@ export namespace Prisma {
     class: ClassCreateNestedOneWithoutLessonsInput
     teacher: TeacherCreateNestedOneWithoutLessonsInput
     exams?: ExamCreateNestedManyWithoutLessonInput
-    assignments?: AssigmentCreateNestedManyWithoutLessonInput
+    assignments?: AssignmentCreateNestedManyWithoutLessonInput
     attendances?: AttendanceCreateNestedManyWithoutLessonInput
   }
 
@@ -23436,7 +23493,7 @@ export namespace Prisma {
     classId: number
     teacherId: string
     exams?: ExamUncheckedCreateNestedManyWithoutLessonInput
-    assignments?: AssigmentUncheckedCreateNestedManyWithoutLessonInput
+    assignments?: AssignmentUncheckedCreateNestedManyWithoutLessonInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutLessonInput
   }
 
@@ -23473,7 +23530,7 @@ export namespace Prisma {
     id?: StringFilter<"Teacher"> | string
     username?: StringFilter<"Teacher"> | string
     name?: StringFilter<"Teacher"> | string
-    lasname?: StringFilter<"Teacher"> | string
+    surname?: StringFilter<"Teacher"> | string
     email?: StringNullableFilter<"Teacher"> | string | null
     phone?: StringFilter<"Teacher"> | string
     address?: StringFilter<"Teacher"> | string
@@ -23481,6 +23538,7 @@ export namespace Prisma {
     bloodType?: StringFilter<"Teacher"> | string
     sex?: EnumUserSexFilter<"Teacher"> | $Enums.UserSex
     createdAt?: DateTimeFilter<"Teacher"> | Date | string
+    birthday?: DateTimeFilter<"Teacher"> | Date | string
   }
 
   export type LessonUpsertWithWhereUniqueWithoutSubjectInput = {
@@ -23518,7 +23576,7 @@ export namespace Prisma {
   export type ClassCreateWithoutLessonsInput = {
     name: string
     capacity: number
-    supervisor: TeacherCreateNestedOneWithoutClassesInput
+    supervisor?: TeacherCreateNestedOneWithoutClassesInput
     Student?: StudentCreateNestedManyWithoutClassInput
     Grade?: GradeCreateNestedOneWithoutClassesInput
     events?: EventCreateNestedManyWithoutClassInput
@@ -23529,7 +23587,7 @@ export namespace Prisma {
     id?: number
     name: string
     capacity: number
-    supervisorId: string
+    supervisorId?: string | null
     gradeId?: number | null
     Student?: StudentUncheckedCreateNestedManyWithoutClassInput
     events?: EventUncheckedCreateNestedManyWithoutClassInput
@@ -23545,7 +23603,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lasname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -23553,6 +23611,7 @@ export namespace Prisma {
     bloodType: string
     sex: $Enums.UserSex
     createdAt?: Date | string
+    birthday: Date | string
     subjects?: SubjectCreateNestedManyWithoutTeachersInput
     classes?: ClassCreateNestedManyWithoutSupervisorInput
   }
@@ -23561,7 +23620,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lasname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -23569,6 +23628,7 @@ export namespace Prisma {
     bloodType: string
     sex: $Enums.UserSex
     createdAt?: Date | string
+    birthday: Date | string
     subjects?: SubjectUncheckedCreateNestedManyWithoutTeachersInput
     classes?: ClassUncheckedCreateNestedManyWithoutSupervisorInput
   }
@@ -23603,14 +23663,14 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type AssigmentCreateWithoutLessonInput = {
+  export type AssignmentCreateWithoutLessonInput = {
     title: string
     startDate: Date | string
     dueDate: Date | string
     results?: ResultCreateNestedManyWithoutAssignmentInput
   }
 
-  export type AssigmentUncheckedCreateWithoutLessonInput = {
+  export type AssignmentUncheckedCreateWithoutLessonInput = {
     id?: number
     title: string
     startDate: Date | string
@@ -23618,13 +23678,13 @@ export namespace Prisma {
     results?: ResultUncheckedCreateNestedManyWithoutAssignmentInput
   }
 
-  export type AssigmentCreateOrConnectWithoutLessonInput = {
-    where: AssigmentWhereUniqueInput
-    create: XOR<AssigmentCreateWithoutLessonInput, AssigmentUncheckedCreateWithoutLessonInput>
+  export type AssignmentCreateOrConnectWithoutLessonInput = {
+    where: AssignmentWhereUniqueInput
+    create: XOR<AssignmentCreateWithoutLessonInput, AssignmentUncheckedCreateWithoutLessonInput>
   }
 
-  export type AssigmentCreateManyLessonInputEnvelope = {
-    data: AssigmentCreateManyLessonInput | AssigmentCreateManyLessonInput[]
+  export type AssignmentCreateManyLessonInputEnvelope = {
+    data: AssignmentCreateManyLessonInput | AssignmentCreateManyLessonInput[]
     skipDuplicates?: boolean
   }
 
@@ -23687,7 +23747,7 @@ export namespace Prisma {
   export type ClassUpdateWithoutLessonsInput = {
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
-    supervisor?: TeacherUpdateOneRequiredWithoutClassesNestedInput
+    supervisor?: TeacherUpdateOneWithoutClassesNestedInput
     Student?: StudentUpdateManyWithoutClassNestedInput
     Grade?: GradeUpdateOneWithoutClassesNestedInput
     events?: EventUpdateManyWithoutClassNestedInput
@@ -23698,7 +23758,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
-    supervisorId?: StringFieldUpdateOperationsInput | string
+    supervisorId?: NullableStringFieldUpdateOperationsInput | string | null
     gradeId?: NullableIntFieldUpdateOperationsInput | number | null
     Student?: StudentUncheckedUpdateManyWithoutClassNestedInput
     events?: EventUncheckedUpdateManyWithoutClassNestedInput
@@ -23720,7 +23780,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lasname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -23728,6 +23788,7 @@ export namespace Prisma {
     bloodType?: StringFieldUpdateOperationsInput | string
     sex?: EnumUserSexFieldUpdateOperationsInput | $Enums.UserSex
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     subjects?: SubjectUpdateManyWithoutTeachersNestedInput
     classes?: ClassUpdateManyWithoutSupervisorNestedInput
   }
@@ -23736,7 +23797,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lasname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -23744,6 +23805,7 @@ export namespace Prisma {
     bloodType?: StringFieldUpdateOperationsInput | string
     sex?: EnumUserSexFieldUpdateOperationsInput | $Enums.UserSex
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     subjects?: SubjectUncheckedUpdateManyWithoutTeachersNestedInput
     classes?: ClassUncheckedUpdateManyWithoutSupervisorNestedInput
   }
@@ -23775,31 +23837,31 @@ export namespace Prisma {
     lessonId?: IntFilter<"Exam"> | number
   }
 
-  export type AssigmentUpsertWithWhereUniqueWithoutLessonInput = {
-    where: AssigmentWhereUniqueInput
-    update: XOR<AssigmentUpdateWithoutLessonInput, AssigmentUncheckedUpdateWithoutLessonInput>
-    create: XOR<AssigmentCreateWithoutLessonInput, AssigmentUncheckedCreateWithoutLessonInput>
+  export type AssignmentUpsertWithWhereUniqueWithoutLessonInput = {
+    where: AssignmentWhereUniqueInput
+    update: XOR<AssignmentUpdateWithoutLessonInput, AssignmentUncheckedUpdateWithoutLessonInput>
+    create: XOR<AssignmentCreateWithoutLessonInput, AssignmentUncheckedCreateWithoutLessonInput>
   }
 
-  export type AssigmentUpdateWithWhereUniqueWithoutLessonInput = {
-    where: AssigmentWhereUniqueInput
-    data: XOR<AssigmentUpdateWithoutLessonInput, AssigmentUncheckedUpdateWithoutLessonInput>
+  export type AssignmentUpdateWithWhereUniqueWithoutLessonInput = {
+    where: AssignmentWhereUniqueInput
+    data: XOR<AssignmentUpdateWithoutLessonInput, AssignmentUncheckedUpdateWithoutLessonInput>
   }
 
-  export type AssigmentUpdateManyWithWhereWithoutLessonInput = {
-    where: AssigmentScalarWhereInput
-    data: XOR<AssigmentUpdateManyMutationInput, AssigmentUncheckedUpdateManyWithoutLessonInput>
+  export type AssignmentUpdateManyWithWhereWithoutLessonInput = {
+    where: AssignmentScalarWhereInput
+    data: XOR<AssignmentUpdateManyMutationInput, AssignmentUncheckedUpdateManyWithoutLessonInput>
   }
 
-  export type AssigmentScalarWhereInput = {
-    AND?: AssigmentScalarWhereInput | AssigmentScalarWhereInput[]
-    OR?: AssigmentScalarWhereInput[]
-    NOT?: AssigmentScalarWhereInput | AssigmentScalarWhereInput[]
-    id?: IntFilter<"Assigment"> | number
-    title?: StringFilter<"Assigment"> | string
-    startDate?: DateTimeFilter<"Assigment"> | Date | string
-    dueDate?: DateTimeFilter<"Assigment"> | Date | string
-    lessonId?: IntFilter<"Assigment"> | number
+  export type AssignmentScalarWhereInput = {
+    AND?: AssignmentScalarWhereInput | AssignmentScalarWhereInput[]
+    OR?: AssignmentScalarWhereInput[]
+    NOT?: AssignmentScalarWhereInput | AssignmentScalarWhereInput[]
+    id?: IntFilter<"Assignment"> | number
+    title?: StringFilter<"Assignment"> | string
+    startDate?: DateTimeFilter<"Assignment"> | Date | string
+    dueDate?: DateTimeFilter<"Assignment"> | Date | string
+    lessonId?: IntFilter<"Assignment"> | number
   }
 
   export type AttendanceUpsertWithWhereUniqueWithoutLessonInput = {
@@ -23822,7 +23884,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lasname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -23830,6 +23892,7 @@ export namespace Prisma {
     bloodType: string
     sex: $Enums.UserSex
     createdAt?: Date | string
+    birthday: Date | string
     subjects?: SubjectCreateNestedManyWithoutTeachersInput
     lessons?: LessonCreateNestedManyWithoutTeacherInput
   }
@@ -23838,7 +23901,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lasname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -23846,6 +23909,7 @@ export namespace Prisma {
     bloodType: string
     sex: $Enums.UserSex
     createdAt?: Date | string
+    birthday: Date | string
     subjects?: SubjectUncheckedCreateNestedManyWithoutTeachersInput
     lessons?: LessonUncheckedCreateNestedManyWithoutTeacherInput
   }
@@ -23859,7 +23923,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -23867,7 +23931,7 @@ export namespace Prisma {
     bloodType: string
     sex: $Enums.UserSex
     createdAt?: Date | string
-    dateofBirth: Date | string
+    birthday: Date | string
     parent: ParentCreateNestedOneWithoutStudentsInput
     grade: GradeCreateNestedOneWithoutStudentsInput
     attendance?: AttendanceCreateNestedManyWithoutStudentInput
@@ -23878,7 +23942,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -23888,7 +23952,7 @@ export namespace Prisma {
     createdAt?: Date | string
     parentId: string
     gradeId: number
-    dateofBirth: Date | string
+    birthday: Date | string
     attendance?: AttendanceUncheckedCreateNestedManyWithoutStudentInput
     result?: ResultUncheckedCreateNestedManyWithoutStudentInput
   }
@@ -23927,7 +23991,7 @@ export namespace Prisma {
     subject: SubjectCreateNestedOneWithoutLessonsInput
     teacher: TeacherCreateNestedOneWithoutLessonsInput
     exams?: ExamCreateNestedManyWithoutLessonInput
-    assignments?: AssigmentCreateNestedManyWithoutLessonInput
+    assignments?: AssignmentCreateNestedManyWithoutLessonInput
     attendances?: AttendanceCreateNestedManyWithoutLessonInput
   }
 
@@ -23940,7 +24004,7 @@ export namespace Prisma {
     subjectId: number
     teacherId: string
     exams?: ExamUncheckedCreateNestedManyWithoutLessonInput
-    assignments?: AssigmentUncheckedCreateNestedManyWithoutLessonInput
+    assignments?: AssignmentUncheckedCreateNestedManyWithoutLessonInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutLessonInput
   }
 
@@ -24017,7 +24081,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lasname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -24025,6 +24089,7 @@ export namespace Prisma {
     bloodType?: StringFieldUpdateOperationsInput | string
     sex?: EnumUserSexFieldUpdateOperationsInput | $Enums.UserSex
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     subjects?: SubjectUpdateManyWithoutTeachersNestedInput
     lessons?: LessonUpdateManyWithoutTeacherNestedInput
   }
@@ -24033,7 +24098,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lasname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -24041,6 +24106,7 @@ export namespace Prisma {
     bloodType?: StringFieldUpdateOperationsInput | string
     sex?: EnumUserSexFieldUpdateOperationsInput | $Enums.UserSex
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     subjects?: SubjectUncheckedUpdateManyWithoutTeachersNestedInput
     lessons?: LessonUncheckedUpdateManyWithoutTeacherNestedInput
   }
@@ -24162,7 +24228,7 @@ export namespace Prisma {
     subject: SubjectCreateNestedOneWithoutLessonsInput
     class: ClassCreateNestedOneWithoutLessonsInput
     teacher: TeacherCreateNestedOneWithoutLessonsInput
-    assignments?: AssigmentCreateNestedManyWithoutLessonInput
+    assignments?: AssignmentCreateNestedManyWithoutLessonInput
     attendances?: AttendanceCreateNestedManyWithoutLessonInput
   }
 
@@ -24175,7 +24241,7 @@ export namespace Prisma {
     subjectId: number
     classId: number
     teacherId: string
-    assignments?: AssigmentUncheckedCreateNestedManyWithoutLessonInput
+    assignments?: AssignmentUncheckedCreateNestedManyWithoutLessonInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutLessonInput
   }
 
@@ -24186,7 +24252,7 @@ export namespace Prisma {
 
   export type ResultCreateWithoutExamInput = {
     score: number
-    assignment?: AssigmentCreateNestedOneWithoutResultsInput
+    assignment?: AssignmentCreateNestedOneWithoutResultsInput
     Student?: StudentCreateNestedOneWithoutResultInput
   }
 
@@ -24226,7 +24292,7 @@ export namespace Prisma {
     subject?: SubjectUpdateOneRequiredWithoutLessonsNestedInput
     class?: ClassUpdateOneRequiredWithoutLessonsNestedInput
     teacher?: TeacherUpdateOneRequiredWithoutLessonsNestedInput
-    assignments?: AssigmentUpdateManyWithoutLessonNestedInput
+    assignments?: AssignmentUpdateManyWithoutLessonNestedInput
     attendances?: AttendanceUpdateManyWithoutLessonNestedInput
   }
 
@@ -24239,7 +24305,7 @@ export namespace Prisma {
     subjectId?: IntFieldUpdateOperationsInput | number
     classId?: IntFieldUpdateOperationsInput | number
     teacherId?: StringFieldUpdateOperationsInput | string
-    assignments?: AssigmentUncheckedUpdateManyWithoutLessonNestedInput
+    assignments?: AssignmentUncheckedUpdateManyWithoutLessonNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutLessonNestedInput
   }
 
@@ -24384,14 +24450,14 @@ export namespace Prisma {
     create: XOR<ExamCreateWithoutResultsInput, ExamUncheckedCreateWithoutResultsInput>
   }
 
-  export type AssigmentCreateWithoutResultsInput = {
+  export type AssignmentCreateWithoutResultsInput = {
     title: string
     startDate: Date | string
     dueDate: Date | string
     lesson: LessonCreateNestedOneWithoutAssignmentsInput
   }
 
-  export type AssigmentUncheckedCreateWithoutResultsInput = {
+  export type AssignmentUncheckedCreateWithoutResultsInput = {
     id?: number
     title: string
     startDate: Date | string
@@ -24399,16 +24465,16 @@ export namespace Prisma {
     lessonId: number
   }
 
-  export type AssigmentCreateOrConnectWithoutResultsInput = {
-    where: AssigmentWhereUniqueInput
-    create: XOR<AssigmentCreateWithoutResultsInput, AssigmentUncheckedCreateWithoutResultsInput>
+  export type AssignmentCreateOrConnectWithoutResultsInput = {
+    where: AssignmentWhereUniqueInput
+    create: XOR<AssignmentCreateWithoutResultsInput, AssignmentUncheckedCreateWithoutResultsInput>
   }
 
   export type StudentCreateWithoutResultInput = {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -24416,7 +24482,7 @@ export namespace Prisma {
     bloodType: string
     sex: $Enums.UserSex
     createdAt?: Date | string
-    dateofBirth: Date | string
+    birthday: Date | string
     parent: ParentCreateNestedOneWithoutStudentsInput
     class: ClassCreateNestedOneWithoutStudentInput
     grade: GradeCreateNestedOneWithoutStudentsInput
@@ -24427,7 +24493,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -24438,7 +24504,7 @@ export namespace Prisma {
     parentId: string
     classId: number
     gradeId: number
-    dateofBirth: Date | string
+    birthday: Date | string
     attendance?: AttendanceUncheckedCreateNestedManyWithoutStudentInput
   }
 
@@ -24473,25 +24539,25 @@ export namespace Prisma {
     lessonId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type AssigmentUpsertWithoutResultsInput = {
-    update: XOR<AssigmentUpdateWithoutResultsInput, AssigmentUncheckedUpdateWithoutResultsInput>
-    create: XOR<AssigmentCreateWithoutResultsInput, AssigmentUncheckedCreateWithoutResultsInput>
-    where?: AssigmentWhereInput
+  export type AssignmentUpsertWithoutResultsInput = {
+    update: XOR<AssignmentUpdateWithoutResultsInput, AssignmentUncheckedUpdateWithoutResultsInput>
+    create: XOR<AssignmentCreateWithoutResultsInput, AssignmentUncheckedCreateWithoutResultsInput>
+    where?: AssignmentWhereInput
   }
 
-  export type AssigmentUpdateToOneWithWhereWithoutResultsInput = {
-    where?: AssigmentWhereInput
-    data: XOR<AssigmentUpdateWithoutResultsInput, AssigmentUncheckedUpdateWithoutResultsInput>
+  export type AssignmentUpdateToOneWithWhereWithoutResultsInput = {
+    where?: AssignmentWhereInput
+    data: XOR<AssignmentUpdateWithoutResultsInput, AssignmentUncheckedUpdateWithoutResultsInput>
   }
 
-  export type AssigmentUpdateWithoutResultsInput = {
+  export type AssignmentUpdateWithoutResultsInput = {
     title?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     dueDate?: DateTimeFieldUpdateOperationsInput | Date | string
     lesson?: LessonUpdateOneRequiredWithoutAssignmentsNestedInput
   }
 
-  export type AssigmentUncheckedUpdateWithoutResultsInput = {
+  export type AssignmentUncheckedUpdateWithoutResultsInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24514,7 +24580,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -24522,7 +24588,7 @@ export namespace Prisma {
     bloodType?: StringFieldUpdateOperationsInput | string
     sex?: EnumUserSexFieldUpdateOperationsInput | $Enums.UserSex
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    dateofBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     parent?: ParentUpdateOneRequiredWithoutStudentsNestedInput
     class?: ClassUpdateOneRequiredWithoutStudentNestedInput
     grade?: GradeUpdateOneRequiredWithoutStudentsNestedInput
@@ -24533,7 +24599,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -24544,7 +24610,7 @@ export namespace Prisma {
     parentId?: StringFieldUpdateOperationsInput | string
     classId?: IntFieldUpdateOperationsInput | number
     gradeId?: IntFieldUpdateOperationsInput | number
-    dateofBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     attendance?: AttendanceUncheckedUpdateManyWithoutStudentNestedInput
   }
 
@@ -24552,7 +24618,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -24560,7 +24626,7 @@ export namespace Prisma {
     bloodType: string
     sex: $Enums.UserSex
     createdAt?: Date | string
-    dateofBirth: Date | string
+    birthday: Date | string
     parent: ParentCreateNestedOneWithoutStudentsInput
     class: ClassCreateNestedOneWithoutStudentInput
     grade: GradeCreateNestedOneWithoutStudentsInput
@@ -24571,7 +24637,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -24582,7 +24648,7 @@ export namespace Prisma {
     parentId: string
     classId: number
     gradeId: number
-    dateofBirth: Date | string
+    birthday: Date | string
     result?: ResultUncheckedCreateNestedManyWithoutStudentInput
   }
 
@@ -24600,7 +24666,7 @@ export namespace Prisma {
     class: ClassCreateNestedOneWithoutLessonsInput
     teacher: TeacherCreateNestedOneWithoutLessonsInput
     exams?: ExamCreateNestedManyWithoutLessonInput
-    assignments?: AssigmentCreateNestedManyWithoutLessonInput
+    assignments?: AssignmentCreateNestedManyWithoutLessonInput
   }
 
   export type LessonUncheckedCreateWithoutAttendancesInput = {
@@ -24613,7 +24679,7 @@ export namespace Prisma {
     classId: number
     teacherId: string
     exams?: ExamUncheckedCreateNestedManyWithoutLessonInput
-    assignments?: AssigmentUncheckedCreateNestedManyWithoutLessonInput
+    assignments?: AssignmentUncheckedCreateNestedManyWithoutLessonInput
   }
 
   export type LessonCreateOrConnectWithoutAttendancesInput = {
@@ -24636,7 +24702,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -24644,7 +24710,7 @@ export namespace Prisma {
     bloodType?: StringFieldUpdateOperationsInput | string
     sex?: EnumUserSexFieldUpdateOperationsInput | $Enums.UserSex
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    dateofBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     parent?: ParentUpdateOneRequiredWithoutStudentsNestedInput
     class?: ClassUpdateOneRequiredWithoutStudentNestedInput
     grade?: GradeUpdateOneRequiredWithoutStudentsNestedInput
@@ -24655,7 +24721,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -24666,7 +24732,7 @@ export namespace Prisma {
     parentId?: StringFieldUpdateOperationsInput | string
     classId?: IntFieldUpdateOperationsInput | number
     gradeId?: IntFieldUpdateOperationsInput | number
-    dateofBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     result?: ResultUncheckedUpdateManyWithoutStudentNestedInput
   }
 
@@ -24690,7 +24756,7 @@ export namespace Prisma {
     class?: ClassUpdateOneRequiredWithoutLessonsNestedInput
     teacher?: TeacherUpdateOneRequiredWithoutLessonsNestedInput
     exams?: ExamUpdateManyWithoutLessonNestedInput
-    assignments?: AssigmentUpdateManyWithoutLessonNestedInput
+    assignments?: AssignmentUpdateManyWithoutLessonNestedInput
   }
 
   export type LessonUncheckedUpdateWithoutAttendancesInput = {
@@ -24703,13 +24769,13 @@ export namespace Prisma {
     classId?: IntFieldUpdateOperationsInput | number
     teacherId?: StringFieldUpdateOperationsInput | string
     exams?: ExamUncheckedUpdateManyWithoutLessonNestedInput
-    assignments?: AssigmentUncheckedUpdateManyWithoutLessonNestedInput
+    assignments?: AssignmentUncheckedUpdateManyWithoutLessonNestedInput
   }
 
   export type ClassCreateWithoutEventsInput = {
     name: string
     capacity: number
-    supervisor: TeacherCreateNestedOneWithoutClassesInput
+    supervisor?: TeacherCreateNestedOneWithoutClassesInput
     Student?: StudentCreateNestedManyWithoutClassInput
     Grade?: GradeCreateNestedOneWithoutClassesInput
     lessons?: LessonCreateNestedManyWithoutClassInput
@@ -24720,7 +24786,7 @@ export namespace Prisma {
     id?: number
     name: string
     capacity: number
-    supervisorId: string
+    supervisorId?: string | null
     gradeId?: number | null
     Student?: StudentUncheckedCreateNestedManyWithoutClassInput
     lessons?: LessonUncheckedCreateNestedManyWithoutClassInput
@@ -24746,7 +24812,7 @@ export namespace Prisma {
   export type ClassUpdateWithoutEventsInput = {
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
-    supervisor?: TeacherUpdateOneRequiredWithoutClassesNestedInput
+    supervisor?: TeacherUpdateOneWithoutClassesNestedInput
     Student?: StudentUpdateManyWithoutClassNestedInput
     Grade?: GradeUpdateOneWithoutClassesNestedInput
     lessons?: LessonUpdateManyWithoutClassNestedInput
@@ -24757,7 +24823,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
-    supervisorId?: StringFieldUpdateOperationsInput | string
+    supervisorId?: NullableStringFieldUpdateOperationsInput | string | null
     gradeId?: NullableIntFieldUpdateOperationsInput | number | null
     Student?: StudentUncheckedUpdateManyWithoutClassNestedInput
     lessons?: LessonUncheckedUpdateManyWithoutClassNestedInput
@@ -24767,7 +24833,7 @@ export namespace Prisma {
   export type ClassCreateWithoutAnnoucementsInput = {
     name: string
     capacity: number
-    supervisor: TeacherCreateNestedOneWithoutClassesInput
+    supervisor?: TeacherCreateNestedOneWithoutClassesInput
     Student?: StudentCreateNestedManyWithoutClassInput
     Grade?: GradeCreateNestedOneWithoutClassesInput
     lessons?: LessonCreateNestedManyWithoutClassInput
@@ -24778,7 +24844,7 @@ export namespace Prisma {
     id?: number
     name: string
     capacity: number
-    supervisorId: string
+    supervisorId?: string | null
     gradeId?: number | null
     Student?: StudentUncheckedCreateNestedManyWithoutClassInput
     lessons?: LessonUncheckedCreateNestedManyWithoutClassInput
@@ -24804,7 +24870,7 @@ export namespace Prisma {
   export type ClassUpdateWithoutAnnoucementsInput = {
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
-    supervisor?: TeacherUpdateOneRequiredWithoutClassesNestedInput
+    supervisor?: TeacherUpdateOneWithoutClassesNestedInput
     Student?: StudentUpdateManyWithoutClassNestedInput
     Grade?: GradeUpdateOneWithoutClassesNestedInput
     lessons?: LessonUpdateManyWithoutClassNestedInput
@@ -24815,7 +24881,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
-    supervisorId?: StringFieldUpdateOperationsInput | string
+    supervisorId?: NullableStringFieldUpdateOperationsInput | string | null
     gradeId?: NullableIntFieldUpdateOperationsInput | number | null
     Student?: StudentUncheckedUpdateManyWithoutClassNestedInput
     lessons?: LessonUncheckedUpdateManyWithoutClassNestedInput
@@ -24859,7 +24925,7 @@ export namespace Prisma {
   export type ResultUpdateWithoutStudentInput = {
     score?: IntFieldUpdateOperationsInput | number
     exam?: ExamUpdateOneWithoutResultsNestedInput
-    assignment?: AssigmentUpdateOneWithoutResultsNestedInput
+    assignment?: AssignmentUpdateOneWithoutResultsNestedInput
   }
 
   export type ResultUncheckedUpdateWithoutStudentInput = {
@@ -24917,7 +24983,7 @@ export namespace Prisma {
     subject?: SubjectUpdateOneRequiredWithoutLessonsNestedInput
     class?: ClassUpdateOneRequiredWithoutLessonsNestedInput
     exams?: ExamUpdateManyWithoutLessonNestedInput
-    assignments?: AssigmentUpdateManyWithoutLessonNestedInput
+    assignments?: AssignmentUpdateManyWithoutLessonNestedInput
     attendances?: AttendanceUpdateManyWithoutLessonNestedInput
   }
 
@@ -24930,7 +24996,7 @@ export namespace Prisma {
     subjectId?: IntFieldUpdateOperationsInput | number
     classId?: IntFieldUpdateOperationsInput | number
     exams?: ExamUncheckedUpdateManyWithoutLessonNestedInput
-    assignments?: AssigmentUncheckedUpdateManyWithoutLessonNestedInput
+    assignments?: AssignmentUncheckedUpdateManyWithoutLessonNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutLessonNestedInput
   }
 
@@ -24976,7 +25042,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -24986,14 +25052,14 @@ export namespace Prisma {
     createdAt?: Date | string
     classId: number
     gradeId: number
-    dateofBirth: Date | string
+    birthday: Date | string
   }
 
   export type StudentUpdateWithoutParentInput = {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -25001,7 +25067,7 @@ export namespace Prisma {
     bloodType?: StringFieldUpdateOperationsInput | string
     sex?: EnumUserSexFieldUpdateOperationsInput | $Enums.UserSex
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    dateofBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     class?: ClassUpdateOneRequiredWithoutStudentNestedInput
     grade?: GradeUpdateOneRequiredWithoutStudentsNestedInput
     attendance?: AttendanceUpdateManyWithoutStudentNestedInput
@@ -25012,7 +25078,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -25022,7 +25088,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     classId?: IntFieldUpdateOperationsInput | number
     gradeId?: IntFieldUpdateOperationsInput | number
-    dateofBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     attendance?: AttendanceUncheckedUpdateManyWithoutStudentNestedInput
     result?: ResultUncheckedUpdateManyWithoutStudentNestedInput
   }
@@ -25031,7 +25097,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -25041,14 +25107,14 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     classId?: IntFieldUpdateOperationsInput | number
     gradeId?: IntFieldUpdateOperationsInput | number
-    dateofBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StudentCreateManyGradeInput = {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -25058,21 +25124,21 @@ export namespace Prisma {
     createdAt?: Date | string
     parentId: string
     classId: number
-    dateofBirth: Date | string
+    birthday: Date | string
   }
 
   export type ClassCreateManyGradeInput = {
     id?: number
     name: string
     capacity: number
-    supervisorId: string
+    supervisorId?: string | null
   }
 
   export type StudentUpdateWithoutGradeInput = {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -25080,7 +25146,7 @@ export namespace Prisma {
     bloodType?: StringFieldUpdateOperationsInput | string
     sex?: EnumUserSexFieldUpdateOperationsInput | $Enums.UserSex
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    dateofBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     parent?: ParentUpdateOneRequiredWithoutStudentsNestedInput
     class?: ClassUpdateOneRequiredWithoutStudentNestedInput
     attendance?: AttendanceUpdateManyWithoutStudentNestedInput
@@ -25091,7 +25157,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -25101,7 +25167,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     parentId?: StringFieldUpdateOperationsInput | string
     classId?: IntFieldUpdateOperationsInput | number
-    dateofBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     attendance?: AttendanceUncheckedUpdateManyWithoutStudentNestedInput
     result?: ResultUncheckedUpdateManyWithoutStudentNestedInput
   }
@@ -25110,7 +25176,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -25120,13 +25186,13 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     parentId?: StringFieldUpdateOperationsInput | string
     classId?: IntFieldUpdateOperationsInput | number
-    dateofBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ClassUpdateWithoutGradeInput = {
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
-    supervisor?: TeacherUpdateOneRequiredWithoutClassesNestedInput
+    supervisor?: TeacherUpdateOneWithoutClassesNestedInput
     Student?: StudentUpdateManyWithoutClassNestedInput
     lessons?: LessonUpdateManyWithoutClassNestedInput
     events?: EventUpdateManyWithoutClassNestedInput
@@ -25137,7 +25203,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
-    supervisorId?: StringFieldUpdateOperationsInput | string
+    supervisorId?: NullableStringFieldUpdateOperationsInput | string | null
     Student?: StudentUncheckedUpdateManyWithoutClassNestedInput
     lessons?: LessonUncheckedUpdateManyWithoutClassNestedInput
     events?: EventUncheckedUpdateManyWithoutClassNestedInput
@@ -25148,7 +25214,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
-    supervisorId?: StringFieldUpdateOperationsInput | string
+    supervisorId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type LessonCreateManySubjectInput = {
@@ -25165,7 +25231,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lasname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -25173,6 +25239,7 @@ export namespace Prisma {
     bloodType?: StringFieldUpdateOperationsInput | string
     sex?: EnumUserSexFieldUpdateOperationsInput | $Enums.UserSex
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     lessons?: LessonUpdateManyWithoutTeacherNestedInput
     classes?: ClassUpdateManyWithoutSupervisorNestedInput
   }
@@ -25181,7 +25248,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lasname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -25189,6 +25256,7 @@ export namespace Prisma {
     bloodType?: StringFieldUpdateOperationsInput | string
     sex?: EnumUserSexFieldUpdateOperationsInput | $Enums.UserSex
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     lessons?: LessonUncheckedUpdateManyWithoutTeacherNestedInput
     classes?: ClassUncheckedUpdateManyWithoutSupervisorNestedInput
   }
@@ -25197,7 +25265,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lasname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -25205,6 +25273,7 @@ export namespace Prisma {
     bloodType?: StringFieldUpdateOperationsInput | string
     sex?: EnumUserSexFieldUpdateOperationsInput | $Enums.UserSex
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LessonUpdateWithoutSubjectInput = {
@@ -25215,7 +25284,7 @@ export namespace Prisma {
     class?: ClassUpdateOneRequiredWithoutLessonsNestedInput
     teacher?: TeacherUpdateOneRequiredWithoutLessonsNestedInput
     exams?: ExamUpdateManyWithoutLessonNestedInput
-    assignments?: AssigmentUpdateManyWithoutLessonNestedInput
+    assignments?: AssignmentUpdateManyWithoutLessonNestedInput
     attendances?: AttendanceUpdateManyWithoutLessonNestedInput
   }
 
@@ -25228,7 +25297,7 @@ export namespace Prisma {
     classId?: IntFieldUpdateOperationsInput | number
     teacherId?: StringFieldUpdateOperationsInput | string
     exams?: ExamUncheckedUpdateManyWithoutLessonNestedInput
-    assignments?: AssigmentUncheckedUpdateManyWithoutLessonNestedInput
+    assignments?: AssignmentUncheckedUpdateManyWithoutLessonNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutLessonNestedInput
   }
 
@@ -25249,7 +25318,7 @@ export namespace Prisma {
     endTime: Date | string
   }
 
-  export type AssigmentCreateManyLessonInput = {
+  export type AssignmentCreateManyLessonInput = {
     id?: number
     title: string
     startDate: Date | string
@@ -25285,14 +25354,14 @@ export namespace Prisma {
     endTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AssigmentUpdateWithoutLessonInput = {
+  export type AssignmentUpdateWithoutLessonInput = {
     title?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     dueDate?: DateTimeFieldUpdateOperationsInput | Date | string
     results?: ResultUpdateManyWithoutAssignmentNestedInput
   }
 
-  export type AssigmentUncheckedUpdateWithoutLessonInput = {
+  export type AssignmentUncheckedUpdateWithoutLessonInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25300,7 +25369,7 @@ export namespace Prisma {
     results?: ResultUncheckedUpdateManyWithoutAssignmentNestedInput
   }
 
-  export type AssigmentUncheckedUpdateManyWithoutLessonInput = {
+  export type AssignmentUncheckedUpdateManyWithoutLessonInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25331,7 +25400,7 @@ export namespace Prisma {
     id: string
     username: string
     name: string
-    lastname: string
+    surname: string
     email?: string | null
     phone: string
     address: string
@@ -25341,7 +25410,7 @@ export namespace Prisma {
     createdAt?: Date | string
     parentId: string
     gradeId: number
-    dateofBirth: Date | string
+    birthday: Date | string
   }
 
   export type LessonCreateManyClassInput = {
@@ -25373,7 +25442,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -25381,7 +25450,7 @@ export namespace Prisma {
     bloodType?: StringFieldUpdateOperationsInput | string
     sex?: EnumUserSexFieldUpdateOperationsInput | $Enums.UserSex
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    dateofBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     parent?: ParentUpdateOneRequiredWithoutStudentsNestedInput
     grade?: GradeUpdateOneRequiredWithoutStudentsNestedInput
     attendance?: AttendanceUpdateManyWithoutStudentNestedInput
@@ -25392,7 +25461,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -25402,7 +25471,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     parentId?: StringFieldUpdateOperationsInput | string
     gradeId?: IntFieldUpdateOperationsInput | number
-    dateofBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     attendance?: AttendanceUncheckedUpdateManyWithoutStudentNestedInput
     result?: ResultUncheckedUpdateManyWithoutStudentNestedInput
   }
@@ -25411,7 +25480,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
@@ -25421,7 +25490,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     parentId?: StringFieldUpdateOperationsInput | string
     gradeId?: IntFieldUpdateOperationsInput | number
-    dateofBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthday?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LessonUpdateWithoutClassInput = {
@@ -25432,7 +25501,7 @@ export namespace Prisma {
     subject?: SubjectUpdateOneRequiredWithoutLessonsNestedInput
     teacher?: TeacherUpdateOneRequiredWithoutLessonsNestedInput
     exams?: ExamUpdateManyWithoutLessonNestedInput
-    assignments?: AssigmentUpdateManyWithoutLessonNestedInput
+    assignments?: AssignmentUpdateManyWithoutLessonNestedInput
     attendances?: AttendanceUpdateManyWithoutLessonNestedInput
   }
 
@@ -25445,7 +25514,7 @@ export namespace Prisma {
     subjectId?: IntFieldUpdateOperationsInput | number
     teacherId?: StringFieldUpdateOperationsInput | string
     exams?: ExamUncheckedUpdateManyWithoutLessonNestedInput
-    assignments?: AssigmentUncheckedUpdateManyWithoutLessonNestedInput
+    assignments?: AssignmentUncheckedUpdateManyWithoutLessonNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutLessonNestedInput
   }
 
@@ -25511,7 +25580,7 @@ export namespace Prisma {
 
   export type ResultUpdateWithoutExamInput = {
     score?: IntFieldUpdateOperationsInput | number
-    assignment?: AssigmentUpdateOneWithoutResultsNestedInput
+    assignment?: AssignmentUpdateOneWithoutResultsNestedInput
     Student?: StudentUpdateOneWithoutResultNestedInput
   }
 

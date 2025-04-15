@@ -1,7 +1,6 @@
 
-import { UserSex } from "@/generated/prisma";
-import {prisma} from "@/lib/prisma"
-import Day from "react-calendar/src/MonthView/Day.jsx";
+import prisma from "../src/lib/prisma";
+import { Day, UserSex } from "../src/generated/prisma";
 
 async function main() {
   // ADMIN

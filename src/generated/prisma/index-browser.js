@@ -126,7 +126,7 @@ exports.Prisma.StudentScalarFieldEnum = {
   id: 'id',
   username: 'username',
   name: 'name',
-  lastname: 'lastname',
+  surname: 'surname',
   email: 'email',
   phone: 'phone',
   address: 'address',
@@ -137,28 +137,29 @@ exports.Prisma.StudentScalarFieldEnum = {
   parentId: 'parentId',
   classId: 'classId',
   gradeId: 'gradeId',
-  dateofBirth: 'dateofBirth'
+  birthday: 'birthday'
 };
 
 exports.Prisma.TeacherScalarFieldEnum = {
   id: 'id',
   username: 'username',
   name: 'name',
-  lasname: 'lasname',
+  surname: 'surname',
   email: 'email',
   phone: 'phone',
   address: 'address',
   img: 'img',
   bloodType: 'bloodType',
   sex: 'sex',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  birthday: 'birthday'
 };
 
 exports.Prisma.ParentScalarFieldEnum = {
   id: 'id',
   username: 'username',
   name: 'name',
-  lastname: 'lastname',
+  surname: 'surname',
   email: 'email',
   phone: 'phone',
   address: 'address',
@@ -202,7 +203,7 @@ exports.Prisma.ExamScalarFieldEnum = {
   lessonId: 'lessonId'
 };
 
-exports.Prisma.AssigmentScalarFieldEnum = {
+exports.Prisma.AssignmentScalarFieldEnum = {
   id: 'id',
   title: 'title',
   startDate: 'startDate',
@@ -279,7 +280,7 @@ exports.Prisma.ModelName = {
   Lesson: 'Lesson',
   Class: 'Class',
   Exam: 'Exam',
-  Assigment: 'Assigment',
+  Assignment: 'Assignment',
   Result: 'Result',
   Attendance: 'Attendance',
   Event: 'Event',

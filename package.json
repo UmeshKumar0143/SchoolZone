@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
@@ -14,7 +15,6 @@
     "@types/react-big-calendar": "^1.16.1",
     "moments": "^0.0.2",
     "next": "15.2.4",
-    "prisma": "^6.6.0",
     "react": "^19.0.0",
     "react-big-calendar": "^1.18.0",
     "react-calendar": "^5.1.0",
@@ -33,6 +33,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
+    "prisma": "^6.6.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
