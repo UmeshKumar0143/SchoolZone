@@ -8,6 +8,6 @@ export default function Table({columns, renderRow, data}: {columns: {header: Str
                 {columns.map((cols,index)=><th className={cols.classname} key={index}>{cols.header}</th>)}
             </tr>
         </thead>
-        <tbody> {data.map((item)=> renderRow(item))} </tbody>
+        <tbody>{data.map((item)=> renderRow(item))}</tbody>
     </table>
 }

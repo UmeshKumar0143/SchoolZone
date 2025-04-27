@@ -4,12 +4,12 @@ import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
 import { role, teachersData } from "@/lib/data";
 import prisma from "@/lib/prisma";
+import { ITEM_PER_PAGE } from "@/lib/setting";
 import { Class, Subject, Teacher } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import {  FaSortAmountDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
-import { MdDeleteOutline } from "react-icons/md";
 
 type TeacherList = Teacher & {subjects: Subject[], classes: Class[]}; 
 
@@ -80,15 +80,22 @@ const renderRow = (item:TeacherList)=>{
     </tr>
 }
 
-export default async function  TeacherList(searchParams:{searchParams: {[key:string]: string | undefined}}){
-     await console.log(  searchParams); 
-    const data = await prisma.teacher.findMany({
-        include:{
+export default async function  TeacherList({searchParams}:{searchParams:{ [key:string]: string | undefined} }){    
+    const {page , ...queryParams} = await searchParams; 
+    const p = page? parseInt(page): 1; 
+
+    const [data,count]= await prisma.$transaction([
+       prisma.teacher.findMany({  include:{
             classes: true,
             subjects:true
         },
-        take: 10
-    })
+        take: ITEM_PER_PAGE,
+        skip:ITEM_PER_PAGE*(p-1) 
+       }),
+
+       prisma.teacher.count() 
+
+    ])
 
 
     return <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
@@ -109,6 +116,6 @@ export default async function  TeacherList(searchParams:{searchParams: {[key:str
                         </div>
             </div>
             <Table  columns  = {cols} renderRow = {renderRow} data={data}/>
-            <Pagination/>
+            <Pagination count={count} page={p} />
     </div>
 }
