@@ -2,21 +2,15 @@ import FormModal from "@/components/FormModal";
 import ListSearchBar from "@/components/ListSearchBar";
 import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
-import { parentsData, role,  } from "@/lib/data";
+import {  role,  } from "@/lib/data";
+import prisma from "@/lib/prisma";
+import { ITEM_PER_PAGE } from "@/lib/setting";
+import { Parent, Prisma, Student } from "@prisma/client";
 import Link from "next/link";
-import { CgMathPlus } from "react-icons/cg";
-import {  FaExternalLinkAlt, FaSortAmountDown } from "react-icons/fa";
+import {  FaSortAmountDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
-import { MdDeleteOutline } from "react-icons/md";
 
-type Parent = {
-    id: number; 
-    name: string; 
-    email?: string;
-    students: string[]; 
-    phone?: string; 
-    address: string; 
-}
+type ParentList = Parent & {students: Student[]}
 
 const cols = [
     {
@@ -48,7 +42,7 @@ const cols = [
 
 ]
 
-const renderRow = (item:Parent)=>{
+const renderRow = (item:ParentList)=>{
     return <tr key={item.id} className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-school-purple-Light">
         <td className="flex items-center p-4 gap-2" >
         <div className="flex flex-col ">
@@ -56,7 +50,7 @@ const renderRow = (item:Parent)=>{
             <p className="text-xs text-gray-500">{item.email}</p>
         </div>
         </td>
-        <td className="hidden md:table-cell">{item.students.join(",")}</td>
+        <td className="hidden md:table-cell">{item.students.map(item=>item.name).join(', ')}</td>
         <td className="hidden md:table-cell">{item.phone}</td>
         <td className="hidden md:table-cell">{item.address}</td>
         <td>
@@ -71,7 +65,40 @@ const renderRow = (item:Parent)=>{
     </tr>
 }
 
-export default function StudentList(){
+export default async function StudentList({searchParams}: {searchParams:{[key:string]: string | undefined}}){
+    
+    const {page, ...queryparams}  = await searchParams; 
+
+    const query: Prisma.ParentWhereInput = {}; 
+
+    if(queryparams){
+        for(const [key, value] of Object.entries(queryparams)){
+            if(value){
+                switch (key){
+                    case 'search': 
+                    query.name = {
+                        contains: value, 
+                        mode: 'insensitive'
+                    }
+                }
+            }
+        }
+    }
+
+    const p = page? parseInt(page) : 1; 
+
+    const [data, count ] = await prisma.$transaction([
+        prisma.parent.findMany({
+            where: query, 
+            include: {
+                students: true
+            },
+            take: ITEM_PER_PAGE, 
+            skip: ITEM_PER_PAGE*(p-1)
+        }), 
+        prisma.parent.count({where:query})
+    ])
+
     return <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
 
             <div className="w-full flex items-center justify-between ">
@@ -89,7 +116,7 @@ export default function StudentList(){
                                 </div>
                         </div>
             </div>
-            <Table  columns  = {cols} renderRow = {renderRow} data={parentsData}/>
-            <Pagination/>
+            <Table  columns  = {cols} renderRow = {renderRow} data={data}/>
+            <Pagination page={p} count={count}/>
     </div>
 }
