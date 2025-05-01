@@ -38,7 +38,7 @@ export default function FormModal({table , type, data, id}:{table:
     | "announcement" 
     type:"update" | "delete"| "create", 
     data?: any , 
-    id?: number
+    id?: number | string
 
 }){
 

@@ -103,7 +103,7 @@ export default async function  TeacherList({searchParams}:{searchParams:{ [key:s
                     case "search": 
                     query.name = {
                         contains: value, 
-                        mode: "insensitive"
+                    mode: "insensitive"
                     }
                 }
                 
