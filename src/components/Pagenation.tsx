@@ -8,6 +8,8 @@ export default function Pagination({count, page}: {count:number, page: number}){
      
     const hasPrev = ITEM_PER_PAGE*(page-1)>0; 
     const hasNext = ITEM_PER_PAGE*(page-1) + ITEM_PER_PAGE < count; 
+
+    
     const changePage = (newPage:number) => {
         const params = new URLSearchParams(window.location.search); 
         params.set("params", newPage.toString()); 
