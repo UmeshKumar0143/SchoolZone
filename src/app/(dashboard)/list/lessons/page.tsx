@@ -72,11 +72,21 @@ export default async function StudentList({searchParams}:{searchParams: {[key:st
         for(const [key,value] of Object.entries(queryParams)){
             if(value){
                 switch(key){
+                    case 'classId': 
+                        query.classId = parseInt(value); 
+                    break; 
+                    case 'teacherId': 
+                        query.teacherId = value; 
+                        break; 
+                    
                     case 'search':
                         query.name = {
                             contains: value, 
                             mode: 'insensitive'
                         }
+                        break; 
+                        default: 
+                        break; 
                 }
             }
         }
@@ -95,7 +105,7 @@ export default async function StudentList({searchParams}:{searchParams: {[key:st
         }),
         prisma.lesson.count({where:query})
     ])
-
+    
     return <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
 
             <div className="w-full flex items-center justify-between ">

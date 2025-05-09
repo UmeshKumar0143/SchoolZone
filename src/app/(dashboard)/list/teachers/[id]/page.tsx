@@ -128,7 +128,7 @@ export default function TeacherInformationPage() {
                 <div className="flex flex-wrap mt-4 gap-4 text-gray-500 text-xs">
                     <Link className="rounded-md p-3 bg-school-blue-light" href={"/"}>Teacher&apos;s Classes</Link>
                     <Link className="rounded-md p-3 bg-school-purple" href={`/list/students?teacherId=${'teacher1'}`}>Teacher&apos;s Students</Link>
-                    <Link className="rounded-md p-3 bg-pink-50" href={"/"}>Teacher&apos;s Lessons</Link>
+                    <Link className="rounded-md p-3 bg-pink-50" href={`/list/lessons?teacherId=${'teacher1'}`}>Teacher&apos;s Lessons</Link>
                     <Link className="rounded-md p-3 bg-school-blue-light" href={"/"}>Teacher&apos;s Exams</Link>
                     <Link className="rounded-md p-3 bg-school-yellow-light" href={"/"}>Teacher&apos;s Assignments</Link>
                 </div>
