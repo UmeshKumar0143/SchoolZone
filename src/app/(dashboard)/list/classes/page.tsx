@@ -76,12 +76,17 @@ export default async function ClasesList({searchParams}:{searchParams:{[key:stri
         for(const[key, value] of Object.entries(qeuryparams)){
             if(value){
                 switch(key){
-                    case 'search': {
+                    case 'teacherId': 
+                    query.supervisorId = value; 
+                    break;                     
+                    case 'search': 
                         query.name = {
                             contains: value, 
                             mode :'insensitive', 
                         }
-                    }
+                    break; 
+                    default: 
+                    break; 
                 }
             }
         }
