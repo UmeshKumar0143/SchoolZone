@@ -5,14 +5,14 @@ import Table from "@/components/Table";
 import {  lessonsData,  role,  } from "@/lib/data";
 import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/setting";
-import { Class, Lesson, Prisma, Teacher } from "@prisma/client";
+import { Class, Lesson, Prisma, Subject, Teacher } from "@prisma/client";
 import Link from "next/link";
 import { CgMathPlus } from "react-icons/cg";
 import {  FaExternalLinkAlt, FaSortAmountDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
 import { MdDeleteOutline } from "react-icons/md";
 
-type LessonList = Lesson & {class: Class , teacher: Teacher}
+type LessonList = Lesson & { subject: Subject, class: Class , teacher: Teacher}
 
 const cols = [
     {
@@ -43,11 +43,11 @@ const renderRow = (item:LessonList)=>{
     return <tr key={item.id} className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-school-purple-Light">
         <td className="flex items-center p-4 gap-2" >
         <div className="flex flex-col ">
-            <h3 className="font-semibold ">{item.name}</h3>
+            <h3 className="font-semibold ">{item.subject.name}</h3>
         </div>
         </td>
         <td className="hidden md:table-cell">{item.class.name}</td>
-        <td className="hidden md:table-cell">{item.teacher.name}</td>
+        <td className="hidden md:table-cell">{item.teacher.name + " " + item.teacher.surname}</td>
         <td>
             <div className="flex items-center gap-2">
                     <Link href={`/list/teacher/${item.id}`}>
@@ -80,10 +80,10 @@ export default async function StudentList({searchParams}:{searchParams: {[key:st
                         break; 
                     
                     case 'search':
-                        query.name = {
-                            contains: value, 
-                            mode: 'insensitive'
-                        }
+                        query.OR = [
+                            {subject: {name: {contains: value, mode: 'insensitive'}, }}, 
+                            {teacher: {name: {contains: value,mode: 'insensitive'} }}
+                        ]
                         break; 
                         default: 
                         break; 
@@ -96,8 +96,9 @@ export default async function StudentList({searchParams}:{searchParams: {[key:st
         prisma.lesson.findMany({
             where: query, 
             include:{
-                class:true,
-                teacher: true, 
+                subject: true, 
+                class:{select: {name: true}},
+                teacher: {select: {name: true, surname: true}}, 
             },
             take:ITEM_PER_PAGE,
             skip:ITEM_PER_PAGE*(p-1)

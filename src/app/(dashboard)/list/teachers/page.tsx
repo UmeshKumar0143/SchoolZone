@@ -77,6 +77,7 @@ const renderRow = (item:TeacherList)=>{
             </button>
           </Link>
                    {role=="admin" && <FormModal table="teacher" id={parseInt(item.id)} type="delete" data={item} /> }
+                   {role=="admin" && <FormModal table="teacher" id={parseInt(item.id)} type="update" data={item} /> }
             </div>
         </td>
     </tr>
