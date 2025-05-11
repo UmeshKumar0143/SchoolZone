@@ -129,7 +129,7 @@ export default function TeacherInformationPage() {
                     <Link className="rounded-md p-3 bg-school-blue-light" href={`/list/classes?teacherId=${'teacher12'}`}>Teacher&apos;s Classes</Link>
                     <Link className="rounded-md p-3 bg-school-purple" href={`/list/students?teacherId=${'teacher1'}`}>Teacher&apos;s Students</Link>
                     <Link className="rounded-md p-3 bg-pink-50" href={`/list/lessons?teacherId=${'teacher1'}`}>Teacher&apos;s Lessons</Link>
-                    <Link className="rounded-md p-3 bg-school-blue-light" href={"/"}>Teacher&apos;s Exams</Link>
+                    <Link className="rounded-md p-3 bg-school-blue-light" href={`/list/exams?teacherId=${'teacher1'}`}>Teacher&apos;s Exams</Link>
                     <Link className="rounded-md p-3 bg-school-yellow-light" href={"/"}>Teacher&apos;s Assignments</Link>
                 </div>
         </div>

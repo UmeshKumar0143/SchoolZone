@@ -80,22 +80,24 @@ export default async function ExamList({searchParams}: {searchParams:{[key:strin
         for(const [key, value] of Object.entries(queryparams)){
             if(value!==undefined){
                 switch (key){
-                    case 'lessonId': 
-                    query.lesson= {
-                        id : parseInt(value), 
-                    }
+                    case 'classId': 
+                    query.lesson.classId = parseInt(value);                      
+                    break; 
+                    case 'teacherId': 
+                    query.lesson.teacherId = value; 
                     break; 
                     case 'search':
-                    if(query.lesson){ 
-                    query.lesson.subject = {
-                        name:{contains: value, mode: 'insensitive'}
-                    }
-                }
+                        query.lesson = {
+                            subject : {name: {contains : value, mode: 'insensitive'}}
+                        }
+                    break; 
+                    default:  
+                    break; 
                 }
             }
         }
     }
-
+    console.log("querty",query);
     const [data, count] = await prisma.$transaction([
         prisma.exam.findMany({
             where: query, 
@@ -114,7 +116,7 @@ export default async function ExamList({searchParams}: {searchParams:{[key:strin
         prisma.exam.count({where:query})
               
     ])
-                                            
+    console.log(data); 
     return <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
 
             <div className="w-full flex items-center justify-between ">
