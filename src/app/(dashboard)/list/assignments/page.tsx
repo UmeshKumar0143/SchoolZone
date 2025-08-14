@@ -2,15 +2,13 @@ import FormModal from "@/components/FormModal";
 import ListSearchBar from "@/components/ListSearchBar";
 import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
-import { assignmentsData,  role,  } from "@/lib/data";
+import { role,  } from "@/lib/data";
 import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/setting";
 import { Assignment, Class, Prisma, Subject, Teacher } from "@prisma/client";
 import Link from "next/link";
-import { CgMathPlus } from "react-icons/cg";
-import {  FaExternalLinkAlt, FaSortAmountDown } from "react-icons/fa";
+import {FaSortAmountDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
-import { MdDeleteOutline } from "react-icons/md";
 
 type AssingmentList = Assignment &{lesson: {
         subject: Subject; 
@@ -71,7 +69,7 @@ const renderRow = (item:AssingmentList)=>{
 
 
 export default async function  AssignmentsList({
-  searchParams,
+  searchParams
 }: {
   searchParams: { [key: string]: string | undefined };
 }){

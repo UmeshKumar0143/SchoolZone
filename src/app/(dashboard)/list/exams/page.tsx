@@ -83,7 +83,7 @@ export default async function ExamList({searchParams}: {searchParams:{[key:strin
                     case 'classId': 
                     query.lesson = { classId : parseInt(value)}                      
                     break; 
-                    case 'teacherId': 
+                    case 'teacherId':
                     query.lesson =  {teacherId :  value}; 
                     break; 
                     case 'search':
@@ -97,7 +97,8 @@ export default async function ExamList({searchParams}: {searchParams:{[key:strin
             }
         }
     }
-
+    
+P
     const [data, count] = await prisma.$transaction([
         prisma.exam.findMany({
             where: query, 

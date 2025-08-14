@@ -2,23 +2,26 @@ import FormModal from "@/components/FormModal";
 import ListSearchBar from "@/components/ListSearchBar";
 import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
-import {  resultsData,  role,  } from "@/lib/data";
+import { role,  } from "@/lib/data";
 import Link from "next/link";
-import { CgMathPlus } from "react-icons/cg";
-import {  FaExternalLinkAlt, FaSortAmountDown } from "react-icons/fa";
+import {  FaSortAmountDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
-import { MdDeleteOutline } from "react-icons/md";
+import { Prisma } from "@prisma/client";
+import prisma from "@/lib/prisma";
+import { ITEM_PER_PAGE } from "@/lib/setting";
 
-type Result = {
-    id: number; 
-    subject: string; 
-    class: string;
-    teacher: string; 
-    student: string; 
-    date: string; 
-    type: string; 
-    score: number; 
-}
+type ResultList = {
+    id:number
+    title: string
+    studentName: string
+    studentSurname: string
+    teacherName: string
+    teacherSurname: string
+    score:number
+    className:string
+    startTime: Date
+} 
+
 
 const cols = [
     {
@@ -60,18 +63,18 @@ const cols = [
 
 ]
 
-const renderRow = (item:Result)=>{
+const renderRow = (item:ResultList)=>{
     return <tr key={item.id} className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-school-purple-Light">
         <td className="flex items-center p-4 gap-2" >
         <div className="flex flex-col ">
-            <h3 className="font-semibold ">{item.subject}</h3>
+            <h3 className="font-semibold ">{item.title}</h3>
         </div>
         </td>
-        <td className="hidden md:table-cell">{item.student}</td>
+        <td className="hidden md:table-cell">{item.studentName +" "+ item.studentSurname}</td>
         <td className="hidden md:table-cell">{item.score}</td>
-        <td className="hidden md:table-cell">{item.teacher}</td>
-        <td className="hidden md:table-cell">{item.class}</td>
-        <td className="hidden md:table-cell">{item.date}</td>
+        <td className="hidden md:table-cell">{item.teacherName +" "+ item.teacherSurname}</td>
+        <td className="hidden md:table-cell">{item.className}</td>
+        <td className="hidden md:table-cell">{new Intl.DateTimeFormat("en-US").format(item.startTime)}</td>
         <td>
             <div className="flex items-center gap-2">
                     <Link href={`/list/results/${item.id}`}>
@@ -84,7 +87,94 @@ const renderRow = (item:Result)=>{
     </tr>
 }
 
-export default function ResultList(){
+export default async function ResultList({
+searchParams
+}:{searchParams:{[key:string]: string | undefined}}){
+
+        const {page, ...queryParams} =  await searchParams; 
+
+        const p = page? parseInt(page) : 1; 
+
+        const query : Prisma.ResultWhereInput = {}; 
+
+        if(query){
+            for(const [key , value ] of Object.entries(queryParams)){
+                if(value!=undefined){                    
+                    switch(key){
+                        case 'classId': 
+                        query.exam!.lesson = {classId: parseInt(value)}
+                        break; 
+                        case 'teacherId': 
+                        query.exam!.lesson = {teacherId: value}
+                        break; 
+                        case 'search': 
+                        query.OR = [
+                                {exam: {title: {contains:value, mode:"insensitive"}}}, 
+                                {Student:{name:{contains:value, mode:"insensitive"}}}
+                        ]
+                        break; 
+                        default: 
+                        break; 
+                }
+            }
+            }
+        }
+
+
+        const [dataRes, count] = await prisma.$transaction([
+            prisma.result.findMany({
+                where: query, 
+                include: {
+                    Student: {select: {name: true, surname: true}}, 
+                    exam: {
+                        include: {
+                            lesson:{
+                                select:{
+                                    class: {select: {name: true}}, 
+                                    teacher: {select: {name: true, surname: true}}, 
+                                }
+                            }
+                        }
+                    },
+                    assignment:{
+                        include: {
+                            lesson:{
+                                select:{
+                                    class:{select:{name:true}}, 
+                                    teacher:{select:{name:true, surname:true}}, 
+                                }
+                            }
+                        }
+                    }
+                },
+                
+                take:ITEM_PER_PAGE, 
+                skip: ITEM_PER_PAGE*(p-1), 
+            }), 
+            prisma.result.count({where:query}), 
+        ])
+
+        const data = dataRes.map((item)=>{
+            const assement  = item.exam || item.assignment; 
+
+            if(!assement) return null; 
+
+            const isExam  = "startTime" in assement; 
+
+            return {
+                   id: item.id, 
+                   title: assement.title, 
+                   studentName: item.Student?.name, 
+                   studentSurname: item.Student?.surname, 
+                   teacherName: assement?.lesson.teacher.name, 
+                   teacherSurname: assement.lesson.teacher.surname, 
+                   score:item.score, 
+                   className:assement.lesson.class.name, 
+                   startTime: isExam? assement.startTime : assement.startDate
+            }
+        })
+
+
     return <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
 
             <div className="w-full flex items-center justify-between ">
@@ -102,7 +192,7 @@ export default function ResultList(){
                                 </div>
                         </div>
             </div>
-            <Table  columns  = {cols} renderRow = {renderRow} data={resultsData}/>
-            <Pagination/>
+            <Table  columns  = {cols} renderRow = {renderRow} data={data}/>
+            <Pagination page={p} count={count} />
     </div>
 }
