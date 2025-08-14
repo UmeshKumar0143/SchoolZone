@@ -81,10 +81,10 @@ export default async function ExamList({searchParams}: {searchParams:{[key:strin
             if(value!==undefined){
                 switch (key){
                     case 'classId': 
-                    query.lesson.classId = parseInt(value);                      
+                    query.lesson = { classId : parseInt(value)}                      
                     break; 
                     case 'teacherId': 
-                    query.lesson.teacherId = value; 
+                    query.lesson =  {teacherId :  value}; 
                     break; 
                     case 'search':
                         query.lesson = {
@@ -97,7 +97,7 @@ export default async function ExamList({searchParams}: {searchParams:{[key:strin
             }
         }
     }
-    console.log("querty",query);
+
     const [data, count] = await prisma.$transaction([
         prisma.exam.findMany({
             where: query, 
@@ -116,7 +116,6 @@ export default async function ExamList({searchParams}: {searchParams:{[key:strin
         prisma.exam.count({where:query})
               
     ])
-    console.log(data); 
     return <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
 
             <div className="w-full flex items-center justify-between ">

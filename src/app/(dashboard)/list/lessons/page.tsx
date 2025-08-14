@@ -78,9 +78,8 @@ export default async function StudentList({searchParams}:{searchParams: {[key:st
                     case 'teacherId': 
                         query.teacherId = value; 
                         break; 
-                    
                     case 'search':
-                        query.OR = [
+                    query.OR = [
                             {subject: {name: {contains: value, mode: 'insensitive'}, }}, 
                             {teacher: {name: {contains: value,mode: 'insensitive'} }}
                         ]
