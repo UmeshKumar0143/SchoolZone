@@ -3,20 +3,18 @@ import ListSearchBar from "@/components/ListSearchBar";
 import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
 import {  eventsData, resultsData,  role,  } from "@/lib/data";
+import prisma from "@/lib/prisma";
+import { Class, Event, Prisma } from "@prisma/client";
 import Link from "next/link";
 import { CgMathPlus } from "react-icons/cg";
-import {  FaExternalLinkAlt, FaSortAmountDown } from "react-icons/fa";
+import {  FaSortAmountDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
-import { MdDeleteOutline } from "react-icons/md";
 
-type Event = {
-    id: number; 
-    title: string; 
-    class: string;
-    date: string; 
-    startTime: string; 
-    endTime: string; 
-}
+type EventList = Event & {
+    class: Class, 
+
+} ;
+
 
 const cols = [
     {
@@ -53,17 +51,17 @@ const cols = [
 
 ]
 
-const renderRow = (item:Event)=>{
+const renderRow = (item:EventList)=>{
     return <tr key={item.id} className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-school-purple-Light">
         <td className="flex items-center p-4 gap-2" >
         <div className="flex flex-col ">
             <h3 className="font-semibold ">{item.title}</h3>
         </div>
         </td>
-        <td className="hidden md:table-cell">{item.class}</td>
-        <td className="hidden md:table-cell">{item.date}</td>
-        <td className="hidden md:table-cell">{item.startTime}</td>
-        <td className="hidden md:table-cell">{item.endTime}</td>
+        <td className="hidden md:table-cell">{item.class.name}</td>
+        <td className="hidden md:table-cell">{new Intl.DateTimeFormat("en-Us").format(item.startTime)}</td>
+        <td className="hidden md:table-cell">{item.startTime.toLocaleTimeString("en-US",{hour:"2-digit", minute:"2-digit", hour12:false })}</td>
+        <td className="hidden md:table-cell">{item.endTime.toLocaleTimeString("en-US", {hour: "2-digit", minute: "2-digit", hour12: false})}</td>
         <td>
             <div className="flex items-center gap-2">
                     <Link href={`/list/teacher/${item.id}`}>
@@ -76,7 +74,29 @@ const renderRow = (item:Event)=>{
     </tr>
 }
 
-export default function EventsList(){
+export default async function EventsList({searchParams}: {searchParams: {[key:string ]: string | undefined}}){
+
+    const {page, ...queryParams} = await searchParams; 
+
+    const p = page? parseInt(page): 1; 
+
+    const query:Prisma.EventWhereInput = {};  
+
+
+    const [data, count]  = await prisma.$transaction([
+         prisma.event.findMany({
+            where:query, 
+            include: {
+                class: {
+                    select: { name: true}
+                }
+            }
+        }), 
+        prisma.event.count({where:query})
+    ])
+
+
+
     return <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
 
             <div className="w-full flex items-center justify-between ">
@@ -96,7 +116,7 @@ export default function EventsList(){
                                 </div>
                         </div>
             </div>
-            <Table  columns  = {cols} renderRow = {renderRow} data={eventsData}/>
-            <Pagination/>
+            <Table  columns  = {cols} renderRow = {renderRow} data={data}/>
+            <Pagination page={p} count={count}/>
     </div>
 }
