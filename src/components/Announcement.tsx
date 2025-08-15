@@ -1,4 +1,3 @@
-import { CgMore } from "react-icons/cg";
 
 export default function Announcement(){
     return <div className="rounded-md bg-white p-4 ">
