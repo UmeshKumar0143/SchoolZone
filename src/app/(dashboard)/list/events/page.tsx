@@ -4,6 +4,7 @@ import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
 import {  eventsData, resultsData,  role,  } from "@/lib/data";
 import prisma from "@/lib/prisma";
+import { ITEM_PER_PAGE } from "@/lib/setting";
 import { Class, Event, Prisma } from "@prisma/client";
 import Link from "next/link";
 import { CgMathPlus } from "react-icons/cg";
@@ -82,6 +83,22 @@ export default async function EventsList({searchParams}: {searchParams: {[key:st
 
     const query:Prisma.EventWhereInput = {};  
 
+    if(queryParams){
+        for(const [key, value] of Object.entries(queryParams)){
+            if(value!=undefined){
+                switch(key){
+                case 'search': 
+                    query.OR = [
+                        {title: {contains: value, mode: "insensitive"}}, 
+                        {class:{ is: {name: {contains: value, mode: "insensitive"}}}}
+                    ]
+                    break; 
+                default: 
+                break; 
+                }
+            }
+        }
+    }
 
     const [data, count]  = await prisma.$transaction([
          prisma.event.findMany({
@@ -90,7 +107,9 @@ export default async function EventsList({searchParams}: {searchParams: {[key:st
                 class: {
                     select: { name: true}
                 }
-            }
+            }, 
+            take: ITEM_PER_PAGE, 
+            skip: ITEM_PER_PAGE*(p-1)
         }), 
         prisma.event.count({where:query})
     ])
