@@ -1,3 +1,4 @@
+import { UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import { AiOutlineMessage } from "react-icons/ai";
 import {  CiBellOn, CiSearch } from "react-icons/ci";
@@ -21,7 +22,7 @@ export default function Navbar(){
                     <span className="text-xs ">Jhon Doe</span>
                     <span className="text-[10px] text-right text-gray-500">Admin</span>
             </div>
-            <Image src={"/avatar.png"} alt="avatar" width={36} height={36} className="rounded-full" />
+            <UserButton/>
         </div>
     </div>
 }
