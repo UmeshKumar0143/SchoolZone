@@ -34,7 +34,7 @@ export default function SignInPage() {
             <Image src="/logo.png" width={32} height={32} alt='Logo' className='inline'/>
             <h1 className='font-bold  text-xl '>SchoolZone</h1>
             </div>
-            <h1 className="mt-4 text-xl font-medium tracking-tight text-zinc-950">
+            <h1 className="mt-4 text-lg font-medium tracking-tight text-zinc-950">
               Sign in to SchoolZone 
             </h1>
           </header>
