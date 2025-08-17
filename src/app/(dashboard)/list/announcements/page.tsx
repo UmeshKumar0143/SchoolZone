@@ -2,16 +2,24 @@ import FormModal from "@/components/FormModal";
 import ListSearchBar from "@/components/ListSearchBar";
 import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
-import {  announcementsData,  role,  } from "@/lib/data";
 import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/setting";
+import { auth, currentUser } from "@clerk/nextjs/server";
 import { Announcement, Class, Prisma } from "@prisma/client";
 import Link from "next/link";
 import {   FaSortAmountDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
+import { boolean } from "zod";
 
 type AnnouncementList  = Announcement & {class: Class}; 
 
+
+export default async  function AnnouncementsList({searchParams}: {searchParams: {[key:string]: string | undefined}}){
+    
+    const {sessionClaims} = await auth(); 
+
+    const role = (sessionClaims?.metadata as {role?:string}).role; 
+    
 const cols = [
     {
      header: "Info" , 
@@ -28,16 +36,19 @@ const cols = [
      accessor: "date", 
      classname: "hidden md:table-cell text-left"
     }, 
-    {
+   {...role=="admin" ? {
      header: "Actions" , 
      accessor: "actions", 
      classname: "text-left"
-    }, 
+    }: []}, 
+
+]; 
 
 
-]
 
-const renderRow = (item:AnnouncementList)=>{
+    
+
+    const renderRow = (item:AnnouncementList)=>{
     return <tr key={item.id} className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-school-purple-Light">
         <td className="flex items-center p-4 gap-2" >
         <div className="flex flex-col ">
@@ -48,18 +59,14 @@ const renderRow = (item:AnnouncementList)=>{
         <td className="hidden md:table-cell">{new Intl.DateTimeFormat("en-US").format(item.date)}</td>
         <td>
             <div className="flex items-center gap-2">
-                    <Link href={`/list/result/${item.id}`}>
-                    <FormModal type="update" table="announcement" data={item} id={item.id} />
-                    </Link>
-                   {role=="admin" && <FormModal type="delete" table="announcement" data={item} id={item.id} /> 
+                   {role=== "admin" && <FormModal type="delete" table="announcement" data={item} id={item.id} /> 
 }
             </div>
         </td>
     </tr>
 }
 
-export default async  function AnnouncementsList({searchParams}: {searchParams: {[key:string]: string | undefined}}){
-    const {page, ...queryParams} = searchParams; 
+    const {page, ...queryParams} = await searchParams; 
 
     const p = page? parseInt(page) : 1; 
 
@@ -121,3 +128,4 @@ export default async  function AnnouncementsList({searchParams}: {searchParams: 
             <Pagination page={p} count={count}/>
     </div>
 }
+

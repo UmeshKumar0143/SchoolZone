@@ -1,9 +1,10 @@
 import { UserButton } from "@clerk/nextjs";
-import Image from "next/image";
+import { currentUser } from "@clerk/nextjs/server";
 import { AiOutlineMessage } from "react-icons/ai";
 import {  CiBellOn, CiSearch } from "react-icons/ci";
 
-export default function Navbar(){
+export default async function Navbar(){
+    const user = await currentUser(); 
     return <div className="flex justify-between items-center p-4">
         <div className="hidden md:flex items-center gap-2 text-xs rounded-full ring-[1.5px] ring-gray-300 px-2 ">
             <CiSearch  width={14} height={14}/>
@@ -19,8 +20,8 @@ export default function Navbar(){
                 <div  className="w-5 h-5 rounded-full bg-purple-500 flex justify-center items-center text-white -top-3 -right-3 absolute">1</div>
             </div>
             <div className="flex flex-col">
-                    <span className="text-xs ">Jhon Doe</span>
-                    <span className="text-[10px] text-right text-gray-500">Admin</span>
+                    <span className="text-xs ">{user?.username} </span>
+                    <span className="text-[10px] text-right text-gray-500">{user?.publicMetadata.role as string}</span>
             </div>
             <UserButton/>
         </div>
