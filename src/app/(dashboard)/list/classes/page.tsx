@@ -2,15 +2,21 @@ import FormModal from "@/components/FormModal";
 import ListSearchBar from "@/components/ListSearchBar";
 import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
-import {  role,  } from "@/lib/data";
 import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/setting";
+import { getUser } from "@/lib/util";
+import { auth } from "@clerk/nextjs/server";
 import { Class, Grade, Prisma, Teacher } from "@prisma/client";
-import Link from "next/link";
 import {   FaSortAmountDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
 
 type ClasesList = Class & {supervisor: Teacher, Grade: Grade}
+
+
+
+export default async function ClasesList({searchParams}:{searchParams:{[key:string]: string | undefined}}){
+
+         const {userId, role } = await getUser();
 
 const cols = [
     {
@@ -33,11 +39,11 @@ const cols = [
      accessor: "supervisor", 
      classname: "hidden md:table-cell text-left"
     }, 
-    {
+    ...(role=="admin" ? [{
      header: "Actions" , 
      accessor: "actions", 
      classname: "text-left"
-    }, 
+    }]: []), 
 
 
 ]
@@ -54,26 +60,27 @@ const renderRow = (item:ClasesList)=>{
         <td className="hidden md:table-cell">{item.supervisor.name}</td>
         <td>
             <div className="flex items-center gap-2">
-                    <Link href={`/list//${item.id}`}>
-                <FormModal type="update" table="class" data={item} id={item.id} />
-                    </Link>
-                   {role=="admin" && <FormModal table="class" data={item} id={item.id} type="delete" />
+                
+                {role=="admin" &&
+                <>
+                <FormModal type="update" table="class" data={item} id={item.id} /> 
+                 <FormModal table="class" data={item} id={item.id} type="delete" />
+                 </>
 }
             </div>
         </td>
     </tr>
 }
 
-export default async function ClasesList({searchParams}:{searchParams:{[key:string]: string | undefined}}){
 
-    const {page, ...qeuryparams} = await searchParams; 
+    const {page, ...queryParams} = await searchParams; 
 
     const p = page? parseInt(page): 1; 
 
     const query : Prisma.ClassWhereInput = {}; 
 
-    if(qeuryparams){
-        for(const[key, value] of Object.entries(qeuryparams)){
+    if(queryParams){
+        for(const[key, value] of Object.entries(queryParams)){
             if(value){
                 switch(key){
                     case 'teacherId': 
@@ -118,7 +125,9 @@ export default async function ClasesList({searchParams}:{searchParams:{[key:stri
                                 <button className="bg-school-yellow w-8 h-8 rounded-full p-2">
                                 <FaSortAmountDown width={14} height={14} />
                                 </button>
+                                { role=="admin" && 
                                 <FormModal type="create" table="class" />
+                                }
                                 </div>
                         </div>
             </div>

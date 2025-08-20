@@ -98,7 +98,7 @@ export default async function ExamList({searchParams}: {searchParams:{[key:strin
         }
     }
     
-P
+
     const [data, count] = await prisma.$transaction([
         prisma.exam.findMany({
             where: query, 

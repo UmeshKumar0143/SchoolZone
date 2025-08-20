@@ -2,11 +2,10 @@ import FormModal from "@/components/FormModal";
 import ListSearchBar from "@/components/ListSearchBar";
 import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
-import {  eventsData, resultsData,  role,  } from "@/lib/data";
 import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/setting";
+import { getUser } from "@/lib/util";
 import { Class, Event, Prisma } from "@prisma/client";
-import Link from "next/link";
 import { CgMathPlus } from "react-icons/cg";
 import {  FaSortAmountDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
@@ -15,6 +14,14 @@ type EventList = Event & {
     class: Class, 
 
 } ;
+
+
+
+
+export default async function EventsList({searchParams}: {searchParams: {[key:string ]: string | undefined}}){
+
+
+    const {userId, role} = await getUser(); 
 
 
 const cols = [
@@ -43,11 +50,11 @@ const cols = [
      accessor: "endtime", 
      classname: "hidden md:table-cell text-left"
     }, 
-    {
+    ...(role=="admin" ?[{
      header: "Actions" , 
      accessor: "actions", 
      classname: "text-left"
-    }, 
+    }]:[]), 
 
 
 ]
@@ -65,17 +72,18 @@ const renderRow = (item:EventList)=>{
         <td className="hidden md:table-cell">{item.endTime.toLocaleTimeString("en-US", {hour: "2-digit", minute: "2-digit", hour12: false})}</td>
         <td>
             <div className="flex items-center gap-2">
-                    <Link href={`/list/teacher/${item.id}`}>
+            { role=="admin" && 
+                <>
                     <FormModal data={item} id={item.id} type="update" table="event" />
-                    </Link>
-                   {role=="admin" && <FormModal data={item} id={item.id} type="delete" table="event" />
-}
+                   role=="admin" && <FormModal data={item} id={item.id} type="delete" table="event" />
+                   </>
+                    }
             </div>
         </td>
     </tr>
 }
 
-export default async function EventsList({searchParams}: {searchParams: {[key:string ]: string | undefined}}){
+
 
     const {page, ...queryParams} = await searchParams; 
 
@@ -99,6 +107,20 @@ export default async function EventsList({searchParams}: {searchParams: {[key:st
             }
         }
     }
+
+    const roleConditions = {
+        teacher: {lessons: {some: {teacherId: userId!}}},
+        student: {Students: {some: {id: userId!}}},
+        parent: {Students: {some: {parentId: userId!}}},
+    }
+
+        query.OR = [
+            {classId: null}, 
+            {class: roleConditions[role as keyof typeof roleConditions]} || {}
+        ]
+  
+
+   
 
     const [data, count]  = await prisma.$transaction([
          prisma.event.findMany({
@@ -129,9 +151,10 @@ export default async function EventsList({searchParams}: {searchParams: {[key:st
                                 <button className="bg-school-yellow w-8 h-8 rounded-full p-2">
                                 <FaSortAmountDown width={14} height={14} />
                                 </button>
-                                <button className="bg-school-yellow w-8 h-8 rounded-full p-2">
+
+                                {role === "admin" && <button className="bg-school-yellow w-8 h-8 rounded-full p-2">
                                 <CgMathPlus width={14} height={14}/>
-                                </button>
+                                </button>}
                                 </div>
                         </div>
             </div>

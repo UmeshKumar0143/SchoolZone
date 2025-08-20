@@ -4,21 +4,17 @@ import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
 import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/setting";
-import { auth, currentUser } from "@clerk/nextjs/server";
+import { getUser } from "@/lib/util";
+import { auth } from "@clerk/nextjs/server";
 import { Announcement, Class, Prisma } from "@prisma/client";
-import Link from "next/link";
 import {   FaSortAmountDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
-import { boolean } from "zod";
 
 type AnnouncementList  = Announcement & {class: Class}; 
 
 
 export default async  function AnnouncementsList({searchParams}: {searchParams: {[key:string]: string | undefined}}){
-    
-    const {sessionClaims} = await auth(); 
-
-    const role = (sessionClaims?.metadata as {role?:string}).role; 
+   const {userId, role } = await getUser();
     
 const cols = [
     {
@@ -36,11 +32,11 @@ const cols = [
      accessor: "date", 
      classname: "hidden md:table-cell text-left"
     }, 
-   {...role=="admin" ? {
+   ...(role==="amdin"? [{
      header: "Actions" , 
      accessor: "actions", 
      classname: "text-left"
-    }: []}, 
+   }] : [])
 
 ]; 
 
@@ -55,7 +51,7 @@ const cols = [
             <h3 className="font-semibold ">{item.title}</h3>
         </div>
         </td>
-        <td className="hidden md:table-cell">{item.class.name}</td>
+        <td className="hidden md:table-cell">{item.class.name || '-'}</td>
         <td className="hidden md:table-cell">{new Intl.DateTimeFormat("en-US").format(item.date)}</td>
         <td>
             <div className="flex items-center gap-2">
@@ -91,6 +87,19 @@ const cols = [
         }
     }
 
+     const roleConditions = {
+        teacher: {lessons: {some: {teacherId: userId!}}},
+        student: {Students: {some: {id: userId!}}},
+        parent: {Students: {some: {parentId: userId!}}},
+    }
+
+        query.OR = [
+            {classId: null}, 
+            {class: roleConditions[role as keyof typeof roleConditions]} || {}
+        ]
+  
+    
+
     const [data, count] = await  prisma.$transaction([
         prisma.announcement.findMany({
             where: query, 
@@ -120,7 +129,9 @@ const cols = [
                                 <button className="bg-school-yellow w-8 h-8 rounded-full p-2">
                                 <FaSortAmountDown width={14} height={14} />
                                 </button>
-                                <FormModal type="create" table="announcement" />
+                                {(role=="admin" ) &&
+                                    <FormModal type="create" table="assignment" />
+                                }
                                 </div>
                         </div>
             </div>
