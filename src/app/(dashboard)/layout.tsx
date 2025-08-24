@@ -20,4 +20,4 @@ export default function  DashBoardlayout({children}:{children:ReactNode}){
                 {children}
             </div>
         </div>
-}
+}   

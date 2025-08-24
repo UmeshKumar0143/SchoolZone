@@ -5,7 +5,10 @@ import EventCalander from "@/components/EventCalendar";
 import FinanceChart from "@/components/FinanceChart";
 import UserCard from "@/components/UserCard";
 
-export default function AdminPage(){
+export default async function AdminPage(){
+
+
+
     return <div className="flex gap-4 p-4 flex-col md:flex-row rounded-2xl min-w-[130px]">
 
         <div className="w-full lg:w-2/3 flex flex-col gap-8   ">
@@ -14,7 +17,6 @@ export default function AdminPage(){
             <UserCard type="student"/>
             <UserCard type="teacher"/>
             <UserCard type="parent"/>
-            <UserCard type="staff"/>
          </div>
          <div className="flex gap-4 flex-col lg:flex-row">
             <div className="w-full lg:w-1/3 h-[450px]">
