@@ -1,3 +1,4 @@
+
 import { currentUser } from "@clerk/nextjs/server";
 import Image from "next/image";
 import Link from "next/link";
@@ -119,7 +120,8 @@ const menuItems = [
 
 export default async  function SideBar(){
     const user = await currentUser(); 
-    const role = user?.publicMetadata.role as string ; 
+    if(!user) return <div>User not logged in...</div>
+    const role = (user?.publicMetadata.role as string)??""; 
     return <div className="mt-4 text-sm ">
             {menuItems.map((item,index)=>(
                 <div className="flex flex-col gap-2"  key={index}>

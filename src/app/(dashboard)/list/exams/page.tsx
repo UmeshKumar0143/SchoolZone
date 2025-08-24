@@ -2,13 +2,12 @@ import FormModal from "@/components/FormModal";
 import ListSearchBar from "@/components/ListSearchBar";
 import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
-import { role,  } from "@/lib/data";
 import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/setting";
-import { Class, Exam, Prisma, Subject, Teacher } from "@prisma/client";
-import Link from "next/link";
+import { Class, Exam, Prisma, Subject, Teacher } from "@/generated/prisma/client";
 import { FaSortAmountDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
+import { getCurrentUser } from "@/lib/util";
 
 type ExamLists  = Exam & {lesson: {
     subject: Subject; 
@@ -16,7 +15,13 @@ type ExamLists  = Exam & {lesson: {
     teacher: Teacher
 }}
 
-const cols = [
+
+
+export default async function ExamList({searchParams}: {searchParams:{[key:string]:string|undefined}}){
+
+    const  {role,userId} = await  getCurrentUser(); 
+
+    const cols = [
     {
      header: "Info" , 
      accessor: "info",
@@ -37,11 +42,11 @@ const cols = [
      accessor: "date", 
      classname: "hidden md:table-cell text-left"
     }, 
-    {
+  ...(role==="admin" ? [  {
      header: "Actions" , 
      accessor: "actions", 
      classname: "text-left"
-    }, 
+    }]: []) 
 
 
 ]
@@ -58,17 +63,13 @@ const renderRow = (item:ExamLists)=>{
         <td className="hidden md:table-cell">{new Intl.DateTimeFormat("en-US").format(item.startTime)}</td>
         <td>
             <div className="flex items-center gap-2">
-                    <Link href={`/list/exams/${item.id}`}>
-                    <FormModal type="update" data={item} id={item.id} table="exam" />
-                    </Link>
-                   {role=="admin" &&<FormModal data={item} id={item.id} table="exam" type="delete" />
-}
+                   {role=="admin" && <FormModal data={item} id={item.id} table="exam" type="delete" /> }
             </div>
         </td>
     </tr>
 }
 
-export default async function ExamList({searchParams}: {searchParams:{[key:string]:string|undefined}}){
+
 
     const {page, ...queryparams} = await searchParams; 
 
@@ -97,7 +98,39 @@ export default async function ExamList({searchParams}: {searchParams:{[key:strin
             }
         }
     }
-    
+
+    switch(role){
+        case "admin":
+            break; 
+        case "student": 
+        query.lesson = {class: 
+            {Student: {
+                some: {
+                    id: userId!
+                }
+            }}
+        }
+        break; 
+        case "parent": 
+        query.lesson = {
+            class: {
+                Student: {
+                    some: {
+                        parentId: userId!
+                    }
+                }
+            }
+        }
+        break; 
+        case "teacher": 
+        query.lesson = {
+            teacherId: userId!
+        
+        }
+        break; 
+        default: 
+        break; 
+    }
 
     const [data, count] = await prisma.$transaction([
         prisma.exam.findMany({
@@ -130,7 +163,7 @@ export default async function ExamList({searchParams}: {searchParams:{[key:strin
                                 <button className="bg-school-yellow w-8 h-8 rounded-full p-2">
                                 <FaSortAmountDown width={14} height={14} />
                                 </button>
-                                <FormModal table="exam" type="create"/>
+                             { role=="admin" || role=="teacher" &&  <FormModal table="exam" type="create"/>}
                                 </div>
                         </div>
             </div>

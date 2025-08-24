@@ -5,7 +5,7 @@ import Table from "@/components/Table";
 import { role, teachersData } from "@/lib/data";
 import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/setting";
-import { Class, Prisma, Subject, Teacher } from "@prisma/client";
+import { Class, Prisma, Subject, Teacher } from "@/generated/prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import {  FaSortAmountDown } from "react-icons/fa";

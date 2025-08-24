@@ -4,9 +4,8 @@ import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
 import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/setting";
-import { getUser } from "@/lib/util";
-import { auth } from "@clerk/nextjs/server";
-import { Class, Grade, Prisma, Teacher } from "@prisma/client";
+import { getCurrentUser } from "@/lib/util";
+import { Class, Grade, Prisma, Teacher } from "@/generated/prisma/client";
 import {   FaSortAmountDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
 
@@ -16,7 +15,7 @@ type ClasesList = Class & {supervisor: Teacher, Grade: Grade}
 
 export default async function ClasesList({searchParams}:{searchParams:{[key:string]: string | undefined}}){
 
-         const {userId, role } = await getUser();
+         const {userId, role } = await getCurrentUser();
 
 const cols = [
     {

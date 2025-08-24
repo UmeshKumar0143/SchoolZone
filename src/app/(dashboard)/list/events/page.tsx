@@ -4,8 +4,8 @@ import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
 import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/setting";
-import { getUser } from "@/lib/util";
-import { Class, Event, Prisma } from "@prisma/client";
+import { getCurrentUser } from "@/lib/util";
+import { Class, Event, Prisma } from "@/generated/prisma/client";
 import { CgMathPlus } from "react-icons/cg";
 import {  FaSortAmountDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
@@ -21,7 +21,7 @@ type EventList = Event & {
 export default async function EventsList({searchParams}: {searchParams: {[key:string ]: string | undefined}}){
 
 
-    const {userId, role} = await getUser(); 
+    const {userId, role} = await getCurrentUser(); 
 
 
 const cols = [
@@ -108,15 +108,15 @@ const renderRow = (item:EventList)=>{
         }
     }
 
-    const roleConditions = {
+    const roleConditions  = {
         teacher: {lessons: {some: {teacherId: userId!}}},
-        student: {Students: {some: {id: userId!}}},
-        parent: {Students: {some: {parentId: userId!}}},
+        student: {Student: {some: {id: userId!}}},
+        parent: {Student: {some: {parentId: userId!}}},
     }
 
         query.OR = [
             {classId: null}, 
-            {class: roleConditions[role as keyof typeof roleConditions]} || {}
+            {class: roleConditions[role as keyof typeof roleConditions] || {}} 
         ]
   
 

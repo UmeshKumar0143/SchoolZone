@@ -2,19 +2,23 @@ import FormModal from "@/components/FormModal";
 import ListSearchBar from "@/components/ListSearchBar";
 import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
-import {  lessonsData,  role,  } from "@/lib/data";
 import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/setting";
-import { Class, Lesson, Prisma, Subject, Teacher } from "@prisma/client";
+import { Class, Lesson, Prisma, Subject, Teacher } from "@/generated/prisma/client";
 import Link from "next/link";
-import { CgMathPlus } from "react-icons/cg";
-import {  FaExternalLinkAlt, FaSortAmountDown } from "react-icons/fa";
+import {  FaSortAmountDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
-import { MdDeleteOutline } from "react-icons/md";
+import { getCurrentUser } from "@/lib/util";
 
 type LessonList = Lesson & { subject: Subject, class: Class , teacher: Teacher}
 
-const cols = [
+
+
+export default async function StudentList({searchParams}:{searchParams: {[key:string]: string | undefined}}){
+
+    const {role,userId} = await getCurrentUser(); 
+
+    const cols = [
     {
      header: "Info" , 
      accessor: "info",
@@ -30,11 +34,11 @@ const cols = [
      accessor: "teacher", 
      classname: "hidden md:table-cell text-left"
     }, 
-    {
+  ...(role=="admin"? [  {
      header: "Actions" , 
      accessor: "actions", 
      classname: "text-left"
-    }, 
+    }]: []), 
 
 
 ]
@@ -50,17 +54,12 @@ const renderRow = (item:LessonList)=>{
         <td className="hidden md:table-cell">{item.teacher.name + " " + item.teacher.surname}</td>
         <td>
             <div className="flex items-center gap-2">
-                    <Link href={`/list/teacher/${item.id}`}>
-                    <FormModal type="update" table="lesson" data={item} id={item.id} />
-                    </Link>
                    {role=="admin" && <FormModal type="delete" table="lesson" data={item} id={item.id} />
 }
             </div>
         </td>
     </tr>
 }
-
-export default async function StudentList({searchParams}:{searchParams: {[key:string]: string | undefined}}){
 
     const {page, ...queryParams} = await searchParams; 
 
@@ -91,6 +90,22 @@ export default async function StudentList({searchParams}:{searchParams: {[key:st
         }
     }
 
+    switch(role){
+        case "admin": 
+        break; 
+        case "student": 
+        query.class = {Student: {
+            some:{
+                id: userId!
+            }
+        }}
+        case "teacher": 
+        query.teacherId = userId!
+        break; 
+        default: 
+        break; 
+    }
+
     const [data , count] = await prisma.$transaction([
         prisma.lesson.findMany({
             where: query, 
@@ -119,7 +134,7 @@ export default async function StudentList({searchParams}:{searchParams: {[key:st
                                 <button className="bg-school-yellow w-8 h-8 rounded-full p-2">
                                 <FaSortAmountDown width={14} height={14} />
                                 </button>
-                                <FormModal type="create" table="lesson"  />
+                              { role=="admin" &&  <FormModal type="create" table="lesson"  />}
                                 </div>
                         </div>
             </div>

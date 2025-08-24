@@ -2,20 +2,23 @@ import FormModal from "@/components/FormModal";
 import ListSearchBar from "@/components/ListSearchBar";
 import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
-import { role, studentsData} from "@/lib/data";
 import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/setting";
-import { Class, Prisma, Student } from "@prisma/client";
+import { Class, Prisma, Student } from "@/generated/prisma/client";
 import Image from "next/image";
 import Link from "next/link";
-import { CgMathPlus } from "react-icons/cg";
-import {  FaExternalLinkAlt, FaSortAmountDown } from "react-icons/fa";
+import {   FaSortAmountDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
-import { MdDeleteOutline } from "react-icons/md";
+import { getCurrentUser } from "@/lib/util";
 
 type StudentList = Student & {class: Class} 
 
-const cols = [
+
+export default async function  StudentList({searchParams}: {searchParams: {[key:string]: string | undefined}}){
+
+    const {role,userId} = await getCurrentUser();
+
+    const cols = [
     {
      header: "Info" , 
      accessor: "info",
@@ -41,11 +44,11 @@ const cols = [
      accessor: "address", 
      classname: "hidden md:table-cell text-left"
     }, 
-    {
+    ...(role=="admin" ? [{
      header: "Actions" , 
      accessor: "actions", 
      classname: "text-left"
-    }, 
+    }]: []), 
 
 
 ]
@@ -68,14 +71,17 @@ const renderRow = (item:StudentList)=>{
                     <Link  href={`/list/students/${item.id}`}>
                     <button className="w-7 h-7 flex items-center justify-center rounded-full bg-school-blue-light"> <Image src={'/view.png'} alt="view" width={16} height={16}/> </button>
                     </Link>
-                   <FormModal id={item.id} type="update" table="student" data={item}/>
+                 { role=="admin" &&  <FormModal id={item.id} type="update" table="student" data={item}/>}
                    {role=="admin" && <FormModal id={item.id} type="delete" table="student" data={item}/>
 }
             </div>
         </td>
     </tr>
 }
-export default async function  StudentList({searchParams}: {searchParams: {[key:string]: string | undefined}}){
+    
+    
+    
+    
     const {page, ...queryParams} = await searchParams; 
     const p = page? parseInt(page) : 1; 
     
@@ -130,7 +136,7 @@ export default async function  StudentList({searchParams}: {searchParams: {[key:
                                 <button className="bg-school-yellow w-8 h-8 rounded-full p-2">
                                 <FaSortAmountDown width={14} height={14} />
                                 </button>
-                               <FormModal type="create" table="student" />
+                             {role=="admin" &&   <FormModal type="create" table="student" />}
                                 </div>
                         </div>
             </div>

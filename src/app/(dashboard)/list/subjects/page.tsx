@@ -2,20 +2,24 @@ import FormModal from "@/components/FormModal";
 import ListSearchBar from "@/components/ListSearchBar";
 import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
-import {  role, subjectsData } from "@/lib/data";
 import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/setting";
-import { Prisma, Subject, Teacher } from "@prisma/client";
-import Image from "next/image";
+import { Prisma, Subject, Teacher } from "@/generated/prisma/client";
 import Link from "next/link";
-import { CgMathPlus } from "react-icons/cg";
-import {  FaExternalLinkAlt, FaSortAmountDown } from "react-icons/fa";
+import {  FaSortAmountDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
-import { MdDeleteOutline } from "react-icons/md";
+import { getCurrentUser } from "@/lib/util";
 
 type SubjectList= Subject & {teachers: Teacher[]}
 
-const cols = [
+
+
+export default async function SubjectsList({searchParams}:{searchParams:{[key:string]: string | undefined}}){
+
+    const {role, userId} = await getCurrentUser(); 
+
+
+    const cols = [
     {
      header: "Info" , 
      accessor: "info",
@@ -26,11 +30,11 @@ const cols = [
      accessor: "teachers", 
      classname: "hidden md:table-cell text-left"
     }, 
-    {
+  ...(role=="admin" ?    [  {
         header: "Actions" , 
         accessor: "actions", 
         classname: "text-left"
-       }, 
+       }]:[]), 
 
 ]
 
@@ -53,8 +57,6 @@ const renderRow = (item:SubjectList)=>{
         </td>
     </tr>
 }
-
-export default async function SubjectsList({searchParams}:{searchParams:{[key:string]: string | undefined}}){
 
     const {page, ...qeuryparams} = await searchParams; 
 

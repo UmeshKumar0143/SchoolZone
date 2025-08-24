@@ -2,15 +2,15 @@ import FormModal from "@/components/FormModal";
 import ListSearchBar from "@/components/ListSearchBar";
 import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
-import { role,  } from "@/lib/data";
-import Link from "next/link";
 import {  FaSortAmountDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/generated/prisma/client";
 import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/setting";
+import { getCurrentUser } from "@/lib/util";
 
-type ResultList = {
+
+ type ResultList = {
     id:number
     title: string
     studentName: string
@@ -21,6 +21,14 @@ type ResultList = {
     className:string
     startTime: Date
 } 
+
+
+export default async function ResultList({
+searchParams
+}:{searchParams:{[key:string]: string | undefined}}){
+
+    const {role , userId} = await getCurrentUser(); 
+
 
 
 const cols = [
@@ -54,11 +62,11 @@ const cols = [
      accessor: "date", 
      classname: "hidden md:table-cell text-left"
     }, 
-    {
+   ...(role==="admin"? [ {
      header: "Actions" , 
      accessor: "actions", 
      classname: "text-left"
-    }, 
+    }]: []), 
 
 
 ]
@@ -77,9 +85,6 @@ const renderRow = (item:ResultList)=>{
         <td className="hidden md:table-cell">{new Intl.DateTimeFormat("en-US").format(item.startTime)}</td>
         <td>
             <div className="flex items-center gap-2">
-                    <Link href={`/list/results/${item.id}`}>
-                    <FormModal data={item} id={item.id} type="update" table="result" />
-                    </Link>
                    {role=="admin" && <FormModal data={item} id={item.id} type="delete" table="result" />
 }
             </div>
@@ -87,9 +92,6 @@ const renderRow = (item:ResultList)=>{
     </tr>
 }
 
-export default async function ResultList({
-searchParams
-}:{searchParams:{[key:string]: string | undefined}}){
 
         const {page, ...queryParams} =  await searchParams; 
 

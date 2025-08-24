@@ -131,7 +131,7 @@ export const UserSex: typeof $Enums.UserSex
  */
 export class PrismaClient<
   ClientOptions extends Prisma.PrismaClientOptions = Prisma.PrismaClientOptions,
-  U = 'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never,
+  const U = 'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never,
   ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
 > {
   [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['other'] }
@@ -163,13 +163,6 @@ export class PrismaClient<
    * Disconnect from the database
    */
   $disconnect(): $Utils.JsPromise<void>;
-
-  /**
-   * Add a middleware
-   * @deprecated since 4.16.0. For new code, prefer client extensions instead.
-   * @see https://pris.ly/d/extensions
-   */
-  $use(cb: Prisma.Middleware): void
 
 /**
    * Executes a prepared raw query and returns the number of affected rows.
@@ -437,8 +430,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.6.0
-   * Query Engine version: f676762280b54cd07c770017ed3711ddde35f37a
+   * Prisma Client JS version: 6.14.0
+   * Query Engine version: 717184b7b35ea05dfa71a3236b7af656013e1e49
    */
   export type PrismaVersion = {
     client: string
@@ -1934,16 +1927,24 @@ export namespace Prisma {
     /**
      * @example
      * ```
-     * // Defaults to stdout
+     * // Shorthand for `emit: 'stdout'`
      * log: ['query', 'info', 'warn', 'error']
      * 
-     * // Emit as events
+     * // Emit as events only
      * log: [
-     *   { emit: 'stdout', level: 'query' },
-     *   { emit: 'stdout', level: 'info' },
-     *   { emit: 'stdout', level: 'warn' }
-     *   { emit: 'stdout', level: 'error' }
+     *   { emit: 'event', level: 'query' },
+     *   { emit: 'event', level: 'info' },
+     *   { emit: 'event', level: 'warn' }
+     *   { emit: 'event', level: 'error' }
      * ]
+     * 
+     * / Emit as events and log to stdout
+     * og: [
+     *  { emit: 'stdout', level: 'query' },
+     *  { emit: 'stdout', level: 'info' },
+     *  { emit: 'stdout', level: 'warn' }
+     *  { emit: 'stdout', level: 'error' }
+     * 
      * ```
      * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/logging#the-log-option).
      */
@@ -1998,10 +1999,15 @@ export namespace Prisma {
     emit: 'stdout' | 'event'
   }
 
-  export type GetLogType<T extends LogLevel | LogDefinition> = T extends LogDefinition ? T['emit'] extends 'event' ? T['level'] : never : never
-  export type GetEvents<T extends any> = T extends Array<LogLevel | LogDefinition> ?
-    GetLogType<T[0]> | GetLogType<T[1]> | GetLogType<T[2]> | GetLogType<T[3]>
-    : never
+  export type CheckIsLogLevel<T> = T extends LogLevel ? T : never;
+
+  export type GetLogType<T> = CheckIsLogLevel<
+    T extends LogDefinition ? T['level'] : T
+  >;
+
+  export type GetEvents<T extends any[]> = T extends Array<LogLevel | LogDefinition>
+    ? GetLogType<T[number]>
+    : never;
 
   export type QueryEvent = {
     timestamp: Date
@@ -2041,25 +2047,6 @@ export namespace Prisma {
     | 'runCommandRaw'
     | 'findRaw'
     | 'groupBy'
-
-  /**
-   * These options are being passed into the middleware as "params"
-   */
-  export type MiddlewareParams = {
-    model?: ModelName
-    action: PrismaAction
-    args: any
-    dataPath: string[]
-    runInTransaction: boolean
-  }
-
-  /**
-   * The `T` type makes sure, that the `return proceed` is not forgotten in the middleware implementation
-   */
-  export type Middleware<T = any> = (
-    params: MiddlewareParams,
-    next: (params: MiddlewareParams) => $Utils.JsPromise<T>,
-  ) => $Utils.JsPromise<T>
 
   // tested in getLogLevel.test.ts
   export function getLogLevel(log: Array<LogLevel | LogDefinition>): LogLevel | undefined;
@@ -2332,14 +2319,14 @@ export namespace Prisma {
    */
 
   export type ClassCountOutputType = {
-    Student: number
+    Students: number
     lessons: number
     events: number
     annoucements: number
   }
 
   export type ClassCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Student?: boolean | ClassCountOutputTypeCountStudentArgs
+    Students?: boolean | ClassCountOutputTypeCountStudentsArgs
     lessons?: boolean | ClassCountOutputTypeCountLessonsArgs
     events?: boolean | ClassCountOutputTypeCountEventsArgs
     annoucements?: boolean | ClassCountOutputTypeCountAnnoucementsArgs
@@ -2359,7 +2346,7 @@ export namespace Prisma {
   /**
    * ClassCountOutputType without action
    */
-  export type ClassCountOutputTypeCountStudentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ClassCountOutputTypeCountStudentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: StudentWhereInput
   }
 
@@ -10671,7 +10658,7 @@ export namespace Prisma {
     supervisorId?: boolean
     gradeId?: boolean
     supervisor?: boolean | Class$supervisorArgs<ExtArgs>
-    Student?: boolean | Class$StudentArgs<ExtArgs>
+    Students?: boolean | Class$StudentsArgs<ExtArgs>
     Grade?: boolean | Class$GradeArgs<ExtArgs>
     lessons?: boolean | Class$lessonsArgs<ExtArgs>
     events?: boolean | Class$eventsArgs<ExtArgs>
@@ -10710,7 +10697,7 @@ export namespace Prisma {
   export type ClassOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "capacity" | "supervisorId" | "gradeId", ExtArgs["result"]["class"]>
   export type ClassInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     supervisor?: boolean | Class$supervisorArgs<ExtArgs>
-    Student?: boolean | Class$StudentArgs<ExtArgs>
+    Students?: boolean | Class$StudentsArgs<ExtArgs>
     Grade?: boolean | Class$GradeArgs<ExtArgs>
     lessons?: boolean | Class$lessonsArgs<ExtArgs>
     events?: boolean | Class$eventsArgs<ExtArgs>
@@ -10730,7 +10717,7 @@ export namespace Prisma {
     name: "Class"
     objects: {
       supervisor: Prisma.$TeacherPayload<ExtArgs> | null
-      Student: Prisma.$StudentPayload<ExtArgs>[]
+      Students: Prisma.$StudentPayload<ExtArgs>[]
       Grade: Prisma.$GradePayload<ExtArgs> | null
       lessons: Prisma.$LessonPayload<ExtArgs>[]
       events: Prisma.$EventPayload<ExtArgs>[]
@@ -11137,7 +11124,7 @@ export namespace Prisma {
   export interface Prisma__ClassClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     supervisor<T extends Class$supervisorArgs<ExtArgs> = {}>(args?: Subset<T, Class$supervisorArgs<ExtArgs>>): Prisma__TeacherClient<$Result.GetResult<Prisma.$TeacherPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    Student<T extends Class$StudentArgs<ExtArgs> = {}>(args?: Subset<T, Class$StudentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Students<T extends Class$StudentsArgs<ExtArgs> = {}>(args?: Subset<T, Class$StudentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     Grade<T extends Class$GradeArgs<ExtArgs> = {}>(args?: Subset<T, Class$GradeArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     lessons<T extends Class$lessonsArgs<ExtArgs> = {}>(args?: Subset<T, Class$lessonsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LessonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     events<T extends Class$eventsArgs<ExtArgs> = {}>(args?: Subset<T, Class$eventsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -11591,9 +11578,9 @@ export namespace Prisma {
   }
 
   /**
-   * Class.Student
+   * Class.Students
    */
-  export type Class$StudentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Class$StudentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Student
      */
@@ -13992,21 +13979,21 @@ export namespace Prisma {
     id: number | null
     score: number | null
     examId: number | null
-    assignementId: number | null
+    assignmentId: number | null
   }
 
   export type ResultSumAggregateOutputType = {
     id: number | null
     score: number | null
     examId: number | null
-    assignementId: number | null
+    assignmentId: number | null
   }
 
   export type ResultMinAggregateOutputType = {
     id: number | null
     score: number | null
     examId: number | null
-    assignementId: number | null
+    assignmentId: number | null
     studentId: string | null
   }
 
@@ -14014,7 +14001,7 @@ export namespace Prisma {
     id: number | null
     score: number | null
     examId: number | null
-    assignementId: number | null
+    assignmentId: number | null
     studentId: string | null
   }
 
@@ -14022,7 +14009,7 @@ export namespace Prisma {
     id: number
     score: number
     examId: number
-    assignementId: number
+    assignmentId: number
     studentId: number
     _all: number
   }
@@ -14032,21 +14019,21 @@ export namespace Prisma {
     id?: true
     score?: true
     examId?: true
-    assignementId?: true
+    assignmentId?: true
   }
 
   export type ResultSumAggregateInputType = {
     id?: true
     score?: true
     examId?: true
-    assignementId?: true
+    assignmentId?: true
   }
 
   export type ResultMinAggregateInputType = {
     id?: true
     score?: true
     examId?: true
-    assignementId?: true
+    assignmentId?: true
     studentId?: true
   }
 
@@ -14054,7 +14041,7 @@ export namespace Prisma {
     id?: true
     score?: true
     examId?: true
-    assignementId?: true
+    assignmentId?: true
     studentId?: true
   }
 
@@ -14062,7 +14049,7 @@ export namespace Prisma {
     id?: true
     score?: true
     examId?: true
-    assignementId?: true
+    assignmentId?: true
     studentId?: true
     _all?: true
   }
@@ -14157,7 +14144,7 @@ export namespace Prisma {
     id: number
     score: number
     examId: number | null
-    assignementId: number | null
+    assignmentId: number | null
     studentId: string | null
     _count: ResultCountAggregateOutputType | null
     _avg: ResultAvgAggregateOutputType | null
@@ -14184,7 +14171,7 @@ export namespace Prisma {
     id?: boolean
     score?: boolean
     examId?: boolean
-    assignementId?: boolean
+    assignmentId?: boolean
     studentId?: boolean
     exam?: boolean | Result$examArgs<ExtArgs>
     assignment?: boolean | Result$assignmentArgs<ExtArgs>
@@ -14195,7 +14182,7 @@ export namespace Prisma {
     id?: boolean
     score?: boolean
     examId?: boolean
-    assignementId?: boolean
+    assignmentId?: boolean
     studentId?: boolean
     exam?: boolean | Result$examArgs<ExtArgs>
     assignment?: boolean | Result$assignmentArgs<ExtArgs>
@@ -14206,7 +14193,7 @@ export namespace Prisma {
     id?: boolean
     score?: boolean
     examId?: boolean
-    assignementId?: boolean
+    assignmentId?: boolean
     studentId?: boolean
     exam?: boolean | Result$examArgs<ExtArgs>
     assignment?: boolean | Result$assignmentArgs<ExtArgs>
@@ -14217,11 +14204,11 @@ export namespace Prisma {
     id?: boolean
     score?: boolean
     examId?: boolean
-    assignementId?: boolean
+    assignmentId?: boolean
     studentId?: boolean
   }
 
-  export type ResultOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "score" | "examId" | "assignementId" | "studentId", ExtArgs["result"]["result"]>
+  export type ResultOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "score" | "examId" | "assignmentId" | "studentId", ExtArgs["result"]["result"]>
   export type ResultInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     exam?: boolean | Result$examArgs<ExtArgs>
     assignment?: boolean | Result$assignmentArgs<ExtArgs>
@@ -14249,7 +14236,7 @@ export namespace Prisma {
       id: number
       score: number
       examId: number | null
-      assignementId: number | null
+      assignmentId: number | null
       studentId: string | null
     }, ExtArgs["result"]["result"]>
     composites: {}
@@ -14680,7 +14667,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Result", 'Int'>
     readonly score: FieldRef<"Result", 'Int'>
     readonly examId: FieldRef<"Result", 'Int'>
-    readonly assignementId: FieldRef<"Result", 'Int'>
+    readonly assignmentId: FieldRef<"Result", 'Int'>
     readonly studentId: FieldRef<"Result", 'String'>
   }
     
@@ -18642,7 +18629,7 @@ export namespace Prisma {
     id: 'id',
     score: 'score',
     examId: 'examId',
-    assignementId: 'assignementId',
+    assignmentId: 'assignmentId',
     studentId: 'studentId'
   };
 
@@ -19305,22 +19292,22 @@ export namespace Prisma {
     teacherId?: StringWithAggregatesFilter<"Lesson"> | string
   }
 
-    export type ClassWhereInput = {
-      AND?: ClassWhereInput | ClassWhereInput[]
-      OR?: ClassWhereInput[]
-      NOT?: ClassWhereInput | ClassWhereInput[]
-      id?: IntFilter<"Class"> | number
-      name?: StringFilter<"Class"> | string
-      capacity?: IntFilter<"Class"> | number
-      supervisorId?: StringNullableFilter<"Class"> | string | null
-      gradeId?: IntNullableFilter<"Class"> | number | null
-      supervisor?: XOR<TeacherNullableScalarRelationFilter, TeacherWhereInput> | null
-      Student?: StudentListRelationFilter
-      Grade?: XOR<GradeNullableScalarRelationFilter, GradeWhereInput> | null
-      lessons?: LessonListRelationFilter
-      events?: EventListRelationFilter
-      annoucements?: AnnouncementListRelationFilter
-    }
+  export type ClassWhereInput = {
+    AND?: ClassWhereInput | ClassWhereInput[]
+    OR?: ClassWhereInput[]
+    NOT?: ClassWhereInput | ClassWhereInput[]
+    id?: IntFilter<"Class"> | number
+    name?: StringFilter<"Class"> | string
+    capacity?: IntFilter<"Class"> | number
+    supervisorId?: StringNullableFilter<"Class"> | string | null
+    gradeId?: IntNullableFilter<"Class"> | number | null
+    supervisor?: XOR<TeacherNullableScalarRelationFilter, TeacherWhereInput> | null
+    Students?: StudentListRelationFilter
+    Grade?: XOR<GradeNullableScalarRelationFilter, GradeWhereInput> | null
+    lessons?: LessonListRelationFilter
+    events?: EventListRelationFilter
+    annoucements?: AnnouncementListRelationFilter
+  }
 
   export type ClassOrderByWithRelationInput = {
     id?: SortOrder
@@ -19329,7 +19316,7 @@ export namespace Prisma {
     supervisorId?: SortOrderInput | SortOrder
     gradeId?: SortOrderInput | SortOrder
     supervisor?: TeacherOrderByWithRelationInput
-    Student?: StudentOrderByRelationAggregateInput
+    Students?: StudentOrderByRelationAggregateInput
     Grade?: GradeOrderByWithRelationInput
     lessons?: LessonOrderByRelationAggregateInput
     events?: EventOrderByRelationAggregateInput
@@ -19346,7 +19333,7 @@ export namespace Prisma {
     supervisorId?: StringNullableFilter<"Class"> | string | null
     gradeId?: IntNullableFilter<"Class"> | number | null
     supervisor?: XOR<TeacherNullableScalarRelationFilter, TeacherWhereInput> | null
-    Student?: StudentListRelationFilter
+    Students?: StudentListRelationFilter
     Grade?: XOR<GradeNullableScalarRelationFilter, GradeWhereInput> | null
     lessons?: LessonListRelationFilter
     events?: EventListRelationFilter
@@ -19504,7 +19491,7 @@ export namespace Prisma {
     id?: IntFilter<"Result"> | number
     score?: IntFilter<"Result"> | number
     examId?: IntNullableFilter<"Result"> | number | null
-    assignementId?: IntNullableFilter<"Result"> | number | null
+    assignmentId?: IntNullableFilter<"Result"> | number | null
     studentId?: StringNullableFilter<"Result"> | string | null
     exam?: XOR<ExamNullableScalarRelationFilter, ExamWhereInput> | null
     assignment?: XOR<AssignmentNullableScalarRelationFilter, AssignmentWhereInput> | null
@@ -19515,7 +19502,7 @@ export namespace Prisma {
     id?: SortOrder
     score?: SortOrder
     examId?: SortOrderInput | SortOrder
-    assignementId?: SortOrderInput | SortOrder
+    assignmentId?: SortOrderInput | SortOrder
     studentId?: SortOrderInput | SortOrder
     exam?: ExamOrderByWithRelationInput
     assignment?: AssignmentOrderByWithRelationInput
@@ -19529,7 +19516,7 @@ export namespace Prisma {
     NOT?: ResultWhereInput | ResultWhereInput[]
     score?: IntFilter<"Result"> | number
     examId?: IntNullableFilter<"Result"> | number | null
-    assignementId?: IntNullableFilter<"Result"> | number | null
+    assignmentId?: IntNullableFilter<"Result"> | number | null
     studentId?: StringNullableFilter<"Result"> | string | null
     exam?: XOR<ExamNullableScalarRelationFilter, ExamWhereInput> | null
     assignment?: XOR<AssignmentNullableScalarRelationFilter, AssignmentWhereInput> | null
@@ -19540,7 +19527,7 @@ export namespace Prisma {
     id?: SortOrder
     score?: SortOrder
     examId?: SortOrderInput | SortOrder
-    assignementId?: SortOrderInput | SortOrder
+    assignmentId?: SortOrderInput | SortOrder
     studentId?: SortOrderInput | SortOrder
     _count?: ResultCountOrderByAggregateInput
     _avg?: ResultAvgOrderByAggregateInput
@@ -19556,7 +19543,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Result"> | number
     score?: IntWithAggregatesFilter<"Result"> | number
     examId?: IntNullableWithAggregatesFilter<"Result"> | number | null
-    assignementId?: IntNullableWithAggregatesFilter<"Result"> | number | null
+    assignmentId?: IntNullableWithAggregatesFilter<"Result"> | number | null
     studentId?: StringNullableWithAggregatesFilter<"Result"> | string | null
   }
 
@@ -19788,7 +19775,7 @@ export namespace Prisma {
     createdAt?: Date | string
     birthday: Date | string
     parent: ParentCreateNestedOneWithoutStudentsInput
-    class: ClassCreateNestedOneWithoutStudentInput
+    class: ClassCreateNestedOneWithoutStudentsInput
     grade: GradeCreateNestedOneWithoutStudentsInput
     attendance?: AttendanceCreateNestedManyWithoutStudentInput
     result?: ResultCreateNestedManyWithoutStudentInput
@@ -19828,7 +19815,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     parent?: ParentUpdateOneRequiredWithoutStudentsNestedInput
-    class?: ClassUpdateOneRequiredWithoutStudentNestedInput
+    class?: ClassUpdateOneRequiredWithoutStudentsNestedInput
     grade?: GradeUpdateOneRequiredWithoutStudentsNestedInput
     attendance?: AttendanceUpdateManyWithoutStudentNestedInput
     result?: ResultUpdateManyWithoutStudentNestedInput
@@ -20270,7 +20257,7 @@ export namespace Prisma {
     name: string
     capacity: number
     supervisor?: TeacherCreateNestedOneWithoutClassesInput
-    Student?: StudentCreateNestedManyWithoutClassInput
+    Students?: StudentCreateNestedManyWithoutClassInput
     Grade?: GradeCreateNestedOneWithoutClassesInput
     lessons?: LessonCreateNestedManyWithoutClassInput
     events?: EventCreateNestedManyWithoutClassInput
@@ -20283,7 +20270,7 @@ export namespace Prisma {
     capacity: number
     supervisorId?: string | null
     gradeId?: number | null
-    Student?: StudentUncheckedCreateNestedManyWithoutClassInput
+    Students?: StudentUncheckedCreateNestedManyWithoutClassInput
     lessons?: LessonUncheckedCreateNestedManyWithoutClassInput
     events?: EventUncheckedCreateNestedManyWithoutClassInput
     annoucements?: AnnouncementUncheckedCreateNestedManyWithoutClassInput
@@ -20293,7 +20280,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
     supervisor?: TeacherUpdateOneWithoutClassesNestedInput
-    Student?: StudentUpdateManyWithoutClassNestedInput
+    Students?: StudentUpdateManyWithoutClassNestedInput
     Grade?: GradeUpdateOneWithoutClassesNestedInput
     lessons?: LessonUpdateManyWithoutClassNestedInput
     events?: EventUpdateManyWithoutClassNestedInput
@@ -20306,7 +20293,7 @@ export namespace Prisma {
     capacity?: IntFieldUpdateOperationsInput | number
     supervisorId?: NullableStringFieldUpdateOperationsInput | string | null
     gradeId?: NullableIntFieldUpdateOperationsInput | number | null
-    Student?: StudentUncheckedUpdateManyWithoutClassNestedInput
+    Students?: StudentUncheckedUpdateManyWithoutClassNestedInput
     lessons?: LessonUncheckedUpdateManyWithoutClassNestedInput
     events?: EventUncheckedUpdateManyWithoutClassNestedInput
     annoucements?: AnnouncementUncheckedUpdateManyWithoutClassNestedInput
@@ -20456,7 +20443,7 @@ export namespace Prisma {
     id?: number
     score: number
     examId?: number | null
-    assignementId?: number | null
+    assignmentId?: number | null
     studentId?: string | null
   }
 
@@ -20471,7 +20458,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     score?: IntFieldUpdateOperationsInput | number
     examId?: NullableIntFieldUpdateOperationsInput | number | null
-    assignementId?: NullableIntFieldUpdateOperationsInput | number | null
+    assignmentId?: NullableIntFieldUpdateOperationsInput | number | null
     studentId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -20479,7 +20466,7 @@ export namespace Prisma {
     id?: number
     score: number
     examId?: number | null
-    assignementId?: number | null
+    assignmentId?: number | null
     studentId?: string | null
   }
 
@@ -20491,7 +20478,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     score?: IntFieldUpdateOperationsInput | number
     examId?: NullableIntFieldUpdateOperationsInput | number | null
-    assignementId?: NullableIntFieldUpdateOperationsInput | number | null
+    assignmentId?: NullableIntFieldUpdateOperationsInput | number | null
     studentId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -21364,7 +21351,7 @@ export namespace Prisma {
     id?: SortOrder
     score?: SortOrder
     examId?: SortOrder
-    assignementId?: SortOrder
+    assignmentId?: SortOrder
     studentId?: SortOrder
   }
 
@@ -21372,14 +21359,14 @@ export namespace Prisma {
     id?: SortOrder
     score?: SortOrder
     examId?: SortOrder
-    assignementId?: SortOrder
+    assignmentId?: SortOrder
   }
 
   export type ResultMaxOrderByAggregateInput = {
     id?: SortOrder
     score?: SortOrder
     examId?: SortOrder
-    assignementId?: SortOrder
+    assignmentId?: SortOrder
     studentId?: SortOrder
   }
 
@@ -21387,7 +21374,7 @@ export namespace Prisma {
     id?: SortOrder
     score?: SortOrder
     examId?: SortOrder
-    assignementId?: SortOrder
+    assignmentId?: SortOrder
     studentId?: SortOrder
   }
 
@@ -21395,7 +21382,7 @@ export namespace Prisma {
     id?: SortOrder
     score?: SortOrder
     examId?: SortOrder
-    assignementId?: SortOrder
+    assignmentId?: SortOrder
   }
 
   export type BoolFilter<$PrismaModel = never> = {
@@ -21536,9 +21523,9 @@ export namespace Prisma {
     connect?: ParentWhereUniqueInput
   }
 
-  export type ClassCreateNestedOneWithoutStudentInput = {
-    create?: XOR<ClassCreateWithoutStudentInput, ClassUncheckedCreateWithoutStudentInput>
-    connectOrCreate?: ClassCreateOrConnectWithoutStudentInput
+  export type ClassCreateNestedOneWithoutStudentsInput = {
+    create?: XOR<ClassCreateWithoutStudentsInput, ClassUncheckedCreateWithoutStudentsInput>
+    connectOrCreate?: ClassCreateOrConnectWithoutStudentsInput
     connect?: ClassWhereUniqueInput
   }
 
@@ -21596,12 +21583,12 @@ export namespace Prisma {
     update?: XOR<XOR<ParentUpdateToOneWithWhereWithoutStudentsInput, ParentUpdateWithoutStudentsInput>, ParentUncheckedUpdateWithoutStudentsInput>
   }
 
-  export type ClassUpdateOneRequiredWithoutStudentNestedInput = {
-    create?: XOR<ClassCreateWithoutStudentInput, ClassUncheckedCreateWithoutStudentInput>
-    connectOrCreate?: ClassCreateOrConnectWithoutStudentInput
-    upsert?: ClassUpsertWithoutStudentInput
+  export type ClassUpdateOneRequiredWithoutStudentsNestedInput = {
+    create?: XOR<ClassCreateWithoutStudentsInput, ClassUncheckedCreateWithoutStudentsInput>
+    connectOrCreate?: ClassCreateOrConnectWithoutStudentsInput
+    upsert?: ClassUpsertWithoutStudentsInput
     connect?: ClassWhereUniqueInput
-    update?: XOR<XOR<ClassUpdateToOneWithWhereWithoutStudentInput, ClassUpdateWithoutStudentInput>, ClassUncheckedUpdateWithoutStudentInput>
+    update?: XOR<XOR<ClassUpdateToOneWithWhereWithoutStudentsInput, ClassUpdateWithoutStudentsInput>, ClassUncheckedUpdateWithoutStudentsInput>
   }
 
   export type GradeUpdateOneRequiredWithoutStudentsNestedInput = {
@@ -22845,7 +22832,7 @@ export namespace Prisma {
     create: XOR<ParentCreateWithoutStudentsInput, ParentUncheckedCreateWithoutStudentsInput>
   }
 
-  export type ClassCreateWithoutStudentInput = {
+  export type ClassCreateWithoutStudentsInput = {
     name: string
     capacity: number
     supervisor?: TeacherCreateNestedOneWithoutClassesInput
@@ -22855,7 +22842,7 @@ export namespace Prisma {
     annoucements?: AnnouncementCreateNestedManyWithoutClassInput
   }
 
-  export type ClassUncheckedCreateWithoutStudentInput = {
+  export type ClassUncheckedCreateWithoutStudentsInput = {
     id?: number
     name: string
     capacity: number
@@ -22866,9 +22853,9 @@ export namespace Prisma {
     annoucements?: AnnouncementUncheckedCreateNestedManyWithoutClassInput
   }
 
-  export type ClassCreateOrConnectWithoutStudentInput = {
+  export type ClassCreateOrConnectWithoutStudentsInput = {
     where: ClassWhereUniqueInput
-    create: XOR<ClassCreateWithoutStudentInput, ClassUncheckedCreateWithoutStudentInput>
+    create: XOR<ClassCreateWithoutStudentsInput, ClassUncheckedCreateWithoutStudentsInput>
   }
 
   export type GradeCreateWithoutStudentsInput = {
@@ -22920,7 +22907,7 @@ export namespace Prisma {
     id?: number
     score: number
     examId?: number | null
-    assignementId?: number | null
+    assignmentId?: number | null
   }
 
   export type ResultCreateOrConnectWithoutStudentInput = {
@@ -22966,18 +22953,18 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ClassUpsertWithoutStudentInput = {
-    update: XOR<ClassUpdateWithoutStudentInput, ClassUncheckedUpdateWithoutStudentInput>
-    create: XOR<ClassCreateWithoutStudentInput, ClassUncheckedCreateWithoutStudentInput>
+  export type ClassUpsertWithoutStudentsInput = {
+    update: XOR<ClassUpdateWithoutStudentsInput, ClassUncheckedUpdateWithoutStudentsInput>
+    create: XOR<ClassCreateWithoutStudentsInput, ClassUncheckedCreateWithoutStudentsInput>
     where?: ClassWhereInput
   }
 
-  export type ClassUpdateToOneWithWhereWithoutStudentInput = {
+  export type ClassUpdateToOneWithWhereWithoutStudentsInput = {
     where?: ClassWhereInput
-    data: XOR<ClassUpdateWithoutStudentInput, ClassUncheckedUpdateWithoutStudentInput>
+    data: XOR<ClassUpdateWithoutStudentsInput, ClassUncheckedUpdateWithoutStudentsInput>
   }
 
-  export type ClassUpdateWithoutStudentInput = {
+  export type ClassUpdateWithoutStudentsInput = {
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
     supervisor?: TeacherUpdateOneWithoutClassesNestedInput
@@ -22987,7 +22974,7 @@ export namespace Prisma {
     annoucements?: AnnouncementUpdateManyWithoutClassNestedInput
   }
 
-  export type ClassUncheckedUpdateWithoutStudentInput = {
+  export type ClassUncheckedUpdateWithoutStudentsInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
@@ -23070,7 +23057,7 @@ export namespace Prisma {
     id?: IntFilter<"Result"> | number
     score?: IntFilter<"Result"> | number
     examId?: IntNullableFilter<"Result"> | number | null
-    assignementId?: IntNullableFilter<"Result"> | number | null
+    assignmentId?: IntNullableFilter<"Result"> | number | null
     studentId?: StringNullableFilter<"Result"> | string | null
   }
 
@@ -23128,7 +23115,7 @@ export namespace Prisma {
   export type ClassCreateWithoutSupervisorInput = {
     name: string
     capacity: number
-    Student?: StudentCreateNestedManyWithoutClassInput
+    Students?: StudentCreateNestedManyWithoutClassInput
     Grade?: GradeCreateNestedOneWithoutClassesInput
     lessons?: LessonCreateNestedManyWithoutClassInput
     events?: EventCreateNestedManyWithoutClassInput
@@ -23140,7 +23127,7 @@ export namespace Prisma {
     name: string
     capacity: number
     gradeId?: number | null
-    Student?: StudentUncheckedCreateNestedManyWithoutClassInput
+    Students?: StudentUncheckedCreateNestedManyWithoutClassInput
     lessons?: LessonUncheckedCreateNestedManyWithoutClassInput
     events?: EventUncheckedCreateNestedManyWithoutClassInput
     annoucements?: AnnouncementUncheckedCreateNestedManyWithoutClassInput
@@ -23250,7 +23237,7 @@ export namespace Prisma {
     sex: $Enums.UserSex
     createdAt?: Date | string
     birthday: Date | string
-    class: ClassCreateNestedOneWithoutStudentInput
+    class: ClassCreateNestedOneWithoutStudentsInput
     grade: GradeCreateNestedOneWithoutStudentsInput
     attendance?: AttendanceCreateNestedManyWithoutStudentInput
     result?: ResultCreateNestedManyWithoutStudentInput
@@ -23336,7 +23323,7 @@ export namespace Prisma {
     createdAt?: Date | string
     birthday: Date | string
     parent: ParentCreateNestedOneWithoutStudentsInput
-    class: ClassCreateNestedOneWithoutStudentInput
+    class: ClassCreateNestedOneWithoutStudentsInput
     attendance?: AttendanceCreateNestedManyWithoutStudentInput
     result?: ResultCreateNestedManyWithoutStudentInput
   }
@@ -23374,7 +23361,7 @@ export namespace Prisma {
     name: string
     capacity: number
     supervisor?: TeacherCreateNestedOneWithoutClassesInput
-    Student?: StudentCreateNestedManyWithoutClassInput
+    Students?: StudentCreateNestedManyWithoutClassInput
     lessons?: LessonCreateNestedManyWithoutClassInput
     events?: EventCreateNestedManyWithoutClassInput
     annoucements?: AnnouncementCreateNestedManyWithoutClassInput
@@ -23385,7 +23372,7 @@ export namespace Prisma {
     name: string
     capacity: number
     supervisorId?: string | null
-    Student?: StudentUncheckedCreateNestedManyWithoutClassInput
+    Students?: StudentUncheckedCreateNestedManyWithoutClassInput
     lessons?: LessonUncheckedCreateNestedManyWithoutClassInput
     events?: EventUncheckedCreateNestedManyWithoutClassInput
     annoucements?: AnnouncementUncheckedCreateNestedManyWithoutClassInput
@@ -23577,7 +23564,7 @@ export namespace Prisma {
     name: string
     capacity: number
     supervisor?: TeacherCreateNestedOneWithoutClassesInput
-    Student?: StudentCreateNestedManyWithoutClassInput
+    Students?: StudentCreateNestedManyWithoutClassInput
     Grade?: GradeCreateNestedOneWithoutClassesInput
     events?: EventCreateNestedManyWithoutClassInput
     annoucements?: AnnouncementCreateNestedManyWithoutClassInput
@@ -23589,7 +23576,7 @@ export namespace Prisma {
     capacity: number
     supervisorId?: string | null
     gradeId?: number | null
-    Student?: StudentUncheckedCreateNestedManyWithoutClassInput
+    Students?: StudentUncheckedCreateNestedManyWithoutClassInput
     events?: EventUncheckedCreateNestedManyWithoutClassInput
     annoucements?: AnnouncementUncheckedCreateNestedManyWithoutClassInput
   }
@@ -23748,7 +23735,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
     supervisor?: TeacherUpdateOneWithoutClassesNestedInput
-    Student?: StudentUpdateManyWithoutClassNestedInput
+    Students?: StudentUpdateManyWithoutClassNestedInput
     Grade?: GradeUpdateOneWithoutClassesNestedInput
     events?: EventUpdateManyWithoutClassNestedInput
     annoucements?: AnnouncementUpdateManyWithoutClassNestedInput
@@ -23760,7 +23747,7 @@ export namespace Prisma {
     capacity?: IntFieldUpdateOperationsInput | number
     supervisorId?: NullableStringFieldUpdateOperationsInput | string | null
     gradeId?: NullableIntFieldUpdateOperationsInput | number | null
-    Student?: StudentUncheckedUpdateManyWithoutClassNestedInput
+    Students?: StudentUncheckedUpdateManyWithoutClassNestedInput
     events?: EventUncheckedUpdateManyWithoutClassNestedInput
     annoucements?: AnnouncementUncheckedUpdateManyWithoutClassNestedInput
   }
@@ -24259,7 +24246,7 @@ export namespace Prisma {
   export type ResultUncheckedCreateWithoutExamInput = {
     id?: number
     score: number
-    assignementId?: number | null
+    assignmentId?: number | null
     studentId?: string | null
   }
 
@@ -24484,7 +24471,7 @@ export namespace Prisma {
     createdAt?: Date | string
     birthday: Date | string
     parent: ParentCreateNestedOneWithoutStudentsInput
-    class: ClassCreateNestedOneWithoutStudentInput
+    class: ClassCreateNestedOneWithoutStudentsInput
     grade: GradeCreateNestedOneWithoutStudentsInput
     attendance?: AttendanceCreateNestedManyWithoutStudentInput
   }
@@ -24590,7 +24577,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     parent?: ParentUpdateOneRequiredWithoutStudentsNestedInput
-    class?: ClassUpdateOneRequiredWithoutStudentNestedInput
+    class?: ClassUpdateOneRequiredWithoutStudentsNestedInput
     grade?: GradeUpdateOneRequiredWithoutStudentsNestedInput
     attendance?: AttendanceUpdateManyWithoutStudentNestedInput
   }
@@ -24628,7 +24615,7 @@ export namespace Prisma {
     createdAt?: Date | string
     birthday: Date | string
     parent: ParentCreateNestedOneWithoutStudentsInput
-    class: ClassCreateNestedOneWithoutStudentInput
+    class: ClassCreateNestedOneWithoutStudentsInput
     grade: GradeCreateNestedOneWithoutStudentsInput
     result?: ResultCreateNestedManyWithoutStudentInput
   }
@@ -24712,7 +24699,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     parent?: ParentUpdateOneRequiredWithoutStudentsNestedInput
-    class?: ClassUpdateOneRequiredWithoutStudentNestedInput
+    class?: ClassUpdateOneRequiredWithoutStudentsNestedInput
     grade?: GradeUpdateOneRequiredWithoutStudentsNestedInput
     result?: ResultUpdateManyWithoutStudentNestedInput
   }
@@ -24776,7 +24763,7 @@ export namespace Prisma {
     name: string
     capacity: number
     supervisor?: TeacherCreateNestedOneWithoutClassesInput
-    Student?: StudentCreateNestedManyWithoutClassInput
+    Students?: StudentCreateNestedManyWithoutClassInput
     Grade?: GradeCreateNestedOneWithoutClassesInput
     lessons?: LessonCreateNestedManyWithoutClassInput
     annoucements?: AnnouncementCreateNestedManyWithoutClassInput
@@ -24788,7 +24775,7 @@ export namespace Prisma {
     capacity: number
     supervisorId?: string | null
     gradeId?: number | null
-    Student?: StudentUncheckedCreateNestedManyWithoutClassInput
+    Students?: StudentUncheckedCreateNestedManyWithoutClassInput
     lessons?: LessonUncheckedCreateNestedManyWithoutClassInput
     annoucements?: AnnouncementUncheckedCreateNestedManyWithoutClassInput
   }
@@ -24813,7 +24800,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
     supervisor?: TeacherUpdateOneWithoutClassesNestedInput
-    Student?: StudentUpdateManyWithoutClassNestedInput
+    Students?: StudentUpdateManyWithoutClassNestedInput
     Grade?: GradeUpdateOneWithoutClassesNestedInput
     lessons?: LessonUpdateManyWithoutClassNestedInput
     annoucements?: AnnouncementUpdateManyWithoutClassNestedInput
@@ -24825,7 +24812,7 @@ export namespace Prisma {
     capacity?: IntFieldUpdateOperationsInput | number
     supervisorId?: NullableStringFieldUpdateOperationsInput | string | null
     gradeId?: NullableIntFieldUpdateOperationsInput | number | null
-    Student?: StudentUncheckedUpdateManyWithoutClassNestedInput
+    Students?: StudentUncheckedUpdateManyWithoutClassNestedInput
     lessons?: LessonUncheckedUpdateManyWithoutClassNestedInput
     annoucements?: AnnouncementUncheckedUpdateManyWithoutClassNestedInput
   }
@@ -24834,7 +24821,7 @@ export namespace Prisma {
     name: string
     capacity: number
     supervisor?: TeacherCreateNestedOneWithoutClassesInput
-    Student?: StudentCreateNestedManyWithoutClassInput
+    Students?: StudentCreateNestedManyWithoutClassInput
     Grade?: GradeCreateNestedOneWithoutClassesInput
     lessons?: LessonCreateNestedManyWithoutClassInput
     events?: EventCreateNestedManyWithoutClassInput
@@ -24846,7 +24833,7 @@ export namespace Prisma {
     capacity: number
     supervisorId?: string | null
     gradeId?: number | null
-    Student?: StudentUncheckedCreateNestedManyWithoutClassInput
+    Students?: StudentUncheckedCreateNestedManyWithoutClassInput
     lessons?: LessonUncheckedCreateNestedManyWithoutClassInput
     events?: EventUncheckedCreateNestedManyWithoutClassInput
   }
@@ -24871,7 +24858,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
     supervisor?: TeacherUpdateOneWithoutClassesNestedInput
-    Student?: StudentUpdateManyWithoutClassNestedInput
+    Students?: StudentUpdateManyWithoutClassNestedInput
     Grade?: GradeUpdateOneWithoutClassesNestedInput
     lessons?: LessonUpdateManyWithoutClassNestedInput
     events?: EventUpdateManyWithoutClassNestedInput
@@ -24883,7 +24870,7 @@ export namespace Prisma {
     capacity?: IntFieldUpdateOperationsInput | number
     supervisorId?: NullableStringFieldUpdateOperationsInput | string | null
     gradeId?: NullableIntFieldUpdateOperationsInput | number | null
-    Student?: StudentUncheckedUpdateManyWithoutClassNestedInput
+    Students?: StudentUncheckedUpdateManyWithoutClassNestedInput
     lessons?: LessonUncheckedUpdateManyWithoutClassNestedInput
     events?: EventUncheckedUpdateManyWithoutClassNestedInput
   }
@@ -24899,7 +24886,7 @@ export namespace Prisma {
     id?: number
     score: number
     examId?: number | null
-    assignementId?: number | null
+    assignmentId?: number | null
   }
 
   export type AttendanceUpdateWithoutStudentInput = {
@@ -24932,14 +24919,14 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     score?: IntFieldUpdateOperationsInput | number
     examId?: NullableIntFieldUpdateOperationsInput | number | null
-    assignementId?: NullableIntFieldUpdateOperationsInput | number | null
+    assignmentId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ResultUncheckedUpdateManyWithoutStudentInput = {
     id?: IntFieldUpdateOperationsInput | number
     score?: IntFieldUpdateOperationsInput | number
     examId?: NullableIntFieldUpdateOperationsInput | number | null
-    assignementId?: NullableIntFieldUpdateOperationsInput | number | null
+    assignmentId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type LessonCreateManyTeacherInput = {
@@ -25013,7 +25000,7 @@ export namespace Prisma {
   export type ClassUpdateWithoutSupervisorInput = {
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
-    Student?: StudentUpdateManyWithoutClassNestedInput
+    Students?: StudentUpdateManyWithoutClassNestedInput
     Grade?: GradeUpdateOneWithoutClassesNestedInput
     lessons?: LessonUpdateManyWithoutClassNestedInput
     events?: EventUpdateManyWithoutClassNestedInput
@@ -25025,7 +25012,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
     gradeId?: NullableIntFieldUpdateOperationsInput | number | null
-    Student?: StudentUncheckedUpdateManyWithoutClassNestedInput
+    Students?: StudentUncheckedUpdateManyWithoutClassNestedInput
     lessons?: LessonUncheckedUpdateManyWithoutClassNestedInput
     events?: EventUncheckedUpdateManyWithoutClassNestedInput
     annoucements?: AnnouncementUncheckedUpdateManyWithoutClassNestedInput
@@ -25068,7 +25055,7 @@ export namespace Prisma {
     sex?: EnumUserSexFieldUpdateOperationsInput | $Enums.UserSex
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     birthday?: DateTimeFieldUpdateOperationsInput | Date | string
-    class?: ClassUpdateOneRequiredWithoutStudentNestedInput
+    class?: ClassUpdateOneRequiredWithoutStudentsNestedInput
     grade?: GradeUpdateOneRequiredWithoutStudentsNestedInput
     attendance?: AttendanceUpdateManyWithoutStudentNestedInput
     result?: ResultUpdateManyWithoutStudentNestedInput
@@ -25148,7 +25135,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     birthday?: DateTimeFieldUpdateOperationsInput | Date | string
     parent?: ParentUpdateOneRequiredWithoutStudentsNestedInput
-    class?: ClassUpdateOneRequiredWithoutStudentNestedInput
+    class?: ClassUpdateOneRequiredWithoutStudentsNestedInput
     attendance?: AttendanceUpdateManyWithoutStudentNestedInput
     result?: ResultUpdateManyWithoutStudentNestedInput
   }
@@ -25193,7 +25180,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
     supervisor?: TeacherUpdateOneWithoutClassesNestedInput
-    Student?: StudentUpdateManyWithoutClassNestedInput
+    Students?: StudentUpdateManyWithoutClassNestedInput
     lessons?: LessonUpdateManyWithoutClassNestedInput
     events?: EventUpdateManyWithoutClassNestedInput
     annoucements?: AnnouncementUpdateManyWithoutClassNestedInput
@@ -25204,7 +25191,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     capacity?: IntFieldUpdateOperationsInput | number
     supervisorId?: NullableStringFieldUpdateOperationsInput | string | null
-    Student?: StudentUncheckedUpdateManyWithoutClassNestedInput
+    Students?: StudentUncheckedUpdateManyWithoutClassNestedInput
     lessons?: LessonUncheckedUpdateManyWithoutClassNestedInput
     events?: EventUncheckedUpdateManyWithoutClassNestedInput
     annoucements?: AnnouncementUncheckedUpdateManyWithoutClassNestedInput
@@ -25574,7 +25561,7 @@ export namespace Prisma {
   export type ResultCreateManyExamInput = {
     id?: number
     score: number
-    assignementId?: number | null
+    assignmentId?: number | null
     studentId?: string | null
   }
 
@@ -25587,14 +25574,14 @@ export namespace Prisma {
   export type ResultUncheckedUpdateWithoutExamInput = {
     id?: IntFieldUpdateOperationsInput | number
     score?: IntFieldUpdateOperationsInput | number
-    assignementId?: NullableIntFieldUpdateOperationsInput | number | null
+    assignmentId?: NullableIntFieldUpdateOperationsInput | number | null
     studentId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ResultUncheckedUpdateManyWithoutExamInput = {
     id?: IntFieldUpdateOperationsInput | number
     score?: IntFieldUpdateOperationsInput | number
-    assignementId?: NullableIntFieldUpdateOperationsInput | number | null
+    assignmentId?: NullableIntFieldUpdateOperationsInput | number | null
     studentId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 

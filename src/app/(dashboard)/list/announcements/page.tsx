@@ -5,8 +5,7 @@ import Table from "@/components/Table";
 import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/setting";
 import { getUser } from "@/lib/util";
-import { auth } from "@clerk/nextjs/server";
-import { Announcement, Class, Prisma } from "@prisma/client";
+import { Announcement, Class, Prisma } from "@/generated/prisma/client";
 import {   FaSortAmountDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
 
@@ -87,15 +86,15 @@ const cols = [
         }
     }
 
-     const roleConditions = {
+     const roleConditions: Record<string,Prisma.ClassWhereInput> = {
         teacher: {lessons: {some: {teacherId: userId!}}},
-        student: {Students: {some: {id: userId!}}},
-        parent: {Students: {some: {parentId: userId!}}},
+        student: {Student:{some:{id: userId!}}},
+        parent: {Student:{some:{parentId: userId!}}}
     }
 
         query.OR = [
             {classId: null}, 
-            {class: roleConditions[role as keyof typeof roleConditions]} || {}
+            {class: roleConditions[role as keyof typeof roleConditions] || {}} 
         ]
   
     

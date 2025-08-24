@@ -4,9 +4,8 @@ import Pagination from "@/components/Pagenation";
 import Table from "@/components/Table";
 import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/setting";
-import { getUser } from "@/lib/util";
-import { auth } from "@clerk/nextjs/server";
-import { Assignment, Class, Prisma, Subject, Teacher } from "@prisma/client";
+import { getCurrentUser } from "@/lib/util";
+import { Assignment, Class, Prisma, Subject, Teacher } from "@/generated/prisma/client";
 import {FaSortAmountDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
 
@@ -24,7 +23,7 @@ export default async function  AssignmentsList({
 }: {
   searchParams: { [key: string]: string | undefined };
 }){
-    const {userId, role } = await getUser();
+    const {userId, role } = await getCurrentUser();
 
   const cols = [
     {
@@ -120,7 +119,7 @@ const renderRow = (item:AssingmentList)=>{
     break; 
     case "student": 
     query.lesson.class = {
-      Students:{
+      Student:{
       some: {
       id: userId!, 
       }
@@ -129,7 +128,7 @@ const renderRow = (item:AssingmentList)=>{
   break;
   case "parent": 
   query.lesson.class ={
-    Students: {
+    Student: {
         some: {
           parent: {
             id: userId!
